@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.AnswerMapper">
+	<resultMap type="com.bean.Answer" id="selectanswermap">
+		<id column="id" property="id" />
+		<result column="id" property="id" />
+		<result column="answertime" property="answertime" />
+		<result column="answercontent" property="answercontent" />
+		<result column="adminid" property="adimnid" />
+		<association property="admin" javaType="com.bean.Admin">
+			<id column="id2" property="id" />
+			<result column="adminname" property="adminname" />
+		</association>
+
+
+	</resultMap>
+
+	<select id="selectanswer" resultMap="selectanswermap">
+		select * from answer a inner
+		join admin b on a.adminid=b.id
+	</select>
+
+</mapper>
