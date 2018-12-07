@@ -33,10 +33,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="col-md-8">
 							<div class="top-bar-3 ">
 								<form class="navbar-form navbar-right ">
-									<div class="form-group" <!--style="position: border-color:white ; border-radius:0px; "-->>
+									<div class="form-group" >
 										<input type="text" class="form-control" placeholder="关键字搜索">
 									</div>
-									<button type="submit" class="btn btn-default " <!--style="position: relative;left: -6px;  border-radius:0px; background-color: white;"-->>
+									<button type="submit" class="btn btn-default " >
 										<span class="glyphicon glyphicon-search"></span>	
 									</button>
 								</form>
