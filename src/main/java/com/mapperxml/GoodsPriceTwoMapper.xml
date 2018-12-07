@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.GoodsPriceTwoMapper" >
+  <resultMap id="BaseResultMap" type="com.bean.GoodsPriceTwo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="goodspriceid" property="goodspriceid" jdbcType="INTEGER" />
+    <result column="filepath" property="filepath" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, goodspriceid, filepath
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" /> 
+    from goodspricetwo
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from goodspricetwo
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.bean.GoodsPriceTwo" >
+    insert into goodspricetwo (id, goodspriceid, filepath
+      )
+    values (#{id,jdbcType=INTEGER}, #{goodspriceid,jdbcType=INTEGER}, #{filepath,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.bean.GoodsPriceTwo" >
+    insert into goodspricetwo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="goodspriceid != null" >
+        goodspriceid,
+      </if>
+      <if test="filepath != null" >
+        filepath,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="goodspriceid != null" >
+        #{goodspriceid,jdbcType=INTEGER},
+      </if>
+      <if test="filepath != null" >
+        #{filepath,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bean.GoodsPriceTwo" >
+    update goodspricetwo
+    <set >
+      <if test="goodspriceid != null" >
+        goodspriceid = #{goodspriceid,jdbcType=INTEGER},
+      </if>
+      <if test="filepath != null" >
+        filepath = #{filepath,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bean.GoodsPriceTwo" >
+    update goodspricetwo
+    set goodspriceid = #{goodspriceid,jdbcType=INTEGER},
+      filepath = #{filepath,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

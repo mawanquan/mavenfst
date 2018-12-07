@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.JoinzbxxMapper">
+	<resultMap id="BaseResultMap" type="com.bean.Joinzbxx">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="declareid" property="declareid" jdbcType="INTEGER" />
+		<result column="supplierid" property="supplierid" jdbcType="INTEGER" />
+		<result column="zbbj" property="zbbj" jdbcType="DOUBLE" />
+		<result column="zbfile" property="zbfile" jdbcType="VARCHAR" />
+		<result column="start" property="start" jdbcType="INTEGER" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, declareid, supplierid, zbbj, zbfile, start
+	</sql>
+
+
+	<select id="selBidsByStartHistory" parameterType="Integer"
+		resultType="com.bean.Joinzbxx">
+		select id, declareid, supplierid, zbbj, zbfile, start from joinzbxx where
+		start in (0,3,4) and supplierid=#{supplierid}
+	</select>
+
+
+	<resultMap type="com.bean.Joinzbxx" id="selJoinZbxxandZbfile">
+		<id column="id1" property="id" jdbcType="INTEGER" />
+		<result column="declareid" property="declareid" jdbcType="INTEGER" />
+		<result column="supplierid" property="supplierid" jdbcType="INTEGER" />
+		<result column="zbbj" property="zbbj" jdbcType="DOUBLE" />
+		<result column="zbfile" property="zbfile" jdbcType="VARCHAR" />
+		<result column="start" property="start" jdbcType="INTEGER" />
+		<collection property="lisjoinzbfile" javaType="list"
+			ofType="com.bean.Joinzbfile">
+			<id column="id2" property="id" />
+			<result column="zbxxid" property="zbxxid" />
+			<result column="filepath" property="filepath" />
+			<result column="filename" property="filename" />
+		</collection>
+	</resultMap>
+
+	<select id="selBidsSupidAndDecid" parameterType="Integer"
+		resultType="com.bean.Joinzbxx">
+		select id,declareid,supplierid,zbbj,zbfile,start from joinzbxx where
+		supplierid=#{0} and declareid=#{1}
+	</select>
+
+
+	<select id="selBidsByidandStart" parameterType="Integer"
+		resultMap="selJoinZbxxandZbfile">
+		select a.id id1, declareid, supplierid, zbbj, zbfile,
+		b.id id2,zbxxid,filepath ,start,filename from
+		joinzbxx a left join joinzbfile b on a.id=b.zbxxid
+		where supplierid=#{0} and start=#{1}
+	</select>
+	<select id="selBidsByid" parameterType="Integer" resultMap="selJoinZbxxandZbfile">
+		select a.id id1, declareid, supplierid, zbbj, zbfile,
+		b.id id2,zbxxid,filepath ,start,filename from
+		joinzbxx a left join joinzbfile b on a.id=b.zbxxid
+		where a.id=#{id}
+	</select>
+	<insert id="insertReturnKey" parameterType="com.bean.Joinzbxx"
+		useGeneratedKeys="true" keyProperty="id">
+		insert into joinzbxx
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="declareid != null">
+				declareid,
+			</if>
+			<if test="supplierid != null">
+				supplierid,
+			</if>
+			<if test="zbbj != null">
+				zbbj,
+			</if>
+			<if test="zbfile != null">
+				zbfile,
+			</if>
+			<if test="start != null">
+				start,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="declareid != null">
+				#{declareid},
+			</if>
+			<if test="supplierid != null">
+				#{supplierid},
+			</if>
+			<if test="zbbj != null">
+				#{zbbj},
+			</if>
+			<if test="zbfile != null">
+				#{zbfile},
+			</if>
+			<if test="start != null">
+				#{start},
+			</if>
+		</trim>
+	</insert>
+</mapper>

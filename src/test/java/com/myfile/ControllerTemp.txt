@@ -1,0 +1,77 @@
+package [controller包路径];
+
+import java.util.List;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import [pojo类路径];
+import [service接口的类路径];
+
+@Controller
+public class [pojo类名字]Controller {
+
+	@Resource(name = "[service接口实现类名字首字母小写]")
+	[service接口名字] [service接口名字首字母小写];// 依赖service层
+
+	/**
+	 * 分页查询查询所有的数据
+	 */
+	@RequestMapping("/is/selectall[pojo类名字小写]/{page}.html")
+	public String selectAll[pojo类名字](HttpServletRequest req,
+			@PathVariable("page") int page) {
+
+		PageHelper.startPage(page, 2);// 第几页，每页条数
+		List<[pojo类名字]> list = [service接口名字首字母小写].selectAll();// 查询所有
+		PageInfo pageInfo = new PageInfo(list);// 就是一个包含了分页数据的对象
+
+		req.setAttribute("list", list);
+		req.setAttribute("pageInfo", pageInfo);
+		return "selectall[pojo类名字小写]";
+	}
+
+	/**
+	 * 根据主键查询一个对象
+	 */
+	@RequestMapping("/is/selectbyprimarykey[pojo类名字小写]/{id}.html")
+	public String selectByPrimaryKey[pojo类名字](HttpServletRequest req,@PathVariable("id") int id) {
+		[pojo类名字] [pojo类名字小写] = [service接口名字首字母小写].selectByPrimaryKey(id);
+		req.setAttribute("[pojo类名字小写]", [pojo类名字小写]);
+		return "selectbyprimarykey[pojo类名字小写]";
+	}
+
+	/**
+	 * 根据主键删除一个对象
+	 */
+	@RequestMapping("/is/deletebyprimarykey[pojo类名字小写]/{id}.html")
+	public String deleteByPrimaryKey[pojo类名字](HttpServletRequest req,@PathVariable("id") int id) {
+		int r = [service接口名字首字母小写].deleteByPrimaryKey(id);
+		return "deletebyprimarykey[pojo类名字小写]";
+	}
+
+	/**
+	 * 根据主键修改一个对象
+	 */
+	@RequestMapping("/is/updatebyprimarykey[pojo类名字小写].html")
+	public String updateByPrimaryKey[pojo类名字]([pojo类名字] [pojo类名字小写]) {
+		int r = [service接口名字首字母小写].updateByPrimaryKey([pojo类名字小写]);
+		return "updatebyprimarykey[pojo类名字小写]";
+	}
+
+	/**
+	 * 增加一个对象
+	 */
+	@RequestMapping("/is/insert[pojo类名字小写].html")
+	public String insert[pojo类名字]([pojo类名字] [pojo类名字小写]) {
+		int r = [service接口名字首字母小写].insert([pojo类名字小写]);
+		return "insert[pojo类名字小写]";
+
+	}
+
+}

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.PremeauMapper" >
+
+
+<insert id="insAllPremeau">
+insert into premeau (pre,url,prestart,start) values
+<foreach collection="list" item="premeau" separator=",">
+(#{premeau.pre},#{premeau.url},#{premeau.prestart},#{premeau.start})
+</foreach>
+
+</insert>
+
+
+<select id="selPrestartAndRoleid" parameterType="Integer" resultType="com.bean.Premeau">
+ select * from role_permeau  WHERE roleid=#{0} and premeauid=#{1}
+</select>
+
+<insert id="insPremeauByRoleid" parameterType="map">  
+INSERT into role_permeau (roleid,premeauid)VALUES(#{roleid},#{premeauid})
+</insert>
+<delete id="delPromeanByRoleid" parameterType="Integer">
+ DELETE from role_permeau where roleid=#{roleid} 
+</delete>
+<select id="selPremeauByRoleId2" parameterType="Integer" resultType="com.bean.Premeau">
+ select p.id, p.pre, p.prestart, p.url from role_permeau r LEFT JOIN premeau p on r.premeauid=p.id WHERE r.roleid=#{id} and prestart not in(0) and p.start=0
+</select>
+<select id="selPremeauByRoleId" parameterType="Integer" resultType="com.bean.Premeau">
+ select p.id, p.pre, p.prestart, p.url from role_permeau r LEFT JOIN premeau p on r.premeauid=p.id WHERE r.roleid=#{id} and p.start=0
+</select>
+<select id="selALLPremeau" resultType="com.bean.Premeau">
+   select id, pre, prestart, url from premeau where prestart not in(0) and start=0
+</select>
+
+<select id="selPremeauByAdminid" parameterType="java.lang.Integer" resultType="com.bean.Premeau">
+   select e.id,e.pre,e.url,e.prestart from
+   admin a left join
+   admin_role_branch b on a.id=b.adminid left join
+   role c on b.roleid=c.id left join
+   role_permeau d on c.id=d.roleid left join
+   premeau e on d.premeauid=e.id
+    WHERE a.id=#{id} and c.rolestart=0 and e.start=0 and e.prestart=0;
+</select> 
+<select id="selPremeauByPrestart2"  resultType="com.bean.Premeau">
+   select e.id,e.pre,e.url,e.prestart from
+   admin a left join
+   admin_role_branch b on a.id=b.adminid left join
+   role c on b.roleid=c.id left join
+   role_permeau d on c.id=d.roleid left join
+   premeau e on d.premeauid=e.id
+    WHERE a.id=#{0} and c.rolestart=0 and e.start=0 and e.prestart=#{1}
+</select> 
+
+<select id="selPremeauByPrestart" parameterType="java.lang.Integer" resultType="com.bean.Premeau">
+   select id, pre, prestart, url from premeau where prestart=#{prestart} and start=0
+</select>
+  <resultMap id="BaseResultMap" type="com.bean.Premeau" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="pre" property="pre" jdbcType="VARCHAR" />
+    <result column="prestart" property="prestart" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, pre, prestart, url
+  </sql>
+  
+</mapper>

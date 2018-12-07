@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.RoleMapper" > 
+<insert id="insRoleall"> 
+insert into role(rolename,rolestart) values
+<foreach collection="list" item="role"  separator=",">
+			(#{role.rolename},#{role.rolestart})
+</foreach>
+</insert>  
+<insert id="insRoleByBranchId" parameterType="map">
+    insert into admin_role_branch(roleid,branchid) values(#{roleid},#{branchid});
+</insert> 
+  
+<select id="delPoleByBranchid" parameterType="Integer" resultType="Integer">
+    DELETE from admin_role_branch where branchid=#{branchid}
+</select>
+<select id="selBranchandRole" resultType="map" parameterType="Integer">
+    select a.id ,a.roleid,a.branchid from admin_role_branch a where branchid=#{branchid} 
+</select>
+ 
+<select id="selMyRoleBranch" resultType="com.bean.Role" parameterType="Integer">
+ SELECT c.id, c.rolename, c.rolestart from
+       branch a left join
+       admin_role_branch b on a.id=b.branchid left join
+       role c on b.roleid=c.id where a.id=#{id} and c.rolestart=0
+</select>
+
+<select id="selAdminandRole" resultType="map" parameterType="Integer">
+    select a.id ,a.adminid,a.roleid from admin_role_branch a where adminid=#{adminid}
+</select>
+<insert id="insRoleByAdminId" parameterType="map">
+    insert into admin_role_branch(adminid,roleid) values(#{adminid},#{roleid});
+</insert>
+<select id="delPoleByAdminId" parameterType="Integer" resultType="Integer">
+    DELETE from admin_role_branch where adminid=#{adminid}
+</select>
+<select id="selAllRole" resultType="com.bean.Role" >
+    SELECT id, rolename, rolestart from role where rolestart=0
+</select>
+<select id="selMyRole"   resultType="com.bean.Role" parameterType="Integer" >
+    SELECT c.id, c.rolename, c.rolestart from
+       admin a left join
+       admin_role_branch b on a.id=b.adminid left join
+       role c on b.roleid=c.id where a.id=#{id} and c.rolestart=0
+</select>
+  <resultMap id="BaseResultMap" type="com.bean.Role" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="rolename" property="rolename" jdbcType="VARCHAR" />
+    <result column="rolestart" property="rolestart" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" > 
+    id, rolename, rolestart
+  </sql> 
+   
+</mapper>

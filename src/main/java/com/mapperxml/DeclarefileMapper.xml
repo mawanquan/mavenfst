@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.DeclarefileMapper">
+
+	<resultMap type="com.bean.Declarefile" id="selectAllByDeclareidmap">
+		<id column="id" property="id" />
+		<result column="declareid" property="declareid" />
+		<result column="filepath" property="filepath" />
+
+	</resultMap>
+	<select id="selectAllByDeclareid" resultMap="selectAllByDeclareidmap">
+		select id
+		,declareid,filepath from declarefile where declareid=#{declareid}
+	</select>
+	<!-- ========================================== -->
+	<insert id="insertlist">
+		insert into declarefile(declareid,filepath) values
+		<foreach collection="list" item="declarefile" separator=",">
+			(#{declarefile.declareid},#{declarefile.filepath})
+		</foreach>
+	</insert>
+	<!-- ============================== -->
+	<!-- <update id="updatefilepath">
+	update declarefile set filepath=#{filepath} where declareid=#{declareid}
+	</update> -->
+</mapper>

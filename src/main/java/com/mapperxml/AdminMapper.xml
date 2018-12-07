@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.AdminMapper">
+	<select id="selByAdminName" parameterType="com.bean.Admin"
+		resultType="com.bean.Admin">
+		select * from admin where adminname=#{adminname} and
+		adminstart=0
+	</select>  
+	<select id="selAllAdmin" resultMap="adminbranch">
+		select a.id,a.adminname,a.adminpwd,a.adminstart,a.admindate,b.id
+		id2,b.branchname,b.branchnameid from
+		admin a
+		left join
+		branch b
+		on(a.branchid=b.id)
+		<trim prefix="where" prefixOverrides="and">
+			<if test="adminname!=null">adminname like concat('%',#{adminname},'%')</if>
+			<if test="branchid!=null">and branchid=#{branchid}</if>
+			<if test="adminstart !=null">and adminstart= #{adminstart}</if>
+		</trim>
+	</select> 
+	<resultMap id="adminbranch" type="com.bean.Admin">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="adminname" jdbcType="VARCHAR" property="adminname" />
+		<result column="adminpwd" jdbcType="VARCHAR" property="adminpwd" />
+		<result column="adminstart" jdbcType="INTEGER" property="adminstart" />
+		<result column="admindate" jdbcType="VARCHAR" property="admindate" />
+		<result column="branchid" jdbcType="INTEGER" property="branchid" />
+		<association property="branch" javaType="com.bean.Branch">
+			<id column="id2" jdbcType="INTEGER" property="id" />
+			<result column="branchname" jdbcType="VARCHAR" property="branchname" />
+			<result column="branchnameid" jdbcType="INTEGER" property="branchnameid" />
+		</association>
+	</resultMap>
+
+
+</mapper>

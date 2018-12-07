@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.DeclareformMapper">
+	<!--根据招标类型查询所有的数据 -->
+	<resultMap type="com.bean.Declareform" id="selectAllBysignmap">
+		<id column="id" property="id" />
+		<result column="publisher" property="publisher" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="applydate" property="applydate" />
+		<result column="finishdate" property="finishdate" />
+		<result column="opentime" property="opentime" />
+		<result column="zbmoney" property="zbmoney" />
+		<result column="hit" property="hit" />
+		<result column="status" property="status" />
+
+		<!-- <association property="declareform" javaType="com.bean.Declareform" 
+			select="com.dao.DeclarefileMapper.selectAllByDeclareid" column="declareid"> 
+			</association> -->
+	</resultMap>
+	<select id="selectAllBysign" resultMap="selectAllBysignmap"
+		parameterType="int">
+		select id,publisher
+		,title,content,applydate,finishdate,opentime,zbmoney,hit from
+		declareform where
+		sign=#{0} and status=#{1}
+	</select>
+	<!--================================================== -->
+
+	<resultMap type="com.bean.Declareform" id="selectAllByTitlemap">
+		<id column="id" property="id" />
+		<result column="publisher" property="publisher" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="applydate" property="applydate" />
+		<result column="finishdate" property="finishdate" />
+		<result column="opentime" property="opentime" />
+		<result column="zbmoney" property="zbmoney" />
+		<result column="sign" property="sign" />
+		<result column="hit" property="hit" />
+		<result column="status" property="status" />
+	</resultMap>
+	<select id="selectAllByTitle" resultMap="selectAllByTitlemap">
+		select id,publisher
+		,title,content,applydate,finishdate,opentime,zbmoney,sign,hit from
+		declareform where
+		sign=#{1} and title like
+		concat(concat('%',#{0}),'%') and status=#{2}
+	</select>
+	<select id="selectoneBytitle" resultType="com.bean.Declareform">
+		select id,publisher
+		,title,content,applydate,finishdate,opentime,zbmoney,sign,hit from
+		declareform where title=#{title}
+	</select>
+	<!-- ========================================== -->
+	<resultMap type="com.bean.Declareform" id="selectAllBystatusmap">
+		<id column="id" property="id" />
+		<result column="publisher" property="publisher" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="applydate" property="applydate" />
+		<result column="finishdate" property="finishdate" />
+		<result column="opentime" property="opentime" />
+		<result column="zbmoney" property="zbmoney" />
+		<result column="hit" property="hit" />
+		<result column="status" property="status" />
+	</resultMap>
+	<select id="selectAllBystatus" resultMap="selectAllBystatusmap">
+		select id,publisher
+		,title,content,applydate,finishdate,opentime,zbmoney,sign,hit from
+		declareform where status=#{0} and publisher=#{1}
+	</select>
+	<!-- ========================================== -->
+	<resultMap type="com.bean.Declareform" id="selectAllBystatus2map">
+		<id column="id" property="id" />
+		<result column="publisher" property="publisher" />
+		<result column="title" property="title" />
+		<result column="content" property="content" />
+		<result column="applydate" property="applydate" />
+		<result column="finishdate" property="finishdate" />
+		<result column="opentime" property="opentime" />
+		<result column="zbmoney" property="zbmoney" />
+		<result column="hit" property="hit" />
+		<result column="status" property="status" />
+	</resultMap>
+	<select id="selectAllBystatus2" resultMap="selectAllBystatus2map">
+		select id,publisher
+		,title,content,applydate,finishdate,opentime,zbmoney,sign,hit from
+		declareform where status=#{status}
+	</select>
+	<!-- =================== -->
+	<select id="selectByid" resultType="com.bean.Declareform">
+		select id,publisher
+		,title,content,applydate,finishdate,opentime,zbmoney,sign,hit from
+		declareform where id=#{id}
+	</select>
+</mapper>

@@ -1,0 +1,36 @@
+package [service接口包路径];
+
+import java.util.List;
+import [pojo类路径];
+
+/**
+ * service层接口
+ */
+public interface [pojo类名字]Service {
+
+	/**
+	 * 查询所有的数据
+	 */
+	List<[pojo类名字]> selectAll();
+
+	/**
+	 * 根据主键查询一个对象
+	 */
+	[pojo类名字] selectByPrimaryKey(Integer id);
+
+	/**
+	 * 根据主键删除一个对象
+	 */
+	int deleteByPrimaryKey(Integer id);
+
+	/**
+	 * 根据主键修改一个对象
+	 */
+	int updateByPrimaryKey([pojo类名字] [pojo类名字小写]);
+
+	/**
+	 * 增加一个对象
+	 */
+	int insert([pojo类名字] [pojo类名字小写]);
+
+}

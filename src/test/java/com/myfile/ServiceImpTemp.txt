@@ -1,0 +1,61 @@
+package [service接口实现类包路径];
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Component;
+
+import [mybatis的dao接口路径];
+import [pojo类路径];
+
+/**
+ * service层接口实现类
+ */
+@Component
+public class [pojo类名字]ServiceImp implements [pojo类名字]Service {
+
+	@Resource(name = "[mybatis的dao接口名字首字母小写]")
+	[mybatis的dao接口名字] [mybatis的dao接口名字首字母小写];
+
+	/**
+	 * 查询所有的数据
+	 */
+	@Override
+	public List<[pojo类名字]> selectAll() {
+		return [mybatis的dao接口名字首字母小写].selectAll();
+	}
+
+	/**
+	 * 根据主键查询一个对象
+	 */
+	@Override
+	public [pojo类名字] selectByPrimaryKey(Integer id) {
+		return [mybatis的dao接口名字首字母小写].selectByPrimaryKey(id);
+	}
+
+	/**
+	 * 根据主键删除一个对象
+	 */
+	@Override
+	public int deleteByPrimaryKey(Integer id) {
+		return [mybatis的dao接口名字首字母小写].deleteByPrimaryKey(id);
+	}
+
+	/**
+	 * 根据主键修改一个对象
+	 */
+	@Override
+	public int updateByPrimaryKey([pojo类名字] [pojo类名字小写]) {
+		return [mybatis的dao接口名字首字母小写].updateByPrimaryKey([pojo类名字小写]);
+	}
+
+	/**
+	 * 增加一个对象
+	 */
+	@Override
+	public int insert([pojo类名字] [pojo类名字小写]) {
+		return [mybatis的dao接口名字首字母小写].insert([pojo类名字小写]);
+	}
+
+}

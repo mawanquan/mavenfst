@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+
+	<!-- 配置自动扫描的包 -->
+	<context:component-scan base-package="com.controller" />
+	<!--启用MVC注解功能，否则不能访问spring控制器(Controller) -->
+	<mvc:annotation-driven></mvc:annotation-driven>
+	<mvc:redirect-view-controller
+		redirect-url="common/home" path="/" />
+	<!-- 配置视图解析器 如何把handler 方法返回值解析为实际的物理视图 -->
+	<!-- Controller处理结束后需要跳转到结果页面，类似于Struts2的action处理结束后需要根据result跳转一样 -->
+	<bean 
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		id="internalResourceViewResolver">
+		<!-- 前缀 -->
+		<property name="prefix" value="/jsp/" />
+		<!-- 后缀 -->
+		<property name="suffix" value=".jsp" />
+	</bean>
+	<!--用于文件上传的组件 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+
+	<!--能够访问静态静态,(因为spring过滤器是拦截 / 所有的要求)如果不加，所有的静态资源都会经过spring的处理，这个时候静态资源不能访问了 -->
+	<mvc:resources location="/css/" mapping="/css/**" />
+	<mvc:resources location="/js/" mapping="/js/**" />
+	<mvc:resources location="/images/" mapping="/images/**" />
+	<mvc:resources location="/upload/" mapping="/upload/**" />
+	<mvc:resources location="/fonts/" mapping="/fonts/**" />
+	
+	
+</beans>

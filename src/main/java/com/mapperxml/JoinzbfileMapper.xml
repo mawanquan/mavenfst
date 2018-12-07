@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.JoinzbfileMapper" >
+  <resultMap id="BaseResultMap" type="com.bean.Joinzbfile" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="zbxxid" property="zbxxid" jdbcType="INTEGER" />
+    <result column="filepath" property="filepath" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, zbxxid, filepath
+  </sql>
+  <delete id="delByJoinjoinzbxxid" parameterType="Integer">
+  delete from joinzbfile where zbxxid=#{id}
+  </delete>
+</mapper> 

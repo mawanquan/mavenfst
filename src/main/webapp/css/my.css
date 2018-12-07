@@ -1,0 +1,582 @@
+body {
+	margin:0px auto;
+	background-color: white;
+	max-width: 1124.17px;
+}
+
+li {
+	list-style: none;
+}
+ 
+
+/*********************************头部******************************************/
+
+.header {}
+
+
+/*********************************************头上**********************************/
+
+.header .top-bar {
+	padding-top: 5px;
+	background-color: white;
+	border-top: 3px solid white;
+}
+
+.header .top-bar .top-bar-1 {
+	padding-top: 4px;
+}
+
+.header .top-bar .top-bar-1 img {
+	border-radius: 3px;
+	height: 40px;
+	width: 340px;
+}
+
+.header .top-bar .top-bar-2 {
+	padding-top: 15px;
+	padding-left: 280px;
+	color: gray;
+}
+
+
+
+.header .top-bar .top-bar-3 {
+	padding-top: 0px;
+	
+}
+.header .top-bar .top-bar-3 .btn {
+/*position: relative;left: -6px;  border-radius:0px; background-color: white;*/
+}
+
+
+
+/**********************************头下***********************************************/
+
+.header .top-bot {
+	padding-top: 4px;
+}
+
+.header .top-bot .top-bot-col {
+	background-color: #BCE8F1;
+	margin-bottom: 13px;
+	border-bottom: 4px solid #5BC0DE;
+	border-radius: 0px;
+}
+
+.header .top-bot .top-bot-col .top-bot-1 ul {
+	border-bottom: 3px solid #5BC0DE;
+}
+
+.header .top-bot .top-bot-col .top-bot-1 li {
+	position: relative;
+	right: 30px;
+	font-size: 12px;
+}
+
+.header .top-bot .top-bot-col .top-bot-1 li>a {
+	height: 45px;
+}
+
+.header .top-bot .top-bot-col .top-bot-1 li.active a,
+.header .top-bot .top-bot-col .top-bot-1 li a:hover {
+	background-color: #5BC0DE;
+}
+
+
+/*body1*/
+
+
+/*左*/
+
+
+/*l轮播图*/
+
+.fst {
+	height: 150px;
+	
+}
+
+.fst .imgs {
+	width: 813px;
+	position: relative;
+	left: -15px;
+}
+
+.fst .imgs img {
+	background-color: black;
+	height: 150px;
+	width: 1250px;
+}
+
+
+/***************选项卡******************/
+
+.body1 {}
+
+.body1 .card-tittle {
+	font-size: 18px;
+	padding-top: 9px;
+	padding-right: 30px;
+	color: #2AABD2;
+	padding-bottom: 3px;
+	border-bottom: 3px solid gainsboro;
+}
+
+.body1 .b1 {
+	background-color: white;
+}
+
+.body1 .b1 .l1 {
+	background-color: white;
+	border: 1px solid gainsboro;
+	border-radius: 0px;
+	padding-top: 3px;
+	height: 415px;
+	border-radius: 3px;
+}
+
+.body1 .b1 .l1 .ul-1 {
+	background-color: white;
+}
+
+.body1 .b1 .l1 .ul-1 li>a {
+	font-size: 13px;
+	border: 1px solid #5BC0DE;
+}
+
+.body1 .b1 .l1 .ul-1 li.active a,
+.body1 .b1 .l1 .ul-1 li a:hover {
+	background-color: #5BC0DE;
+	
+}
+
+.body1 .b1 .l1 .ul-1-1 {
+	border-bottom: 3px solid #5BC0DE;
+}
+
+.body1 .b1 .l1 .ul-1-1 li {
+	padding-left: 6px;
+}
+
+.body1 .b1 .l1 .ul-1-1 li.active a,
+.body1 .b1 .l1 .ul-1-1 li a:hover {
+	/*border-bottom: 3px solid #269ABC;
+	background-color: transparent;*/
+}
+
+.body1 .b1 .l1 .ul-1-2 {}
+
+.body1 .b1 .l1 .ul-1-2 li {
+	position: relative;
+	top: 3px;
+}
+
+.body1 .b1 .l1 .ul-1-2 li>a {
+	border: 3px solid white;
+}
+
+.body1 .b1 .l1 .ul-1-2 li.active a,
+.body1 .b1 .l1 .ul-1-2 li a:hover {
+	background-color: transparent;
+	border-bottom: 3px solid #5BC0DE;
+}
+
+.body1 .b1 .l1 .ul-2 li {
+	padding-top: 8px;
+}
+
+.body1 .b1 .l1 .ul-2 li>a {
+	color: black;
+}
+.body1 .b1 .tab-1 {
+	padding-top: 5px;
+}
+.body1 .b1 .tab-1 table{
+	
+	width: 850px;
+}
+.body1 .b1 .tab-1 td{
+	line-height: 18px;
+	padding-left: 35px;
+}
+.body1 .b1 .tab-1 a{
+	color: fuchsia;
+	font-size: 13px;
+}
+/*右*/
+
+.body1 .b2 {
+	background-color: #f6f6f6;
+	padding-left: 0px;
+}
+
+.body1 .b2 .r1 {
+	padding-left: 10px;
+	height: 38px;
+	width: 254px;
+	margin: 0px;
+	border-radius: 3px;
+	background-color: #31B0D5;
+	color: white;
+}
+
+.body1 .b2 .r1 .body1 .b2 .r2 {
+	height: 160px;
+	width: 254px;
+	margin: 0px;
+}
+
+.body1 .b2 .r2 ul {
+	height: 160px;
+	width: 254px;
+	margin: 0px;
+	height: 160px;
+	padding-left: 0px;
+	margin-bottom: 0px;
+}
+
+.body1 .b2 .r2 li {
+	padding-top: 8px;
+}
+
+.body1 .b2 .r2 a {
+	padding-left: 18px;
+}
+
+.body1 .b2 .r2 .r2-1 {}
+
+.body1 .b2 .r2 .r2-1-1 {
+	position: relative;
+	top: -50px;
+}
+
+.body1 .b2 .r2 .r2-1 li {}
+
+.body1 .b2 .r2 .r2-1 a {
+	position: relative;
+	top: -45px;
+	font-size: 12px;
+	position: relative;
+	left: -10px;
+}
+
+.body1 .b2 .r2 .r2-1 img {
+	width: 72px;
+	position: relative;
+	top: -20px;
+}
+
+.body1 .b2 .r2 .r2-2 li>a{
+	text-decoration: none;
+}
+
+.body1 .b2 .r2 .r2-2 li.active a,
+.body1 .b2 .r2 .r2-2 li a:hover {
+	color: red;
+}
+
+.body1 .b2 .r2 .r2-3 {}
+
+.body1 .b2 .r2 .r2-3 img {
+	width: 65px;
+}
+
+.body1 .b2 .r2 .r2-3 .btn {
+	background-color: #31B0D5;
+	margin-left: 20px;
+	color: white;
+}
+
+.body1 .b2 .r2 .r2-3 li {
+	padding-top: 0px;
+}
+
+.body1 .b2 .r2 .r2-3 li>p {
+	font-size: 13px;
+}
+
+
+/*********************down************************/
+
+.down {
+	margin-top: 20px;
+	padding-top: 13px;
+	font-size: 15px;
+	border-bottom: 3px solid gainsboro;
+	border-top: 2px solid gainsboro;
+	border-radius: 3px;
+}
+
+.down q {}
+
+.down a {
+	padding-left: 0px;
+}
+
+.down p {
+	font-size: 18px;
+	padding-left: 1px;
+}
+
+
+/********************尾*********************/
+
+.tail {
+	
+	margin-bottom: 10px;
+	height: 70px;
+	margin-bottom: 0px;
+	border-bottom: 3px solid gainsboro;
+	border-top: 12px solid #f6f6f6;
+	border-radius: 3px;
+}
+
+.tail .tail-1 {}
+
+.tail .tail-1 .w1 {}
+
+.tail .tail-1 .w2 {}
+
+.tail .tail-1 ul {}
+
+.tail .tail-2 {
+	padding-top: 10px;
+}
+
+.tail .tail-2 p {
+	color: black;
+	font-size: 10PX;
+	text-align: center;
+	position: relative;
+	left: -25px;
+}
+
+.tail .tail-3 {}
+
+.tail .tail-3 img {}
+
+
+/********************************************************main***********************************************************/
+
+
+/*********************************************************main1**************************************************************8*/
+
+.main1 {}
+
+.main1 .m1 {}
+
+.main1 .m1 .m1-1 {
+	border-right: 1px solid gainsboro;
+}
+
+.main1 .m1 .m1-1 li {
+	line-height: 20px;
+	width: 230px;
+}
+
+
+
+.main1 .m1 .m1-1 li>a {
+
+	font-size: 13px;
+	border-bottom: 1px solid gainsboro;
+	border-radius: 0px;
+	color: gray;
+	text-align: left;
+	background-color: transparent;
+	
+	
+}
+.main1 .m1 .m1-1 li>a>img{
+	width:30px;
+}
+
+.main1 .m1 .m1-1 li.active a,
+.main1 .m1 .m1-1 li a:hover {
+	color: deepskyblue;
+	border-left: 3px solid deepskyblue;
+}
+.main1 .m2 {
+	padding-left: 5px;
+	/*border-left: 1px solid gainsboro;*/
+}
+
+.main1 .m2 .m2-1-1 legend {
+	/*background-color: #7cbde8;
+	line-height: 28px;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 600;*/
+	background-color: #7cbde8; line-height: 20px; color: #fff; font-size: 13px; font-weight: 600;margin-bottom: 2px;
+}
+/********************************************main2*************************************************/
+
+.main2 {}
+
+.main2 .m1 {}
+
+.main2 .m1 .m1-1 {
+	border-right: 1px solid gainsboro;
+}
+
+.main2 .m1 .m1-1 li {
+	line-height: 20px;
+	width: 230px;
+}
+
+
+
+.main2 .m1 .m1-1 li>a {
+
+	font-size: 13px;
+	/*border-bottom: 1px solid gainsboro;*/
+	border-radius: 0px;
+	color: gray;
+	text-align: left;
+	background-color: transparent;
+	
+	
+}
+.main2 .m1 .m1-1 li>a>img{
+	width:30px;
+}
+
+.main2 .m1 .m1-1 li.active a,
+.main2 .m1 .m1-1 li a:hover {
+	color: deepskyblue;
+	border-left: 3px solid deepskyblue;
+}
+.main2 .m2 {
+	padding-left: 5px;
+	/*border-left: 1px solid gainsboro;*/
+}
+
+.main2 .m2 .m2-1-1 legend {
+	/*background-color: #7cbde8;
+	line-height: 28px;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 600;*/
+	background-color: #7cbde8; line-height: 28px; color: #fff; font-size: 13px; font-weight: 600;margin-bottom: 2px;
+}
+
+
+/*******************************************************main3********************************************/
+.main3 {}
+
+.main3 .m2{
+	/*padding-left: 0px;
+	border-left: 1px solid gainsboro;*/
+}
+
+
+
+/*******************************************************main3********************************************/
+
+.main4 {}
+
+.main4 .m1 {}
+
+.main4 .m1 .m1-1 {
+	border-right: 1px solid gainsboro;
+}
+
+.main4 .m1 .m1-1 li {
+	width: 140px;
+	line-height: 20px;
+	
+}
+.main4 .m1 .m1-1 img{
+	
+}
+
+.main4 .m1 .m1-1 li>a {
+	font-size: 10px;
+	border-bottom: 1px solid gainsboro;
+	border-radius: 0px;
+	color: black;
+	text-align: left;
+	background-color: transparent;
+	
+}
+
+.main4 .m1 .m1-1 li.active a,
+.main4 .m1 .m1-1 li a:hover {
+	color: deepskyblue;
+	border-left: 3px solid deepskyblue;
+}
+
+.main4 .m2 table {
+	width: 700px;
+	text-align: left;
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
+.main4 .m2 .m2-1-1 td {
+	line-height: 50px;
+	padding-left: ;
+}
+
+.main4 .m2 .m2-1-2 legend {
+	background-color: #7cbde8;
+	font-size: 17px;
+	color: white;
+	padding-left: 3px;
+	font-weight: 600;
+}
+
+.main4 .m2 .m2-1-2 ul {
+	padding: 0PX;
+	font-size: 13PX;
+}
+
+
+/*******************************************************main3********************************************/
+
+.main5 {
+	
+}
+
+.main5 .m1 {
+	padding-right: 0px;
+}
+.main5 .m1 .m1-1 li {
+	line-height: 20px;
+}
+.main5 .m1 .m1-1 img {
+	width: 30px;
+}
+
+.main5 .m1 .m1-1 li.active a,
+.main5 .m1 .m1-1 li a:hover {
+	color: deepskyblue;
+}
+
+.main5 .m1 .m1-1 li>a {
+	font-size: 12px;
+	border-left: 3px solid deepskyblue;
+	border-bottom: 1px solid gainsboro;
+	border-radius: 0px;
+	color: black;
+	text-align: left;
+	background-color: transparent;
+}
+
+.main5 .m2 {
+	padding-left: 0px;
+	border-left: 1px solid gainsboro;
+}
+
+.main5 .m2 .m2-1 .m2-1-1 legend {
+	background-color: #7cbde8;
+	line-height: 28px;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.main5 .m2 .m2-1 .m2-1-2 img {
+	width: 850px;
+	padding-top: 0px;
+}

@@ -1,0 +1,194 @@
+html {
+	color: #000;
+	height: 100%;
+	margin-bottom: 1px;
+}
+
+body, div, ul {
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	border: 0;
+	margin-top: 8px;
+}
+
+ul {
+	list-style: none;
+}
+
+html, html body {
+	color: #666;
+	font: 12px/1.5 'Microsoft YaHei', '宋体', STHeiti, Verdana, Arial,
+		Helvetica, sans-serif;
+	background: #f3f3f4;
+}
+
+a {
+	color: #538c9f;
+	outline: none;
+	border: none;
+}
+
+a:hover {
+	color: #52a6d5;
+}
+
+body {
+	background: #f0f1ec;
+	background-repeat: repeat;
+	margin: 0px;
+	padding: 0px;
+	font-family: "微软雅黑", "宋体";
+	font-size: 12px;
+	color: #454545;
+}
+
+table tr td {
+	height: 30px;
+	line-height: 30px;
+}
+
+table tr td li {
+	height: 28px;
+	line-height: 28px;
+}
+
+li {
+	list-style: none;
+	line-height: 28px;
+}
+
+a {
+	color: #454545;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.container {
+	background-color: white;
+	width: 80%;
+	height: auto;
+	padding: 0px;
+}
+
+/*header头部*/
+#header {
+	height: 110px;
+	border-bottom: 5px solid #52a6d6;
+}
+
+/*中间主体部分*/
+.table_td1 {
+	width: 185px;
+	height: 354px;
+	border-right: 1px solid #eaeaea;
+	vertical-align: top;
+}
+
+.table_td1 li {
+	height: 42px;
+	border-bottom: 1px solid #eaeaea;
+	margin: 0px 6px;
+	line-height: 42px;
+}
+
+.table_td1 li.li1 {
+	background: url(../images/iocn1.png) no-repeat 8px 6px;
+	padding-left: 44px;
+}
+
+.table_td1 li.li2 {
+	background: url(../images/iocn2.png) no-repeat 8px 6px;
+	padding-left: 44px;
+}
+
+.table_td1 li.li3 {
+	background: url(../images/iocn8.png) no-repeat 8px 6px;
+	padding-left: 44px;
+}
+
+.table_ss {
+	background: url(../images/ssuo.png) no-repeat left;
+	width: auto;
+	height: 65px;
+	font-size: 16px;
+	font-weight: bold;
+	padding-left: 48px;
+	line-height: 65px;
+}
+
+.table_td2 {
+	height: 354px;
+}
+
+.right_1 {
+	width: 128px;
+	height: 38px;
+}
+
+.right_2 {
+	width: 74px;
+	height: 38px;
+}
+
+input{
+	height: 28px;
+	display: block;
+	padding: 0px 22px;
+	float: left;
+	margin-right: 6px;
+	text-align: center;
+	font: normal 12px Segoeui, Myriad Pro, Verdana, serif;
+	border-radius: 2px;
+}
+#title{
+	text-align: left;
+}
+#search{
+	background-color:#52b1dd;
+	border: 0px;
+}
+
+
+h5 {
+	background: #7cbde8;
+	border-bottom: 2px solid #6ba0c2;
+	height: 28px;
+	line-height: 28px;
+	padding-left: 8px;
+	color: #fff;
+	margin: 1px 0px;
+	font-size: 16px;
+}
+
+.table_tit {
+	border-left: 3px solid #52a6d6;
+	font-weight: bold;
+}
+
+.table_tit a {
+	color: #52a6d6;
+}
+
+.page{
+	text-align: right;
+}
+
+.footer {
+	background-color: white;
+	height: 86px;
+	border: 10px solid #f0f1ec;
+}
+
+.footer p {
+	margin: 8px;
+	text-align: center;
+}
+.timer{
+	color: orange;
+}

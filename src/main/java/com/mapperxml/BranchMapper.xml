@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.BranchMapper">
+
+<insert id="insAllBranch">
+insert into branch(branchname,branchnameid,start)values
+<foreach collection="list" item="branch" separator=",">
+(#{branch.branchname},#{branch.branchnameid},#{branch.start})
+</foreach>
+</insert>
+<select id="selByBranchid" parameterType="Integer" resultType="com.bean.Branch">
+select id,branchname,branchnameid, start from branch where start=0 and branchnameid=#{branchnameid}
+</select>
+<select id="selByBranchidDetail" parameterType="Integer" resultType="com.bean.Branch">
+select id,branchname,branchnameid, start from branch where start=0 and branchnameid=#{branchnameid}
+</select>
+<select id="selByBranchNot" resultType="com.bean.Branch">
+select id,branchname,branchnameid, start from branch WHERE branchnameid not in(0) and start=0 ;
+</select> 
+</mapper>
