@@ -90,12 +90,7 @@
 		<div class="container">
 			<table class="table table-hover table-bordered  table-condensed">
 
-                <tr style="display:none">
-				<td>回复人</td>
-				<td> </td>
-				
-				
-				</tr>
+      
 				
 				<tr>
 					<td>回复内容</td>

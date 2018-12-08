@@ -4,11 +4,13 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bean.Complain;
+import com.bean.Suppliers;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.service.ComplainService;
@@ -66,7 +68,13 @@ public class ComplainController {
 	 * 增加一个对象
 	 */
 	@RequestMapping("/insertComplain")
-	public String insertComplain(Complain complain) {
+	public String insertComplain(Complain complain, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		Suppliers sl = (Suppliers) session.getAttribute("supplier");
+		System.out.println(sl.getSupplierid() + "" + sl.getSuppliername());
+		complain.setSuppliersid(sl.getSupplierid());
+
+		complain.setName(sl.getSuppliername());
 		int r = complainService.insert(complain);
 		return "redirect:/selectcomplain?page=1";
 

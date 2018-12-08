@@ -2,21 +2,31 @@ package com.bean;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Id;
 import javax.persistence.Transient;
 
 public class Answer implements Serializable {
 	@Transient
-	List<Admin> admin;
+	Admin admin;
 
-	public List<Admin> getAdmin() {
+	public Admin getAdmin() {
 		return admin;
 	}
 
-	public void setAdmin(List<Admin> admin) {
+	public void setAdmin(Admin admin) {
 		this.admin = admin;
+	}
+
+	@Transient
+	Complain complain;
+
+	public Complain getComplain() {
+		return complain;
+	}
+
+	public void setComplain(Complain complain) {
+		this.complain = complain;
 	}
 
 	@Id

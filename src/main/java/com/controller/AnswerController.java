@@ -25,7 +25,7 @@ public class AnswerController {
 	/**
 	 * 分页查询查询所有的数据
 	 */
-	@RequestMapping("/selectallanswer")
+	@RequestMapping("/selectanswer")
 	public String selectanswer(HttpServletRequest req, Integer page) {
 		PageHelper.startPage(page, 2);// 第几页，每页条数
 		List<Answer> list2 = answerService.selectanswer();// 查询所有
@@ -74,12 +74,13 @@ public class AnswerController {
 
 		HttpSession session = request.getSession();
 		Admin aw = (Admin) session.getAttribute("user");
+
 		answer.setComplainid(dlkfdkid);
 		answer.setAdminid(aw.getId());
 
 		int r = answerService.insert(answer);
 
-		return "redirect:/selectallanswer?page=1";
+		return "redirect:/selectanswer?page=1";
 
 	}
 

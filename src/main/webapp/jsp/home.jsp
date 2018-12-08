@@ -86,7 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<a href="gongyingshanggonggao.html">供应商公告</a>
 									</li>
 									<li>
-										<a href="tousuzhongxin.html">投诉中心</a>
+										<a href="/mavenfst/selectcomplain?page=1">投诉中心</a>
 									</li>
 									<li>
 										<a href="fuwuzhongxin.html">服务中心</a>

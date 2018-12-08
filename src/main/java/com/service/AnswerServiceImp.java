@@ -18,17 +18,13 @@ public class AnswerServiceImp implements AnswerService {
 	@Resource(name = "answerMapper")
 	AnswerMapper answerMapper;
 
-	@Override
-	public List<Answer> selectanswer() {
-		return answerMapper.selectAll();
-	}
-
 	/**
 	 * 查询所有的数据
 	 */
 	@Override
-	public List<Answer> selectAll() {
-		return answerMapper.selectAll();
+	public List<Answer> selectanswer() {
+
+		return (List<Answer>) answerMapper.selectanswer();
 	}
 
 	/**

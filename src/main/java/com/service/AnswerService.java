@@ -9,12 +9,10 @@ import com.bean.Answer;
  */
 public interface AnswerService {
 
-	public List<Answer> selectanswer();
-
 	/**
 	 * 查询所有的数据
 	 */
-	List<Answer> selectAll();
+	List<Answer> selectanswer();
 
 	/**
 	 * 根据主键查询一个对象
