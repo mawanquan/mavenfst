@@ -50,8 +50,6 @@ div {
 		
 	});
 	function delrow(t, id) {
-	
-	alert(t);
 		var b = confirm("是否删除");
 		if (b) {
 			//使用ajax删除

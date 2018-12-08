@@ -16,9 +16,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="${css}bootstrap.min.css" rel="stylesheet">
 		<link href="${css}my.css" rel="stylesheet">
 		<script src="${js}jquery-2.0.0.min.js"></script>
@@ -39,21 +36,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<!---------------------------头上------------------------------>
 				<div class="top-bar">
 					<div class="row">
-						<div class="col-md-4">
+						<div class="col-xs-4">
 							<div class="top-bar-1 ">
 								<img src="images/img/mobile.png" />
 							</div>
 						</div>
-						<div class="col-md-5 top-bar-2 " id="time"></div>
-						<div class="col-md-3">
+						<div class="col-xs-5 top-bar-2 " id="time"></div>
+						<div class="col-xs-3">
 							<div class="top-bar-3 ">
 
-								<form class="navbar-form navbar-right form-inline">
+								<form class="navbar-form  form-inline" >
 
-									<div class="form-group" style="">
+									<div class="form-group" style="width: 20px; position: relative;left:-20px">
 										<input type="text" class="form-control" placeholder="关键字搜索">
 									</div>
-									<button type="submit" class="btn btn-default " style="">
+									<button type="submit" class="btn btn-default  " style="position: relative;left: 160px">
 										<span class="glyphicon glyphicon-search"></span>	
 									</button>
 								</form>
@@ -77,22 +74,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 								<ul class="nav navbar-nav  top-bot-1 ">
 									<li class="active">
-										<a href="index.html"><span class="glyphicon glyphicon-home"></span>&nbsp;首页</a>
+										<a href="${cxt}/jsp/home.jsp"><span class="glyphicon glyphicon-home"></span>&nbsp;首页</a>
 									</li>
 									<li>
-										<a href="caigougonggao.html">招标采购公告</a>
+										<a href="${cxt}/jsp/jiapage/caigougonggao.jsp">招标采购公告</a>
 									</li>
 									<li>
-										<a href="gongyingshanggonggao.html">供应商公告</a>
+										<a href="${cxt}/jsp/jiapage/gongyingshanggonggao.jsp">供应商公告</a>
 									</li>
 									<li>
 										<a href="tousuzhongxin.html">投诉中心</a>
 									</li>
 									<li>
-										<a href="fuwuzhongxin.html">服务中心</a>
+										<a href="${cxt}/jsp/jiapage/fuwuzhongxin.jsp">服务中心</a>
 									</li>
 									<li>
-										<a href="falvshengming.html">法律声明</a>
+										<a href="${cxt}/jsp/jiapage/falvshengming.jsp">法律声明</a>
 									</li>
 									<c:if test="${!empty supplier  }">
                                     <li>
@@ -117,7 +114,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="container-fluid">
 			<div class="body1">
 				<div class="row">
-					<div class="col-md-9 b1">
+					<div class="col-xs-9 b1">
 						<!--***********************轮播图**********************-->
 						<div class="container-fluid fst" style="color: white;">
 							<div id="myCarousel" class="carousel slide" >
@@ -178,7 +175,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<a href="#">
 													浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 											</td>
-											<td style="position: relative;left: 25px;">
+											<td style="">
 												2018-11-28
 											</td>
 										</tr>
@@ -187,7 +184,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<a href="#">
 													浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 											</td>
-											<td style="position: relative;left: 25px;">
+											<td style="">
 												2018-11-28
 											</td>
 										</tr>
@@ -196,7 +193,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<a href="#">
 													浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 											</td>
-											<td style="position: relative;left: 25px;">
+											<td style="">
 												2018-11-28
 											</td>
 										</tr>
@@ -205,7 +202,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<a href="#">
 													浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 											</td>
-											<td style="position: relative;left: 25px;">
+											<td style="">
 												2018-11-28
 											</td>
 										</tr>
@@ -214,7 +211,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<a href="#">
 													浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 											</td>
-											<td style="position: relative;left: 25px;">
+											<td style="">
 												2018-11-28
 											</td>
 										</tr>
@@ -223,7 +220,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<a href="#">
 													浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 											</td>
-											<td style="position: relative;left: 25px;">
+											<td style="">
 												2018-11-28
 											</td>
 										</tr>
@@ -232,7 +229,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<a href="#">
 													浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 											</td>
-											<td style="position: relative;left: 25px;">
+											<td style="">
 												2018-11-28
 											</td>
 										</tr>
@@ -241,7 +238,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<a href="#">
 													浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 											</td>
-											<td style="position: relative;left: 25px;">
+											<td style="">
 												2018-11-28
 											</td>
 										</tr>
@@ -254,7 +251,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<a href="#">
 													浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 											</td>
-											<td style="position: relative;left: 25px;">
+											<td style="">
 												2018-11-28
 											</td>
 										</tr>
@@ -263,7 +260,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<a href="#">
 													浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 											</td>
-											<td style="position: relative;left: 25px;">
+											<td style="">
 												2018-11-28
 											</td>
 										</tr>
@@ -272,7 +269,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<a href="#">
 													浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 											</td>
-											<td style="position: relative;left: 25px;">
+											<td style="">
 												2018-11-28
 											</td>
 										</tr>
@@ -281,7 +278,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<a href="#">
 													浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 											</td>
-											<td style="position: relative;left: 25px;">
+											<td style="">
 												2018-11-28
 											</td>
 										</tr>
@@ -290,7 +287,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<a href="#">
 													浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 											</td>
-											<td style="position: relative;left: 25px;">
+											<td style="">
 												2018-11-28
 											</td>
 										</tr>
@@ -299,7 +296,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<a href="#">
 													浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 											</td>
-											<td style="position: relative;left: 25px;">
+											<td style="">
 												2018-11-28
 											</td>
 										</tr>
@@ -308,7 +305,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<a href="#">
 													浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 											</td>
-											<td style="position: relative;left: 25px;">
+											<td style="">
 												2018-11-28
 											</td>
 										</tr>
@@ -317,7 +314,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<a href="#">
 													浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 											</td>
-											<td style="position: relative;left: 25px;">
+											<td style="">
 												2018-11-28
 											</td>
 										</tr>
@@ -330,7 +327,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<a href="#">
 													浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 											</td>
-											<td style="position: relative;left: 25px;">
+											<td style="">
 												2018-11-28
 											</td>
 										</tr>
@@ -339,7 +336,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<a href="#">
 													浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 											</td>
-											<td style="position: relative;left: 25px;">
+											<td style="">
 												2018-11-28
 											</td>
 										</tr>
@@ -348,7 +345,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<a href="#">
 													浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 											</td>
-											<td style="position: relative;left: 25px;">
+											<td style="">
 												2018-11-28
 											</td>
 										</tr>
@@ -357,7 +354,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<a href="#">
 													浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 											</td>
-											<td style="position: relative;left: 25px;">
+											<td style="">
 												2018-11-28
 											</td>
 										</tr>
@@ -366,7 +363,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<a href="#">
 													浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 											</td>
-											<td style="position: relative;left: 25px;">
+											<td style="">
 												2018-11-28
 											</td>
 										</tr>
@@ -375,7 +372,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<a href="#">
 													浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 											</td>
-											<td style="position: relative;left: 25px;">
+											<td style="">
 												2018-11-28
 											</td>
 										</tr>
@@ -384,7 +381,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<a href="#">
 													浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 											</td>
-											<td style="position: relative;left: 25px;">
+											<td style="">
 												2018-11-28
 											</td>
 										</tr>
@@ -393,7 +390,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<a href="#">
 													浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 											</td>
-											<td style="position: relative;left: 25px;">
+											<td style="">
 												2018-11-28
 											</td>
 										</tr>
@@ -447,7 +444,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -456,7 +453,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -465,7 +462,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -474,7 +471,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -483,7 +480,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -492,7 +489,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -501,7 +498,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -510,7 +507,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -523,7 +520,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -532,7 +529,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -541,7 +538,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -550,7 +547,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -559,7 +556,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -568,7 +565,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -577,7 +574,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -586,7 +583,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -616,7 +613,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -625,7 +622,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -634,7 +631,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -643,7 +640,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -652,7 +649,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -661,7 +658,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -670,7 +667,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -679,7 +676,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -716,7 +713,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -725,7 +722,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -734,7 +731,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -743,7 +740,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -752,7 +749,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -761,7 +758,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -770,7 +767,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -779,7 +776,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -814,7 +811,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -823,7 +820,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -832,7 +829,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -841,7 +838,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -850,7 +847,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -859,7 +856,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -868,7 +865,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -877,7 +874,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -890,7 +887,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -899,7 +896,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -908,7 +905,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -917,7 +914,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -926,7 +923,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -935,7 +932,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -944,7 +941,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -953,7 +950,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -983,7 +980,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -992,7 +989,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -1001,7 +998,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -1010,7 +1007,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -1019,7 +1016,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -1028,7 +1025,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -1037,7 +1034,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -1046,7 +1043,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -1059,7 +1056,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -1068,7 +1065,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -1077,7 +1074,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -1086,7 +1083,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -1095,7 +1092,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -1104,7 +1101,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -1113,7 +1110,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -1122,7 +1119,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 															<a href="#">
 																浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 														</td>
-														<td style="position: relative;left: 25px;">
+														<td style="">
 															2018-11-28
 														</td>
 													</tr>
@@ -1146,7 +1143,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 														<a href="#">
 															浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 													</td>
-													<td style="position: relative;left: 25px;">
+													<td style="">
 														2018-11-28
 													</td>
 												</tr>
@@ -1155,7 +1152,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 														<a href="#">
 															浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 													</td>
-													<td style="position: relative;left: 25px;">
+													<td style="">
 														2018-11-28
 													</td>
 												</tr>
@@ -1164,7 +1161,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 														<a href="#">
 															浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 													</td>
-													<td style="position: relative;left: 25px;">
+													<td style="">
 														2018-11-28
 													</td>
 												</tr>
@@ -1173,7 +1170,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 														<a href="#">
 															浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 													</td>
-													<td style="position: relative;left: 25px;">
+													<td style="">
 														2018-11-28
 													</td>
 												</tr>
@@ -1182,7 +1179,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 														<a href="#">
 															浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 													</td>
-													<td style="position: relative;left: 25px;">
+													<td style="">
 														2018-11-28
 													</td>
 												</tr>
@@ -1191,7 +1188,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 														<a href="#">
 															浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 													</td>
-													<td style="position: relative;left: 25px;">
+													<td style="">
 														2018-11-28
 													</td>
 												</tr>
@@ -1200,7 +1197,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 														<a href="#">
 															浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 													</td>
-													<td style="position: relative;left: 25px;">
+													<td style="">
 														2018-11-28
 													</td>
 												</tr>
@@ -1209,7 +1206,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 														<a href="#">
 															浙江分公司2018年11月-2019年11月促销品采购项目_比选公告</a>
 													</td>
-													<td style="position: relative;left: 25px; ">
+													<td style=" ">
 														2018-11-28
 													</td>
 												</tr>
@@ -1221,7 +1218,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 b2">
+					<div class="col-xs-3 b2">
 						<div class="pull-left r1">
 							<h5><span class=" glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;用户登录选择</h5>
 						</div>
@@ -1313,8 +1310,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</li>
 									<li>
 										<p class="navbar-text">
-											<a href="fuwuzhongxin.html#001">招标前准备</a>
-											<a href="falvshengming.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;法律声明</a>
+											<a href="${cxt}/jsp/jiapage/fuwuzhongxin.jsp#zb" style="text-decoration: none; ">招标前准备</a>
+											<a href="${cxt}/jsp/jiapage/falvshengming.jsp" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;法律声明</a>
 
 										</p>
 									</li>
@@ -1360,22 +1357,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="container-fluid">
 			<div class="down">
 				<div class="row ">
-					<div class="col-md-2 q">
+					<div class="col-xs-2 q">
 						<p><span class="glyphicon glyphicon-list"></span>&nbsp;下载专区</p>
 					</div>
-					<div class="col-md-2 q">
+					<div class="col-xs-2 q">
 						<a href="https://b2b.10086.cn/b2b/main/download.html?fileName=1 "><span class="glyphicon glyphicon-list-alt "></span>&nbsp;合作指南</a>
 					</div>
-					<div class="col-md-2 q">
+					<div class="col-xs-2 q">
 						<a href="# "><span class="glyphicon glyphicon-facetime-video "></span>&nbsp;培训材料视频</a>
 					</div>
-					<div class="col-md-2 q">
+					<div class="col-xs-2 q">
 						<a href="# "><span class="glyphicon glyphicon-book "></span>&nbsp;证书办理与安装</a>
 					</div>
-					<div class="col-md-2 q">
+					<div class="col-xs-2 q">
 						<a href="# "><span class="glyphicon glyphicon-wrench "></span>&nbsp;辅助投标工具</a>
 					</div>
-					<div class="col-md-2 q">
+					<div class="col-xs-2 q">
 						<a href="# "><span class="glyphicon glyphicon-download-alt "></span>&nbsp;软件下载</a>
 					</div>
 
@@ -1387,9 +1384,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="container-fluid ">
 			<div class="tail">
 				<div class="row">
-					<div class="col-md-4 tail-1">
+					<div class="col-xs-4 tail-1">
 					</div>
-					<div class="col-md-5 tail-2">
+					<div class="col-xs-5 tail-2">
 						<li>
 							<p>京IQP备05002571号 | 热吧招标版权所有</p>
 						</li>
@@ -1397,7 +1394,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<p>技术支持工作时间（工作日）：上午 9：00~12：00 下午 13：00~18:00</p>
 						</li>
 					</div>
-					<div class="col-md-3 tail-3">
+					<div class="col-xs-3 tail-3">
 					</div>
 				</div>
 			</div>

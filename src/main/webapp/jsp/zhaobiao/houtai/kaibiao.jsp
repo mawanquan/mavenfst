@@ -29,23 +29,68 @@ html, html body, td {
 	font: 12px/1.5 'Microsoft YaHei', '宋体', STHeiti, Verdana, Arial,
 		Helvetica, sans-serif;
 }
-
 </style>
+
 </head>
 
 <body>
-	<table class="table">
+	<table class="table table-hover">
 		<tr>
 			<td>发布人</td>
 			<td class="title">标题</td>
 			<td class="content">内容</td>
-			<td>招标金额</td> </tr>
+			<td>招标金额</td>
+			<td></td>
+		</tr>
 		<tr>
-				<td>${d.publisher}</td>
-				<td>${d.title}</td>
-				<td>${d.content}</td>
-				<td>${d.zbmoney}</td>
+			<td>${d.publisher}</td>
+			<td>${d.title}</td>
+			<td>${d.content}</td>
+			<td>${d.zbmoney}</td>
+			<td><a href="${cxt}/feibiaoset?id=${d.id}"><button
+						type="button" class="btn btn-primary">废标</button></a></td>
+		</tr>
+	</table>
+	<br>
+	<br>
+	<table class="table table-hover">
+		<tr>
+			<td>供货商姓名</td>
+			<td>供货商电话</td>
+			<td>地址</td>
+			<td>供货商email</td>
+			<td>联系人姓名</td>
+			<td>联系人email</td>
+			<td>法人姓名</td>
+			<td>招标报价</td>
+			<td>招标文件</td>
+			<td>中标</td>
+		</tr>
+
+		<c:forEach items="${list}" var="v">
+			<tr>
+				<td>${v.suppliers.suppliername}</td>
+				<td>${v.suppliers.supplierstel}</td>
+				<td>${v.suppliers.address}</td>
+				<td>${v.suppliers.suppliersemail}</td>
+				<td>${v.suppliers.lianxirenname}</td>
+				<td>${v.suppliers.lianxinrenemail}</td>
+				<td>${v.suppliers.farename}</td>
+				<td>${v.zbbj}</td>
+				<td><table>
+						<c:forEach items="${v.lisjoinzbfile}" var="s">
+							<tr>
+								<td><a target="_blank"
+									href="/mavenfst/houtaipreview?filepath=${s.filepath}">${s.filename}</a></td>
+							</tr>
+						</c:forEach>
+					</table></td>
+				<td><a
+					href="/mavenfst/zhongbiao?id=${d.id}&hit=${v.suppliers.suppliername}"><button
+							type="button" class="btn btn-primary btn-xs">中标</button></a></td>
 			</tr>
+		</c:forEach>
+
 	</table>
 </body>
 </html>
