@@ -1266,7 +1266,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="pull-left r1">
 								<h5><span class=" glyphicon glyphicon-list "></span>&nbsp;&nbsp;&nbsp;系统通知
 							<li style="padding-right: 10px; border: none;float: right;">
-									<a href="#settings" style="font-size: 12px; color: white;padding-top: 15px;">更多</a>
+									<a href="/mavenfst/selecta" style="font-size: 12px; color: white;padding-top: 15px;">更多</a>
 							</li>
 							</h5>
 

@@ -12,16 +12,16 @@
 		<result property="time" column="time" />
 		<result property="comment" column="comment" />
 		<result property="filepath" column="filepath" />
-        <association property="suppliers" javaType="com.bean.Suppliers">
-        <id property="supplierid" column="id1" />
-        <result property="supplierid" column="supplierid" />
+        <association property="admin" javaType="com.bean.Admin">
+        <id property="id" column="id1" />
+        
         </association>
 	</resultMap>
 
 	<select id="selectAllProclamationJionSuppliers" resultMap="selectAllProclamationJionSuppliersMap"><!--连表查询 -->
 		select a.id id,a.number number,a.title title,a.time time,a.comment
-		comment,a.filepath filepath,b.supplierid id1 from proclamation a inner join
-		suppliers b on a.number=b.supplierid
+		comment,a.filepath filepath,b.id id1 from proclamation a inner join
+		admin b on a.number=b.id
 	</select> 
 	
 </mapper>

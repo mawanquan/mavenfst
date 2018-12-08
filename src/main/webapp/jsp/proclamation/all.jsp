@@ -34,10 +34,7 @@
 <body>
 	<form action="/mavenfst/insertproclamation" method="post">
 		<table>
-			<tr>
-				<td>发布人：</td>
-				<td><input type="text" name="number"></td>
-			</tr>
+			
 			<tr>
 				<td>标题：</td>
 				<td><input type="text" name="title"></td>

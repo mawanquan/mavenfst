@@ -6,7 +6,9 @@ import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.mysql.jdbc.interceptors.SessionAssociationInterceptor;
+import com.bean.Admin;
 import com.bean.Proclamation;
 import com.bean.Suppliers;
 import com.service.ProclamationService;
@@ -33,7 +37,7 @@ public class ProclamationController {
 
 	@RequestMapping("/select")
 	public String selectproclamation(HttpServletRequest req) {
-		List<Proclamation> list = proclamationService.selectAllProclamationJionSuppliers();
+		List<Proclamation> list = proclamationService.SelectAll();
 		req.setAttribute("list", list);
 
 		return "a";
@@ -68,8 +72,13 @@ public class ProclamationController {
 	 * 增加一个对象
 	 */
 	@RequestMapping("/insertproclamation")
-	public String insertProclamation(Proclamation proclamation) {
-
+	public String insertProclamation(Proclamation proclamation, HttpServletRequest req) {
+		
+		HttpSession sessiion = req.getSession();
+		Admin ad = (Admin) sessiion.getAttribute("user");
+		
+		
+		proclamation.setNumber(ad.getId());
 		proclamationService.insert(proclamation);
 		return "a";
 
