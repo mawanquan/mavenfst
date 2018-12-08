@@ -1,82 +1,56 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dao.GoodsPriceMapper" >
-  <resultMap id="BaseResultMap" type="com.bean.GoodsPrice" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="goodstitle" property="goodstitle" jdbcType="VARCHAR" />
-    <result column="userid" property="userid" jdbcType="INTEGER" />
-    <result column="lastdate" property="lastdate" jdbcType="TIMESTAMP" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    id, goodstitle, userid, lastdate
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select  
-    <include refid="Base_Column_List" />
-    from goodsprice
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from goodsprice
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.bean.GoodsPrice" >
-    insert into goodsprice (id, goodstitle, userid, 
-      lastdate)
-    values (#{id,jdbcType=INTEGER}, #{goodstitle,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}, 
-      #{lastdate,jdbcType=TIMESTAMP})
-  </insert>
-  <insert id="insertSelective" parameterType="com.bean.GoodsPrice" >
-    insert into goodsprice
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="goodstitle != null" >
-        goodstitle,
-      </if>
-      <if test="userid != null" >
-        userid,
-      </if>
-      <if test="lastdate != null" >
-        lastdate,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="goodstitle != null" >
-        #{goodstitle,jdbcType=VARCHAR},
-      </if>
-      <if test="userid != null" >
-        #{userid,jdbcType=INTEGER},
-      </if>
-      <if test="lastdate != null" >
-        #{lastdate,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.bean.GoodsPrice" >
-    update goodsprice
-    <set >
-      <if test="goodstitle != null" >
-        goodstitle = #{goodstitle,jdbcType=VARCHAR},
-      </if>
-      <if test="userid != null" >
-        userid = #{userid,jdbcType=INTEGER},
-      </if>
-      <if test="lastdate != null" >
-        lastdate = #{lastdate,jdbcType=TIMESTAMP},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.bean.GoodsPrice" >
-    update goodsprice
-    set goodstitle = #{goodstitle,jdbcType=VARCHAR},
-      userid = #{userid,jdbcType=INTEGER},
-      lastdate = #{lastdate,jdbcType=TIMESTAMP}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-</mapper>
+<mapper namespace="com.dao.GoodsPriceMapper">
+	<select id="selectgp" resultMap="mapp">
+		select g.id
+		gid,goodstitle,lastdate,a.id aid,adminname from goodsprice g
+		inner join
+		admin a on g.userid=a.id
+	</select>
+	
+	<select id="selectall2" resultType="com.bean.Admin">
+	select * from admin 
+	</select>
+
+	<select id="selecta" resultMap="ma">
+		select p.id
+		pid,goodstitle,lastdate,d.id did,num,getdate, g.id gid,goodsname,a.id
+		aid,adminname from
+		goodsprice p left join goodsdetail d on
+		d.goodspriceid=p.id left join
+		goods g on d.goodsid=g.id left join admin
+		a on p.userid=a.id
+	</select>
+
+	<resultMap type="com.bean.GoodsPrice" id="ma">
+		<id column="pid" property="id" />
+		<result column="goodstitle" property="goodstitle" />
+		<result column="lastdate" property="lastdate" />
+		<association property="admin" javaType="com.bean.Admin">
+			<id column="aid" property="id" />
+			<result column="adminname" property="adminname" />
+		</association>
+
+		<collection property="goodsdetail" column="goodspriceid"
+			ofType="com.bean.GoodsDetail">
+			<id column="did" property="id" />
+			<result column="num" property="num" />
+			<result column="getdate" property="getdate" />
+			<association property="goods" javaType="com.bean.Goods">
+				<id column="gid" property="id" />
+				<result column="goodsname" property="goodsname" />
+			</association>
+		</collection>
+	</resultMap>
+
+	<resultMap type="com.bean.GoodsPrice" id="mapp">
+		<id column="gid" property="id" />
+		<result column="goodstitle" property="goodstitle" />
+		<result column="userid" property="userid" />
+		<result column="lastdate" property="lastdate" />
+		<association property="admin" javaType="com.bean.Admin">
+			<id column="aid" property="id" />
+			<result column="adminname" property="adminname" />
+		</association>
+	</resultMap>
+	</mapper>

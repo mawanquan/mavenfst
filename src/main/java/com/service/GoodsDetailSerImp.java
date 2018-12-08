@@ -5,9 +5,11 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.bean.Admin;
 import com.bean.Goods;
 import com.bean.GoodsDetail;
 import com.bean.GoodsPrice;
+import com.dao.AdminMapper;
 import com.dao.GoodsDetailMapper;
 import com.dao.GoodsMapper;
 import com.dao.GoodsPriceMapper;
@@ -20,7 +22,7 @@ public class GoodsDetailSerImp implements GoodsDetailSer{
 	@Resource
 	GoodsMapper gm;
 	@Resource
-	GoodsPriceMapper gp;
+	GoodsPriceMapper gp;	
 	
 	public GoodsPriceMapper getGp() {
 		return gp;
@@ -40,40 +42,66 @@ public class GoodsDetailSerImp implements GoodsDetailSer{
 	public void setGdm(GoodsDetailMapper gdm) {
 		this.gdm = gdm;
 	}
-	public GoodsDetail selectgoodsbyid(Integer id) {
+	@Override
+	public List<Goods> selectall() {
 		// TODO Auto-generated method stub
-		return gdm.selectgoodsbyid(id);
+		return gm.selectAll();
 	}
 	@Override
-	public List<GoodsDetail> selectall() {
+	public Goods selectbyid(Integer id) {
 		// TODO Auto-generated method stub
-		return gdm.selectall();
+		return gm.selectByPrimaryKey(id);
 	}
 	@Override
-	public List<GoodsDetail> selectgoodsbyother(Integer goodscode, String goodsname,
+	public List<Goods> selectbyothers(String goodsname, String goodscode,
 			String type) {
 		// TODO Auto-generated method stub
-		return gdm.selectgoodsbyother(goodscode, goodsname, type);
+		return gm.selectbyothers(goodsname, goodscode, type);
 	}
-
-	public int deletebyid1(Integer id1){
-		return gdm.deleteByPrimaryKey(id1);
-	}
-	public int deletebyid2(Integer id2){
-		return gm.deleteByPrimaryKey(id2);
-	}
-	public int deletebyid3(Integer id3){
-		return gp.deleteByPrimaryKey(id3);
-	}
+	
 	@Override
 	public int insertgoods(Goods goods) {
 		// TODO Auto-generated method stub
-		return gm.insert(goods);
+		return gm.insertgoods(goods);
 	}
 	@Override
-	public int insertgoodsde(GoodsDetail goodsdetail) {
+	public int updategoods(Goods goods) {
+		// TODO Auto-generated method stub
+		return gm.updategoods(goods);
+	}
+	@Override
+	public GoodsDetail selectdetailbyid(Integer id) {
+		// TODO Auto-generated method stub
+		return gdm.selectdetailbyid(id);
+	}
+	@Override
+	public List<GoodsPrice> selectgp() {
+		// TODO Auto-generated method stub
+		return gp.selectgp();
+	}
+	@Override
+	public List<GoodsPrice> selecta() {
+		// TODO Auto-generated method stub
+		return gp.selecta();
+	}
+	@Override
+	public int insertgoodsdetail(GoodsDetail goodsdetail) {
 		// TODO Auto-generated method stub
 		return gdm.insert(goodsdetail);
 	}
-
+	@Override
+	public GoodsDetail selectdetailbyspriceid(Integer id) {
+		// TODO Auto-generated method stub
+		return gdm.selectdetailbyspriceid(id);
+	}
+	@Override
+	public Goods selectbygoodsname(String goodsname) {
+		// TODO Auto-generated method stub
+		return gm.selectbygoodsname(goodsname);
+	}
+	@Override
+	public List<Admin> selectall2() {
+		// TODO Auto-generated method stub
+		return gp.selectall2();
+	}
 }

@@ -16,14 +16,33 @@ public class GoodsPrice implements Serializable {
     private Integer userid;
 
     private Date lastdate;
+    @Transient
+    private Admin admin;
 
     private static final long serialVersionUID = 1L;
     @Transient
     private GoodsPriceTwo goodspricetwo;
+    @Transient
+    List<GoodsDetail> goodsdetail;
     
-    
-    
-    public GoodsPriceTwo getGoodspricetwo() {
+
+	public List<GoodsDetail> getGoodsdetail() {
+		return goodsdetail;
+	}
+
+	public void setGoodsdetail(List<GoodsDetail> goodsdetail) {
+		this.goodsdetail = goodsdetail;
+	}
+
+	public Admin getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
+
+	public GoodsPriceTwo getGoodspricetwo() {
 		return goodspricetwo;
 	}
 
