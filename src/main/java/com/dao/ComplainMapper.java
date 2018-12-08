@@ -22,7 +22,7 @@ public interface ComplainMapper extends Mapper<Complain> {
 	 * 
 	 * @return
 	 */
-	Complain selectcomplainById(int id);
+	Complain selectcomplainById(Integer id);
 
 	List<Complain> selectcomplainById();
 

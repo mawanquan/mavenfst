@@ -18,7 +18,7 @@ public interface ComplainService {
 	/**
 	 * 根据主键查询一个对象
 	 */
-	Complain selectcomplainById(int id);
+	Complain selectcomplainById(Integer id);
 
 	/**
 	 * 根据主键删除一个对象

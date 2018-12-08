@@ -55,7 +55,7 @@ public class ComplainServiceImp implements ComplainService {
 	 * 根据主键查询投诉对象
 	 */
 	@Override
-	public Complain selectcomplainById(int id) {
+	public Complain selectcomplainById(Integer id) {
 
 		return complainMapper.selectcomplainById(id);
 	}

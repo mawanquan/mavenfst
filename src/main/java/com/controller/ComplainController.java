@@ -71,7 +71,7 @@ public class ComplainController {
 	public String insertComplain(Complain complain, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		Suppliers sl = (Suppliers) session.getAttribute("supplier");
-		System.out.println(sl.getSupplierid() + "" + sl.getSuppliername());
+
 		complain.setSuppliersid(sl.getSupplierid());
 
 		complain.setName(sl.getSuppliername());
