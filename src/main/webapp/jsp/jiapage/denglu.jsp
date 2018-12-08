@@ -8,17 +8,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 
 	<head>
-		<meta charset="utf-8">
-		<base href="<%=basePath%>">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+	 <base href="<%=basePath%>">
+    <title>中国招标网</title>
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
 		<link href="${css}bootstrap.min.css" rel="stylesheet">
 		<link href="${css}my.css" rel="stylesheet">
 		<script src="${js}jquery-2.0.0.min.js"></script>
 		<script src="${js}bootstrap.min.js"></script>
+		<script type="text/javascript">
+			function getNow() {
+				var now = new Date();
+				document.getElementById("time").innerHTML = now.toLocaleString();
+				setTimeout(getNow, 1000);
+			}
+		</script>
 	</head>
 
-	<body>
+	<body onload="getNow()">
 		<!--***********************头部************************-->
 		<div class="header">
 			<div class="container-fluid">

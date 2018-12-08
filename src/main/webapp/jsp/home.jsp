@@ -1310,7 +1310,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</li>
 									<li>
 										<p class="navbar-text">
-											<a href="fuwuzhongxin.html#001" style="text-decoration: none;">招标前准备</a>
+											<a href="${cxt}/jsp/jiapage/fuwuzhongxin.jsp#zb" style="text-decoration: none; ">招标前准备</a>
 											<a href="${cxt}/jsp/jiapage/falvshengming.jsp" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;法律声明</a>
 
 										</p>
