@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -21,9 +22,8 @@
 	-->
 <script src="${js}/jquery-2.0.0.min.js"></script>
 <script type="text/javascript">
-	
 	function atime() {
-	  
+
 		var mydate = new Date();
 		alert(mydate.toLocaleDateString());
 		document.getElementById("time").value = mydate.toLocaleDateString();
@@ -44,7 +44,7 @@
 			</tr>
 			<tr>
 				<td>时间：</td>
-				<td><input  name="time" id="time" onclick="atime()"></td>
+				<td><input name="time" id="time" onclick="atime()"></td>
 			</tr>
 			<tr>
 				<td>公告内容：</td>

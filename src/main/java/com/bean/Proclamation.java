@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 public class Proclamation implements Serializable {
 	@Id
@@ -18,8 +19,16 @@ public class Proclamation implements Serializable {
     private String comment;
 
     private String filepath;
- 
+    @Transient
+    Suppliers suppliers;
+    
+	public Suppliers getSuppliers() {
+		return suppliers;
+	}
 
+	public void setSuppliers(Suppliers suppliers) {
+		this.suppliers = suppliers;
+	}
 
 	private static final long serialVersionUID = 1L;
 
