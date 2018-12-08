@@ -111,4 +111,15 @@ public class ToubiaoFrontServiceImp implements ToubiaoFrontService {
 		
 		return this.joinzbxxMapper.selBidsSupidAndDecid(supplierid,id);
 	}
+
+	@Override
+	public List<Joinzbxx> selBidsStartAndDecid(Integer start, Integer decid) {
+		return joinzbxxMapper.selBidsStartAndDecid(start, decid);
+	}
+
+	@Override
+	public List<Joinzbxx> selBidsxxAllByDecidandStart(Integer decid,
+			Integer start) {
+		return joinzbxxMapper.selBidsxxAllByDecidandStart(decid, start);
+	}
 }

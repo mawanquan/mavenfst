@@ -44,7 +44,7 @@
 			$.get("/mavenfst/deletezb", {
 				"id" : id
 			}, function(data) {
-				if (data) {
+				if (data=="") {
 					$(t).parents("tr").remove();
 				}
 
@@ -92,7 +92,7 @@ html, html body, td {
 						<button type="button" class="btn btn-primary btn-xs"
 							onclick="delrow(this,${v.id})">删除</button></td>
 					<td><a href="<%=path%>/fabuzb?id=${v.id}"><button
-								type="button" class="btn btn-primary btn-xs">发布招标项目</button></a></td>
+								type="button" class="btn btn-primary btn-xs">发布项目</button></a></td>
 				</tr>
 			</c:forEach>
 		</table>
