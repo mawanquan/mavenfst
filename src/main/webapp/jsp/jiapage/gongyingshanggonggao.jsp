@@ -30,13 +30,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<!---------------------------头上------------------------------>
 				<div class="top-bar">
 					<div class="row">
-						<div class="col-md-4">
+						<div class="col-xs-4">
 							<div class="top-bar-1 ">
 								<img src="images/img/mobile.png" />
 							</div>
 						</div>
 
-						<div class="col-md-8">
+						<div class="col-xs-8">
 							<div class="top-bar-3 ">
 								<form class="navbar-form navbar-right ">
 									<div class="form-group">
@@ -95,7 +95,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="container-fluid" >
 			<div class="main2" style="background: ;">
 				<div class="row ">
-					<div class="col-md-3 m1">
+					<div class="col-xs-3 m1">
 						<ul class="nav nav-pills nav-stacked m1-1" role="tablist ">
 							<li> 
 							<legend style="font-size: 18px; color: #737373;"><img src="images/img/m11.png"/>采供公告</legend>
@@ -109,7 +109,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							
 						</ul>
 					</div>
-					<div class="col-md-9 m2">
+					<div class="col-xs-9 m2">
 						<!-- Tab panes -->
 						<div class="tab-content">
 							<div role="tabpanel" class="tab-pane active" id="home">
@@ -230,9 +230,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="container-fluid ">
 			<div class="tail">
 				<div class="row">
-					<div class="col-md-4 tail-1">
+					<div class="col-xs-4 tail-1">
 					</div>
-					<div class="col-md-5 tail-2">
+					<div class="col-xs-5 tail-2">
 						<li>
 							<p>京IQP备05002571号 | 热吧招标版权所有</p>
 						</li>
@@ -240,7 +240,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<p>技术支持工作时间（工作日）：上午 9：00~12：00 下午 13：00~18:00</p>
 						</li>
 					</div>
-					<div class="col-md-3 tail-3">
+					<div class="col-xs-3 tail-3">
 					</div>
 				</div>
 			</div>
