@@ -27,15 +27,23 @@ import org.springframework.web.servlet.ModelAndView;
 import com.bean.Admin;
 import com.bean.Declarefile;
 import com.bean.Declareform;
+import com.bean.Joinzbxx;
+import com.bean.Suppliers;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.service.DeclareformService;
+import com.service.SuppliersService;
+import com.service.ToubiaoFrontService;
+import com.test.WordToHtml;
 
 @Controller("declareform2Controller")
 public class Declareform2Controller {
-
+	@Resource(name = "toubiaoFrontServiceImp")
+	ToubiaoFrontService toubiaoFrontService;
 	@Resource(name = "declareformServiceImp")
 	DeclareformService declareformService;
+	@Resource(name = "suppliersServiceImp")
+	SuppliersService suppliersService;
 
 	// 增加招标
 	@RequestMapping(value = "/addzb")
@@ -133,11 +141,11 @@ public class Declareform2Controller {
 
 		return "forward:/fabuzbset/1";
 	}
-
+	@ResponseBody
 	@RequestMapping(value = "/deletezb")
 	public String deletezb(int id) {
 		declareformService.deleteoneByid(id);
-		return "forward:/fabuzbset/1";
+		return "";
 	}
 
 	@RequestMapping(value = "/fabuzb")
@@ -150,12 +158,13 @@ public class Declareform2Controller {
 		mv.addObject("d", declareform);
 		return mv;
 	}
+
 	@ResponseBody
 	@RequestMapping(value = "/deletefile")
 	public String deletefile(int id) {
 		Declarefile d = declareformService.selectone(id);
 		declareformService.deletefileByid(d);
-		//ModelAndView mv = new ModelAndView();
+		// ModelAndView mv = new ModelAndView();
 		return "";
 	}
 
@@ -169,10 +178,11 @@ public class Declareform2Controller {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		Date date1 = (Date) formatter.parse(formatter.format(new Date()));
 		List<Declareform> list = declareformService.selectAllBysign(0, 1);
-		if (list.size()!=0) {
+		if (list.size() != 0) {
 			for (Declareform declareform : list) {
 				if (declareform.getFinishdate().getTime() < date1.getTime()
-						&& date1.getTime() < declareform.getOpentime().getTime()) {
+						&& date1.getTime() < declareform.getOpentime()
+								.getTime()) {
 					declareform.setSign(1);
 					declareformService.updateById(declareform);
 				}
@@ -197,9 +207,9 @@ public class Declareform2Controller {
 		// ////////////////////////////
 		Admin admin = (Admin) session.getAttribute("user");
 		List<Declareform> list = declareformService.selectAllBysign(1, 1);
-		if (list.size()!=0) {
+		if (list.size() != 0) {
 			for (Declareform declareform : list) {
-				if (declareform.getOpentime().getTime()<date1.getTime()) {
+				if (declareform.getOpentime().getTime() < date1.getTime()) {
 					declareform.setSign(2);
 					declareformService.updateById(declareform);
 				}
@@ -219,7 +229,8 @@ public class Declareform2Controller {
 	public ModelAndView kekaibiao(@PathVariable("page") int page,
 			HttpSession session) {
 		PageHelper.startPage(page, 10);
-//		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		// SimpleDateFormat formatter = new
+		// SimpleDateFormat("yyyy-MM-dd HH:mm");
 		// ////////////////////////////
 		// Admin admin = (Admin) session.getAttribute("user");
 		List<Declareform> list = declareformService.selectAllBysign(2, 1);
@@ -242,11 +253,38 @@ public class Declareform2Controller {
 	@RequestMapping(value = "/kaibiao")
 	public ModelAndView kaibiao(HttpSession session, int id) {
 		Declareform d = declareformService.selectDeclareformById(id);
-		// ////////////////////////
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("zhaobiao/houtai/kaibiao");
+		Suppliers listsuppliers = null;
+		Joinzbxx jzbxxandfile = null;
+		// 查询应标的供应商
+		List<Joinzbxx> list = toubiaoFrontService.selBidsxxAllByDecidandStart(
+				id, 1);
 		mv.addObject("d", d);
+		mv.addObject("list", list);
+		mv.setViewName("zhaobiao/houtai/kaibiao");
 		return mv;
+	}
+
+	// 文件预览word转html
+	@RequestMapping(value = "/houtaipreview")
+	public String houtaipreview(String filepath) throws Exception {
+		String path = ContextLoader.getCurrentWebApplicationContext()
+				.getServletContext().getRealPath("");
+		// String path="F:\\Git\\mygitprj\\mavenfst";
+		String suffix = filepath.substring(filepath.lastIndexOf(".") + 1);
+		String htmlpath = filepath.replace(suffix, "html");
+		WordToHtml.convert2Html(path + filepath, path + htmlpath);
+		return "redirect:" + htmlpath;
+	}
+
+	// 中标项目
+	@RequestMapping(value = "/zhongbiao")
+	public String zhongbiao(Integer id, String hit) {
+		// ////////////////////////////
+		Declareform declareform = declareformService.selectDeclareformById(id);
+		declareform.setHit(hit);
+		declareformService.updateById(declareform);
+		return "forward:/kekaibiao/1";
 	}
 
 	// 已完成招标项目
@@ -273,16 +311,26 @@ public class Declareform2Controller {
 		mv.addObject("pg", pg);
 		return mv;
 	}
+
 	// 废标项目
-		@RequestMapping(value = "/feibiao/{page}")
-		public ModelAndView feibiao(@PathVariable("page") int page) {
-			PageHelper.startPage(page, 5);
-			List<Declareform> list = declareformService.selectAllBysign(2, 2);
-			PageInfo pg = new PageInfo(list);
-			ModelAndView mv = new ModelAndView();
-			mv.setViewName("zhaobiao/houtai/feibiao");
-			mv.addObject("list", list);
-			mv.addObject("pg", pg);
-			return mv;
-		}
+	@RequestMapping(value = "/feibiao/{page}")
+	public ModelAndView feibiao(@PathVariable("page") int page) {
+		PageHelper.startPage(page, 5);
+		List<Declareform> list = declareformService.selectAllBysign(2, 2);
+		PageInfo pg = new PageInfo(list);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("zhaobiao/houtai/feibiao");
+		mv.addObject("list", list);
+		mv.addObject("pg", pg);
+		return mv;
+	}
+
+	// 废标项目
+	@RequestMapping(value = "/feibiaoset")
+	public String feibiaoset(int id) {
+		Declareform declareform = declareformService.selectDeclareformById(id);
+		declareform.setStatus(2);
+		declareformService.updateById(declareform);
+		return "forward:/kekaibiao/1";
+	}
 }

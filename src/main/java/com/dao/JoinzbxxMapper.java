@@ -19,6 +19,11 @@ public interface JoinzbxxMapper extends Mapper<Joinzbxx> {
 	Joinzbxx selBidsByid(Integer id);
 
 	Joinzbxx selBidsSupidAndDecid(Integer supplierid,Integer decid);
+	
+	List<Joinzbxx> selBidsStartAndDecid(Integer start,Integer decid);
+	
+	//联表查询招标商信息
+	List<Joinzbxx> selBidsxxAllByDecidandStart(Integer decid,Integer start);
 
  
 }

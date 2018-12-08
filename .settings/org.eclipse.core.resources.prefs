@@ -38,6 +38,9 @@ encoding//src/main/resources=UTF-8
 encoding//src/main/webapp/jsp/tousu/selectbyprimarykeycomplain.jsp=UTF-8
 encoding//src/main/webapp/jsp/zhaobiao/addzb.jsp=UTF-8
 encoding//src/test/java=UTF-8
+<<<<<<< HEAD
 encoding//src/test/java/com/myfile/Testa.java=UTF-8
 encoding//src/test/resources=UTF-8
+=======
+>>>>>>> 0cc3763a11143545c7f02cfbf6ca2aae17dcb2d1
 encoding/<project>=UTF-8
