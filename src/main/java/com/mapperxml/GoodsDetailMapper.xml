@@ -1,30 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dao.GoodsDetailMapper" >
-<select id="selectgoodsbyid" resultMap="gm">
-select g.id gid,num,getdate,w.id wid,goodsname,goodscode,type,unit from goods  w inner join goodsdetail g on g.goodsid=w.id where g.id=#{id}
-</select>
-<select id="selectall" resultMap="gm">
-select g.id gid,num,getdate,w.id wid,goodsname,goodscode,type,unit from goods  w inner join goodsdetail g on g.goodsid=w.id 
-</select>
-
-<select id="selectgoodsbyother" resultMap="gm">
-select g.id gid,num,getdate,w.id wid,goodsname,goodscode,type,unit from goods  w inner join goodsdetail g on g.goodsid=w.id where goodscode=#{goodscode} or goodsname=#{goodsname} or type=#{type}
-</select>
-
-<resultMap type="com.bean.GoodsDetail" id="gm">
-<id column="gid" property="id"/>
-<result column="num" property="num"/>
-<result column="goodspriceid" property="goodspriceid"/>
-<result column="goodsid" property="goodsid"/>
-<result column="getdate" property="getdate"/>
-<association property="goods" javaType="com.bean.Goods">
-<id column="wid" property="id"/>
-<result column="goodsname" property="goodsname"/>
-<result column="goodscode" property="goodscode"/>
-<result column="type" property="type"/>
-<result column="unit" property="unit"/>
-</association>
-
-</resultMap>
+<mapper namespace="com.dao.GoodsDetailMapper">
+	<select id="selectdetailbyid" resultType="com.bean.GoodsDetail">
+		select * from goodsdetail where goodsid=#{goodsid}
+	</select>
+	<select id="selectdetailbyspriceid" resultType="com.bean.GoodsDetail">
+		select * from goodsdetail where goodspriceid=#{goodspriceid}
+	</select>
+	
+	<insert id="insertgoodsdetail">
+	insert into goodsdetail (goodspriceid,goodsid,num,getdate)value(goodspriceid=#{goodspriceid},goodsid=#{goodsid},num=#{num},getdate=#{getdate}) 
+	</insert>
+	
 </mapper>

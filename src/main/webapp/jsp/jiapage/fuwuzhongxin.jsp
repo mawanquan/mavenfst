@@ -100,7 +100,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<a href="#profile1" aria-controls="profile1" role="tab" data-toggle="tab">&nbsp;<img src="images/img/m46.png" />&nbsp; &nbsp;&nbsp;常见问题</a>
 							</li>
 							<li>
-								<a name="001"href="#profile2" aria-controls="profile2" role="tab" data-toggle="tab" id="zhunbei">&nbsp;<img src="images/img/m47.png" />&nbsp; &nbsp;招标前准备</a>
+								<a name="zb"href="#profile2" aria-controls="profile2" role="tab" data-toggle="tab" id="zhunbei">&nbsp;<img src="images/img/m47.png" />&nbsp; &nbsp;招标前准备</a>
 							</li>
 
 						</ul>
