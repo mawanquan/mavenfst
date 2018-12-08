@@ -8,13 +8,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 
 	<head>
-		<meta charset="utf-8">
+			<meta charset="utf-8">
+		<base href="<%=basePath%>">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="${css}/bootstrap.min.css" rel="stylesheet">
-		<link href="${css}/my.css" rel="stylesheet">
-		<script src="${js}/jquery-2.0.0.min.js"></script>
-		<script src="${js}/bootstrap.min.js"></script>
+		<link href="${css}bootstrap.min.css" rel="stylesheet">
+		<link href="${css}my.css" rel="stylesheet">
+		<script src="${js}jquery-2.0.0.min.js"></script>
+		<script src="${js}bootstrap.min.js"></script>
 	</head>
 
 	<body>
@@ -24,13 +25,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<!---------------------------头上------------------------------>
 				<div class="top-bar">
 					<div class="row">
-						<div class="col-md-4">
+						<div class="col-xs-4">
 							<div class="top-bar-1 ">
-								<img src="img/mobile.png" />
+								<img src="images/img/mobile.png" />
 							</div>
 						</div>
 
-						<div class="col-md-8">
+						<div class="col-xs-8">
 							<div class="top-bar-3 ">
 								<form class="navbar-form navbar-right ">
 									<div class="form-group" >
@@ -60,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 								<ul class="nav navbar-nav top-bot-1 ">
 									<li>
-										<a href="index.html"><span class="glyphicon glyphicon-home"></span>&nbsp;首页</a>
+										<a href="${cxt}/jsp/home.jsp"><span class="glyphicon glyphicon-home"></span>&nbsp;首页</a>
 									</li>
 									<li>
 										<a href="caigougonggao.html">招标采购公告</a>
@@ -72,10 +73,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<a href="tousuzhongxin.html">投诉中心</a>
 									</li>
 									<li class="active">
-										<a href="fuwuzhongxin.html">服务中心</a>
+										<a href="${cxt}/jsp/jiapage/fuwuzhongxin.jsp">服务中心</a>
 									</li>
 									<li>
-										<a href="falvshengming.html">法律声明</a>
+										<a href="${cxt}/jsp/jiapage/falvshengming.jsp">法律声明</a>
 									</li>
 								</ul>
 
@@ -89,41 +90,41 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="container-fluid">
 			<div class="main4">
 				<div class="row">
-					<div class="col-md-2 m1">
+					<div class="col-xs-2 m1">
 						<!-- Nav tabs -->
 						<ul class="nav nav-pills nav-stacked m1-1" role="tablist">
 							<li role="presentation" class="active success">
-								<a style=" " href="#home" aria-controls="home" role="tab" data-toggle="tab"><img src="img/m45.png" />&nbsp;&nbsp;下载专区</a>
+								<a style=" " href="#home" aria-controls="home" role="tab" data-toggle="tab"><img src="images/img/m45.png"/>&nbsp;&nbsp;下载专区</a>
 							</li>
 							<li role="presentation">
-								<a href="#profile1" aria-controls="profile1" role="tab" data-toggle="tab">&nbsp;<img src="img/m46.png" />&nbsp; &nbsp;&nbsp;常见问题</a>
+								<a href="#profile1" aria-controls="profile1" role="tab" data-toggle="tab">&nbsp;<img src="images/img/m46.png" />&nbsp; &nbsp;&nbsp;常见问题</a>
 							</li>
 							<li>
-								<a name="001"href="#profile2" aria-controls="profile2" role="tab" data-toggle="tab" id="zhunbei">&nbsp;<img src="img/m47.png" />&nbsp; &nbsp;招标前准备</a>
+								<a name="001"href="#profile2" aria-controls="profile2" role="tab" data-toggle="tab" id="zhunbei">&nbsp;<img src="images/img/m47.png" />&nbsp; &nbsp;招标前准备</a>
 							</li>
 
 						</ul>
 					</div>
 					<div class="container-fluid">
-						<div class="col-md-10 m2">
+						<div class="col-xs-10 m2">
 							<!-- Tab panes -->
 							<div class="tab-content m2-1" style="background-color: ;height: 300px;">
 								<div role="tabpanel" class="tab-pane active m2-1-1" id="home">
 									<table class="table table-bordered " style="">
 										<tr style="">
 											<td style="">
-												<img src="img/m41.png" />
+												<img src="images/img/m41.png" />
 												<a href="#">&nbsp;&nbsp;&nbsp;操作手册</a>
 											</td>
-											<td style=""><img src="img/m42.png" />
+											<td style=""><img src="images/img/m42.png" />
 												<a href="#">&nbsp;&nbsp;&nbsp;培训材料视频</a>
 											</td>
 										</tr>
 										<tr>
-											<td style=""><img src="img/m43.png" />
+											<td style=""><img src="images/img/m43.png" />
 												<a href="#">&nbsp;&nbsp;&nbsp;CA证书办理及安装</a>
 											</td>
-											<td style=""><img src="img/m44.png" />
+											<td style=""><img src="images/img/m44.png" />
 												<a href="#">&nbsp;&nbsp;&nbsp;离线投标工具安装</a>
 											</td>
 										</tr>
@@ -189,9 +190,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="container-fluid ">
 			<div class="tail">
 				<div class="row">
-					<div class="col-md-4 tail-1">
+					<div class="col-xs-4 tail-1">
 					</div>
-					<div class="col-md-5 tail-2">
+					<div class="col-xs-5 tail-2">
 						<li>
 							<p>京IQP备05002571号 | 热吧招标版权所有</p>
 						</li>
@@ -199,7 +200,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<p>技术支持工作时间（工作日）：上午 9：00~12：00 下午 13：00~18:00</p>
 						</li>
 					</div>
-					<div class="col-md-3 tail-3">
+					<div class="col-xs-3 tail-3">
 					</div>
 				</div>
 			</div>

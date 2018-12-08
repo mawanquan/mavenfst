@@ -8,19 +8,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 
 	<head>
-		<meta charset="utf-8">
+	<base href="<%=basePath%>">
+	<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="${css}/bootstrap.min.css" rel="stylesheet">
-		<link href="${css}/my.css" rel="stylesheet">
-		<script src="${js}/jquery-2.0.0.min.js"></script>
-		<script src="${js}/bootstrap.min.js"></script>
-		<script src="${js}/layDate-v5.0.9/laydate/laydate.js"></script>
+		<link href="${css}bootstrap.min.css" rel="stylesheet">
+		<link href="${css}my.css" rel="stylesheet">
+		<script src="${js}jquery-2.0.0.min.js"></script>
+		<script src="${js}bootstrap.min.js"></script>
+		<script src="${js}layDate-v5.0.9/laydate/laydate.js"></script>
 
 		<script type="text/javascript">
 			$('#datetimepicker').datetimepicker('show');
 		</script>
-
 	</head>
 
 	<body>
@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="row">
 						<div class="col-md-4">
 							<div class="top-bar-1 ">
-								<img src="img/mobile.png" />
+								<img src="images/img/mobile.png" />
 							</div>
 						</div>
 
@@ -65,23 +65,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 								<ul class="nav navbar-nav top-bot-1 ">
-									<li>
-										<a href="index.html"><span class="glyphicon glyphicon-home"></span>&nbsp;首页</a>
-									</li>
-									<li >
-										<a href="caigougonggao.html">招标采购公告</a>
-									</li>
 									<li class="active">
-										<a href="gongyingshanggonggao.html">供应商公告</a>
+										<a href="${cxt}/jsp/home.jsp"><span class="glyphicon glyphicon-home"></span>&nbsp;首页</a>
+									</li>
+									<li>
+										<a href="${cxt}/jsp/jiapage/caigougonggao.jsp">招标采购公告</a>
+									</li>
+									<li>
+										<a href="${cxt}/jsp/jiapage/gongyingshanggonggao.jsp">供应商公告</a>
 									</li>
 									<li>
 										<a href="tousuzhongxin.html">投诉中心</a>
 									</li>
 									<li>
-										<a href="fuwuzhongxin.html">服务中心</a>
+										<a href="${cxt}/jsp/jiapage/fuwuzhongxin.jsp">服务中心</a>
 									</li>
 									<li>
-										<a href="falvshengming.html">法律声明</a>
+										<a href="${cxt}/jsp/jiapage/falvshengming.jsp">法律声明</a>
 									</li>
 								</ul>
 
@@ -98,13 +98,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<div class="col-md-3 m1">
 						<ul class="nav nav-pills nav-stacked m1-1" role="tablist ">
 							<li> 
-							<legend style="font-size: 18px; color: #737373;"><img src="img/m11.png"/>采供公告</legend>
+							<legend style="font-size: 18px; color: #737373;"><img src="images/img/m11.png"/>采供公告</legend>
 							</li>
 							<li role="presentation" class="active">
-								<a href="#home" aria-controls="home" role="tab" data-toggle="tab"><img src="img/m11.png" style="" />&nbsp;&nbsp;一采公告</a>
+								<a href="#home" aria-controls="home" role="tab" data-toggle="tab"><img src="images/img/m11.png" style="" />&nbsp;&nbsp;一采公告</a>
 							</li>
 							<li role="presentation">
-								<a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">&nbsp;<img src="img/m11.png" style="" />&nbsp;&nbsp;二采公告</a>
+								<a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">&nbsp;<img src="images/img/m11.png" style="" />&nbsp;&nbsp;二采公告</a>
 							</li>
 							
 						</ul>
@@ -115,7 +115,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div role="tabpanel" class="tab-pane active" id="home">
 								<div id="txt"></div>
 								<div style="padding-left: 30px; margin-top: 0px;">
-									<img src="img/m21.png" />
+									<img src="images/img/m21.png" />
 								</div>
 								<div>
 									标题&nbsp;&nbsp;<input type="text" placeholder="请输入检索的内容" />&nbsp;&nbsp;时间&nbsp;&nbsp;

@@ -74,13 +74,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 								<ul class="nav navbar-nav  top-bot-1 ">
 									<li class="active">
-										<a href="index.html"><span class="glyphicon glyphicon-home"></span>&nbsp;首页</a>
+										<a href="${cxt}/jsp/home.jsp"><span class="glyphicon glyphicon-home"></span>&nbsp;首页</a>
 									</li>
 									<li>
-										<a href="caigougonggao.html">招标采购公告</a>
+										<a href="${cxt}/jsp/jiapage/caigougonggao.jsp">招标采购公告</a>
 									</li>
 									<li>
-										<a href="gongyingshanggonggao.html">供应商公告</a>
+										<a href="${cxt}/jsp/jiapage/gongyingshanggonggao.jsp">供应商公告</a>
 									</li>
 									<li>
 										<a href="tousuzhongxin.html">投诉中心</a>
@@ -89,7 +89,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<a href="${cxt}/jsp/jiapage/fuwuzhongxin.jsp">服务中心</a>
 									</li>
 									<li>
-										<a href="falvshengming.html">法律声明</a>
+										<a href="${cxt}/jsp/jiapage/falvshengming.jsp">法律声明</a>
 									</li>
 									<c:if test="${!empty supplier  }">
                                     <li>
