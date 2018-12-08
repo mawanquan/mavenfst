@@ -158,9 +158,7 @@ public class DeclareformController {
 		String suffix = filepath.substring(filepath.lastIndexOf(".") + 1);
 			String htmlpath = filepath.replace(suffix, "html");
 			WordToHtml.convert2Html(path + filepath, path + htmlpath);
-	
 			return "redirect:"+ htmlpath;
-
 	}
 
 }

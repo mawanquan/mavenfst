@@ -8,28 +8,37 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 
 	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="${css}/bootstrap.min.css" rel="stylesheet">
-		<link href="${css}/my.css" rel="stylesheet">
-		<script src="${js}/jquery-2.0.0.min.js"></script>
-		<script src="${js}/bootstrap.min.js"></script>
+	 <base href="<%=basePath%>">
+    <title>中国招标网</title>
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+		<link href="${css}bootstrap.min.css" rel="stylesheet">
+		<link href="${css}my.css" rel="stylesheet">
+		<script src="${js}jquery-2.0.0.min.js"></script>
+		<script src="${js}bootstrap.min.js"></script>
+		<script type="text/javascript">
+			function getNow() {
+				var now = new Date();
+				document.getElementById("time").innerHTML = now.toLocaleString();
+				setTimeout(getNow, 1000);
+			}
+		</script>
 	</head>
 
-	<body>
+	<body onload="getNow()">
 		<!--***********************头部************************-->
 		<div class="header">
 			<div class="container-fluid">
 				<div class="top-bar">
 					<div class="row">
-						<div class="col-md-4">
+						<div class="col-xs-4">
 							<div class="top-bar-1 ">
-								<img src="img/mobile.png" />
+								<img src="images/images/img/mobile.png" />
 							</div>
 						</div>
 
-						<div class="col-md-8">
+						<div class="col-xs-8">
 							<div class="top-bar-3 ">
 								<form class="navbar-form navbar-right ">
 									<div class="form-group">
@@ -95,9 +104,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="container-fluid ">
 			<div class="tail">
 				<div class="row">
-					<div class="col-md-4 tail-1">
+					<div class="col-xs-4 tail-1">
 					</div>
-					<div class="col-md-5 tail-2">
+					<div class="col-xs-5 tail-2">
 						<li>
 							<p>京IQP备05002571号 | 热吧招标版权所有</p>
 						</li>
@@ -105,7 +114,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<p>技术支持工作时间（工作日）：上午 9：00~12：00 下午 13：00~18:00</p>
 						</li>
 					</div>
-					<div class="col-md-3 tail-3">
+					<div class="col-xs-3 tail-3">
 					</div>
 				</div>
 			</div>

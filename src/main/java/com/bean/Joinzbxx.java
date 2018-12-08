@@ -23,10 +23,18 @@ public class Joinzbxx implements Serializable {
     private List<Joinzbfile> lisjoinzbfile;
     @Transient
     private Declareform decl;
+    @Transient
+    private Suppliers suppliers;
     
-    
+    public Suppliers getSuppliers() {
+		return suppliers;
+	}
 
-    public Declareform getDecl() {
+	public void setSuppliers(Suppliers suppliers) {
+		this.suppliers = suppliers;
+	}
+
+	public Declareform getDecl() {
 		return decl;
 	}
 
