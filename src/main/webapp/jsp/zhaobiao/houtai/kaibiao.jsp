@@ -62,8 +62,8 @@ html, html body, td {
 			<td>联系人姓名</td>
 			<td>联系人email</td>
 			<td>法人姓名</td>
-			<td>招标报价</td>
-			<td>招标文件</td>
+			<td>投标报价</td>
+			<td>投标文件</td>
 			<td>中标</td>
 		</tr>
 
@@ -80,8 +80,8 @@ html, html body, td {
 				<td><table>
 						<c:forEach items="${v.lisjoinzbfile}" var="s">
 							<tr>
-								<td><a target="_blank"
-									href="/mavenfst/houtaipreview?filepath=${s.filepath}">${s.filename}</a></td>
+								<td>${s.filename}<a target="_blank"
+									href="/mavenfst/houtaipreview?filepath=${s.filepath}">预览</a></td>
 							</tr>
 						</c:forEach>
 					</table></td>

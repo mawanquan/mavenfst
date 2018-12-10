@@ -72,6 +72,9 @@ div {
 			class="form-horizontal files" id="formid">
 			<br> <br> <input type="hidden" name="id"
 				class="form-control" value="${d.id}" />
+				<input type="hidden" name="publisher" value="${d.publisher}" />
+				<input type="hidden" name="sign" value="${d.sign}" />
+				<input type="hidden" name="status" value="${d.status}" />
 			<div class="">
 				<label class="col-sm-2 control-label">标题:</label>
 				<div class="col-sm-10">
@@ -111,19 +114,6 @@ div {
 				</div>
 			</div>
 
-			<%-- <div class="">
-				<form action="${cxt}/upload" method="post"
-					enctype="multipart/form-data" id="upfrmdfd">
-					<label class="col-sm-2 control-label">招标文件:</label>
-					<div class="col-sm-10" id="infoLogo">
-						<input type="file" name="file" id="ctn-input-file" />
-						<button id="upload">增加文件</button>
-					</div>
-
-					<div id="appendfile"></div>
-				</form>
-
-			</div> --%>
 			<div class="">
 				<label class="col-sm-2 control-label">招标文件:</label>
 				<table>
