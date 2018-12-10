@@ -1,44 +1,90 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
-
-	<head>
-	 <base href="<%=basePath%>">
-    <title>中国招标网</title>
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
+  <head>
+  <base href="<%=basePath%>">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link href="${css}bootstrap.min.css" rel="stylesheet">
 		<link href="${css}my.css" rel="stylesheet">
 		<script src="${js}jquery-2.0.0.min.js"></script>
 		<script src="${js}bootstrap.min.js"></script>
-		<script type="text/javascript">
-			function getNow() {
-				var now = new Date();
-				document.getElementById("time").innerHTML = now.toLocaleString();
-				setTimeout(getNow, 1000);
-			}
-		</script>
-	</head>
 
-	<body onload="getNow()">
-		<!--***********************头部************************-->
+		<title>我要投诉</title>
+		
+		
+		<script type="text/javascript">
+		function one(){
+		
+		alert("提交成功");
+		
+		}
+		
+		</script>
+		<style>
+		
+			
+			.keleyitable {
+				width: 600px;
+				border-style: none;
+			}
+			
+			.klytd {
+				width: 100px;
+				height: 30px;
+				text-align: left;
+			}
+			
+			.klytd2 {
+				width: 100px;
+				height: 50px;
+				text-align: left;
+			}
+			
+			.hvttd {
+				width: 500px;
+				height: 30px;
+				text-align:left;
+			}
+			
+			.hvttd2 {
+				width: 500px;
+				height: 300px;
+				text-align: left;
+			}
+			
+			.hvttd3 {
+				width: 100px;
+				height: 30px;
+				text-align: center;
+				float: right;
+			}
+			
+			
+		</style>
+  </head>
+ 
+  
+  <body class="klyt">
+  <!--***********************头部************************-->
 		<div class="header">
 			<div class="container-fluid">
 				<div class="top-bar">
 					<div class="row">
-						<div class="col-xs-4">
+						<div class="col-md-4">
 							<div class="top-bar-1 ">
-								<img src="images/images/img/mobile.png" />
+								<img src="images/img/mobile.png" />
 							</div>
 						</div>
 
-						<div class="col-xs-8">
+						<div class="col-md-8">
 							<div class="top-bar-3 ">
 								<form class="navbar-form navbar-right ">
 									<div class="form-group">
@@ -93,20 +139,38 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 			</div>
 		</div>
-		<!--***********************主体************************-->
-		<div class="container-fluid">
-			<div class="zhuce">
+  
+  
+		<form action="/mavenfst/insertComplain" method="post">
+			<div style="margin:0px auto;" class="keleyitable">
+				<h2>我要投诉</h2>
 
-			</div>
+				<table>
+					
+			
+		
+					<tr>
+						<td class="klytd">标题：</td>
+						<td><input name="caption" class="hvttd" type="text" /> </td>
+					</tr>
+					<tr>
+						<td class="klytd2">内容：</td>
+						<td class="hvttd2"><textarea name="content" cols="60" rows="20"></textarea></td>
+					</tr>
 
-		</div>
+				</table>
+				
+				<input  class="hvttd3" type="submit" value="提交" onclick="one()" />
+			</div>	
+		</form>
+		
 		<!--************************尾****************************8-->
 		<div class="container-fluid ">
 			<div class="tail">
 				<div class="row">
-					<div class="col-xs-4 tail-1">
+					<div class="col-md-4 tail-1">
 					</div>
-					<div class="col-xs-5 tail-2">
+					<div class="col-md-5 tail-2">
 						<li>
 							<p>京IQP备05002571号 | 热吧招标版权所有</p>
 						</li>
@@ -114,11 +178,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<p>技术支持工作时间（工作日）：上午 9：00~12：00 下午 13：00~18:00</p>
 						</li>
 					</div>
-					<div class="col-xs-3 tail-3">
+					<div class="col-md-3 tail-3">
 					</div>
 				</div>
 			</div>
 		</div>
 	</body>
+	
 
+	</body>
 </html>

@@ -1,11 +1,14 @@
-package com.controller;
+﻿package com.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.stereotype.Controller;
@@ -17,6 +20,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.mysql.jdbc.interceptors.SessionAssociationInterceptor;
+import com.bean.Admin;
 import com.bean.Proclamation;
 import com.bean.Suppliers;
 import com.service.ProclamationService;
@@ -27,6 +32,7 @@ public class ProclamationController {
 	private static final Proclamation proclamation = null;
 	@Resource(name = "proclamationServiceImp")
 	ProclamationService proclamationService;// 依赖service层
+
 	// 查询所有的
 
 	@RequestMapping("/select")
@@ -35,9 +41,9 @@ public class ProclamationController {
 		req.setAttribute("list", list);
 
 		return "a";
-		
-		
+
 	}
+	
 	
 	@RequestMapping("/selecta")
 	public String selectaproclamation(HttpServletRequest req) {
@@ -45,64 +51,67 @@ public class ProclamationController {
 		req.setAttribute("list", list);
 
 		return "proclamation/index";
-		
-		
+
 	}
 	
-	
-    //根据主键修改一个对象
-    @RequestMapping("/updateproclamaltion")
-    public String updateproclamaltion(Proclamation proclamation,String title,String time,String comment)
-    	throws ParseException {
-    		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-    		java.util.Date date1 = (java.util.Date) formatter.parse(title
-    				.replace("T", " "));
-    		java.util.Date date2 = (java.util.Date) formatter.parse(time
-    				.replace("T", " "));
-    		java.util.Date date3 = (java.util.Date) formatter.parse(comment
-    				.replace("T", " "));
-		    proclamation.setTitle(title);
-		    proclamation.setTime(date1);
-		    proclamation.setComment(comment);
-		   proclamationService.updateByPrimaryKey(proclamation);
-    	return null;
-    }
+
+	// 修改一个对象
+	@RequestMapping(value = "/updateproclamaltion")
+	public String updateproclamaltion(Proclamation proclamation,Integer id, String title,Date time,
+			String comment) {
+		System.out.println("hshsh");
+		proclamation.setId(id);
+		proclamation.setTitle(title);
+		proclamation.setTime(time);
+		proclamation.setComment(comment);
+		proclamationService.updateByPrimaryKey(proclamation);
+		return "proclamation/index";
+	}
+
 	/**
 	 * 增加一个对象
 	 */
 	@RequestMapping("/insertproclamation")
-	public String insertProclamation(Proclamation proclamation) {
-
-		int r = proclamationService.insert(proclamation);
+	public String insertProclamation(Proclamation proclamation, HttpServletRequest req) {
+		
+		HttpSession sessiion = req.getSession();
+		Admin ad = (Admin) sessiion.getAttribute("user");
+		
+		
+		proclamation.setNumber(ad.getId());
+		proclamationService.insert(proclamation);
 		return "a";
 
 	}
-	//根据id查询一个对象
+
+	// 根据id查询一个对象
 	@RequestMapping("//ajaxdelbyid/{id}")
 	public ModelAndView ajaxDelById1(@PathVariable("id") Integer id) {
-		Proclamation proclamation=proclamationService.selectByPrimaryKey(id);
-		ModelAndView mv=new ModelAndView();
+		Proclamation proclamation = proclamationService.selectByPrimaryKey(id);
+		ModelAndView mv = new ModelAndView();
 		mv.setViewName("b");
 		mv.addObject("proclamation", proclamation);
-		
+
 		return mv;
 	}
-	//根据id查询一个对象
-		@RequestMapping("//ajaxdelbyid11/{id}")
-		public ModelAndView ajaxDelById11(@PathVariable("id") Integer id) {
-			Proclamation proclamation=proclamationService.selectByPrimaryKey(id);
-			ModelAndView mv=new ModelAndView();
-			mv.setViewName("c");
-			mv.addObject("proclamation", proclamation);
-			
-			return mv;
-		}
-	//根据id删除一个对象
+
+	// 根据id查询一个对象
+	@RequestMapping("//ajaxdelbyid11/{id}")
+	public ModelAndView ajaxDelById11(@PathVariable("id") Integer id) {
+		Proclamation proclamation = proclamationService.selectByPrimaryKey(id);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("c");
+		mv.addObject("proclamation", proclamation);
+
+		return mv;
+	}
+
+	// 根据id删除一个对象
 	@ResponseBody
 	@RequestMapping("/ajaxdelbyid")
-	public Integer ajaxDelById( Integer id) {
-		
-         int num=this.proclamationService.deleteByPrimaryKey(id);
+	public Integer ajaxDelById(Integer id) {
+
+		int num = this.proclamationService.deleteByPrimaryKey(id);
 		return num;
 
 	}

@@ -83,7 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<a href="${cxt}/jsp/jiapage/gongyingshanggonggao.jsp">供应商公告</a>
 									</li>
 									<li>
-										<a href="tousuzhongxin.html">投诉中心</a>
+										<a href="/mavenfst/selectcomplain?page=1">投诉中心</a>
 									</li>
 									<li>
 										<a href="${cxt}/jsp/jiapage/fuwuzhongxin.jsp">服务中心</a>
@@ -1266,7 +1266,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="pull-left r1">
 								<h5><span class=" glyphicon glyphicon-list "></span>&nbsp;&nbsp;&nbsp;系统通知
 							<li style="padding-right: 10px; border: none;float: right;">
-									<a href="#settings" style="font-size: 12px; color: white;padding-top: 15px;">更多</a>
+									<a href="/mavenfst/selecta" style="font-size: 12px; color: white;padding-top: 15px;">更多</a>
 							</li>
 							</h5>
 
@@ -1310,7 +1310,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</li>
 									<li>
 										<p class="navbar-text">
-											<a href="fuwuzhongxin.html#001" style="text-decoration: none;">招标前准备</a>
+											<a href="${cxt}/jsp/jiapage/fuwuzhongxin.jsp#zb" style="text-decoration: none; ">招标前准备</a>
 											<a href="${cxt}/jsp/jiapage/falvshengming.jsp" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;法律声明</a>
 
 										</p>

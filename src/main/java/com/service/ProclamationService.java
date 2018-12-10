@@ -1,6 +1,8 @@
-package com.service;
+﻿package com.service;
 
 import java.util.List;
+
+import com.bean.Declareform;
 import com.bean.Proclamation;
 
 /**
@@ -20,5 +22,8 @@ public interface ProclamationService {
 	int deleteByPrimaryKey(Integer id);
 
 	int updateByPrimaryKey(Proclamation proclamation);
+	Proclamation updateProclamationByTitle(String title);
+	Proclamation updateProclamationByComment(String comment);
+	List<Proclamation> selectAllProclamationJionSuppliers();
 
 }

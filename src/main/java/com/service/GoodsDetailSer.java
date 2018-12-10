@@ -2,18 +2,22 @@ package com.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-
+import com.bean.Admin;
 import com.bean.Goods;
 import com.bean.GoodsDetail;
-
+import com.bean.GoodsPrice;
 public interface GoodsDetailSer {
-	GoodsDetail selectgoodsbyid(Integer id);
-	List<GoodsDetail> selectall();
-	List<GoodsDetail> selectgoodsbyother(Integer goodscode,String goodsname,String type);
-	int deletebyid1(Integer id1);
-	int deletebyid2(Integer id3);
-	int deletebyid3(Integer id3);
-	int  insertgoods(Goods goods); 
-	int insertgoodsde(GoodsDetail goodsdetail);
+	List<Goods> selectall(); 
+	Goods selectbyid(Integer id);
+	Goods selectbygoodsname(String goodsname);
+	List<Goods> selectbyothers(String goodsname,String goodscode,String type);
+	int insertgoods(Goods goods);
+	int updategoods(Goods goods);
+	GoodsDetail selectdetailbyid(Integer id);
+	List<GoodsPrice> selectgp();
+	List<GoodsPrice> selecta();
+	int insertgoodsdetail(GoodsDetail goodsdetail);
+	GoodsDetail selectdetailbyspriceid(Integer id);
+	List<Admin> selectall2();
+
 }

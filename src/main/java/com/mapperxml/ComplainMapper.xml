@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ComplainMapper">
+
+	<resultMap type="com.bean.Complain" id="selectcomplainmap">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="caption" property="caption" />
+		<association property="answer" javaType="com.bean.Answer">
+			<id column="id1" property="id" />
+			<result column="answertime" property="answertime" />
+
+		</association>
+
+		<association property="admin" javaType="com.bean.Admin">
+			<id column="id2" property="id" />
+			<result column="adminname" property="adminname" />
+		</association>
+
+	</resultMap>
+	
+	<resultMap type="com.bean.Complain" id="selectcomplainByIdmap">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="caption" property="caption" />
+		<result column="content" property="content" />
+		<association property="answer" javaType="com.bean.Answer">
+			<id column="id1" property="id" />
+			<result column="answertime" property="answertime" />
+			<result column="answercontent" property="answercontent" />
+
+		</association>
+
+		<association property="admin" javaType="com.bean.Admin">
+			<id column="id2" property="id" />
+			<result column="adminname" property="adminname" />
+		</association>
+
+	</resultMap>
+	
+	<select id="selectcomplain" resultMap="selectcomplainmap">
+
+		select a.id id,a.name,a.caption,a.content,b.id id1,b.answertime , c.id id2,c.adminname  from complain a
+		left join answer b on a.id=b.complainid
+		left join admin c on b.adminid
+		= c.id group by a.id
+
+	</select>
+
+	<select id="selectcomplainById" resultMap="selectcomplainByIdmap"  >
+		select * from complain a left join answer b on a.id=b.complainid
+		left join admin c on b.adminid = c.id where a.id=#{id}
+	</select>
+
+</mapper>
+
+
+
+
+
+
