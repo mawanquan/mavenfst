@@ -26,7 +26,7 @@
 		sign=#{0} and status=#{1}
 	</select>
 	<select id="selectmyAllBysign" resultMap="selectAllBysignmap"
-		parameterType="Interger">
+		parameterType="Integer">
 		select id,publisher
 		,title,content,applydate,finishdate,opentime,zbmoney,hit
 		from
