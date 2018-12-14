@@ -841,31 +841,17 @@
 							</h5>
 
 						</div>
-						<div class="r2 pull-left">
-							<ul class="r2-2">
-								<li><a href="#"><span
-										class="glyphicon glyphicon-record" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-										class="small text-muted">2018-11-15</span> &nbsp;&nbsp;&nbsp;<span
-										style="color:#333;">系统停机公告</span></a></li>
-								<li><a href="#"><span
-										class="glyphicon glyphicon-record" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-										class="small text-muted">2018-11-15</span> &nbsp;&nbsp;&nbsp;<span
-										style="color:#333;">系统停机公告</span></a></li>
-								<li><a href="#"><span
-										class="glyphicon glyphicon-record" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-										class="small text-muted">2018-11-15</span> &nbsp;&nbsp;&nbsp;<span
-										style="color:#333;">系统停机公告</span></a></li>
-								<li><a href="#"><span
-										class="glyphicon glyphicon-record" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-										class="small text-muted">2018-11-15</span> &nbsp;&nbsp;&nbsp;<span
-										style="color:#333;">系统停机公告</span></a></li>
-								<li><a href="#"><span
-										class="glyphicon glyphicon-record" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-										class="small text-muted">2018-11-15</span> &nbsp;&nbsp;&nbsp;<span
-										style="color:#333;">系统停机公告</span></a></li>
-
-							</ul>
-						</div>
+						
+							<div class="r2 pull-left">
+								<ul class="r2-2">
+								<li><a href="${cxt }/selecta1" id="ok">展开通告</a></li>
+								<c:forEach items="${list }" var="v">
+									<li>
+										<a href="${cxt }/ajaxdelbyid/${v.id}"><span class="glyphicon glyphicon-record" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;<span style="color:#333;"> ${v.title}</span></a>
+                                   	</li>
+								 </c:forEach>	
+								</ul>
+							</div>
 
 						<div class="pull-left r1">
 							<h5>
@@ -914,16 +900,6 @@
 									<button class="btn btn-default" type="submit">进入客服</button></li>
 
 
-							<div class="r2 pull-left">
-								<ul class="r2-2">
-								<li><a href="${cxt }/selecta1" id="ok">展开通告</a></li>
-								<c:forEach items="${list }" var="v">
-									<li>
-										<a href="${cxt }/ajaxdelbyid/${v.id}"><span class="glyphicon glyphicon-record" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;<span style="color:#333;"> ${v.title}</span></a>
-                                   	</li>
-								 </c:forEach>	
-								</ul>
-							</div>
 
 							<div class="pull-left r1">
 								<h5><span class=" glyphicon glyphicon-list "></span>&nbsp;&nbsp;&nbsp;业务流程回答</h5>
@@ -965,7 +941,6 @@
 											<br />
 											<a href="#" style="position: relative;left: -18px;">
 										        邮箱：support@foxmail.com	</li>
-								 </c:forEach>	
 								</ul>
 							</div>
 
