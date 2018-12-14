@@ -43,6 +43,14 @@ public class ProclamationController {
 		return "a";
 
 	}
+	@RequestMapping("/selectselect")
+	public String selectproclamation11(HttpServletRequest req) {
+		List<Proclamation> list = proclamationService.SelectAll();
+		req.setAttribute("list", list);
+
+		return "gengduo";
+
+	}
 	@RequestMapping("/select1")
 	public String selectproclamation1(HttpServletRequest req) {
 		List<Proclamation> list = proclamationService.SelectAll();

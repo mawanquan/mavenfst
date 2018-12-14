@@ -835,7 +835,7 @@
 							<h5>
 								<span class=" glyphicon glyphicon-list "></span>&nbsp;&nbsp;&nbsp;系统通知
 								<li style="padding-right: 10px; border: none;float: right;">
-									<a href="/mavenfst/selecta"
+									<a href="/mavenfst/selectselect"
 									style="font-size: 12px; color: white;padding-top: 15px;">更多</a>
 								</li>
 							</h5>
@@ -899,102 +899,7 @@
 								<li><img src="images/img/kefu.png" />
 									<button class="btn btn-default" type="submit">进入客服</button></li>
 
-
-
-							<div class="pull-left r1">
-								<h5><span class=" glyphicon glyphicon-list "></span>&nbsp;&nbsp;&nbsp;业务流程回答</h5>
-							</div>
-							<div class="r2 pull-left">
-								<ul class="r2-1" style="padding-left: 30px; position: relative;top: 30px;">
-									<li>
-										<p class="navbar-text">
-											<img src="images/img/biao.png" /> &nbsp;&nbsp;&nbsp;&nbsp;
-											<img src="images/img/shu.png" />
-										</p>
-									</li>
-									<li>
-										<p class="navbar-text">
-											<a href="${cxt}/jsp/jiapage/fuwuzhongxin.jsp#zb" style="text-decoration: none; ">招标前准备</a>
-											<a href="${cxt}/jsp/jiapage/falvshengming.jsp" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;法律声明</a>
-
-										</p>
-									</li>
-								</ul>
-							</div>
-
-							<div class="pull-left r1">
-								<h5><span class=" glyphicon glyphicon-list "></span>&nbsp;&nbsp;&nbsp;技术服务</h5>
-							</div>
-							<div class="r2   pull-left">
-								<ul class="r2-3" style="height: 220px;">
-									<li style="color: #00BFFF;">
-										<p class="navbar-text">电子采购与招标投标系统技术支持
-											<br />（供应商注册、CA证书办理、电子招投标相关业务)
-											<br /> 电话：400-139-0123
-											<br />
-											<a href="#" style="position: relative;left: -18px;">
-										        邮箱：support@chinamobile.com
-											</a>
-											<br />
-											<br /> 登录密码重置技术支持
-											<br />电话：400-139-0123
-											<br />
-											<a href="#" style="position: relative;left: -18px;">
-										        邮箱：support@foxmail.com	</li>
-								</ul>
-							</div>
-
-							<div class="pull-left r1">
-								<h5><span class=" glyphicon glyphicon-list "></span>&nbsp;&nbsp;&nbsp;业务流程回答</h5>
-							</div>
-							<div class="r2 pull-left">
-								<ul class="r2-1" style="padding-left: 30px; position: relative;top: 30px;">
-									<li>
-										<p class="navbar-text">
-											<img src="images/img/biao.png" /> &nbsp;&nbsp;&nbsp;&nbsp;
-											<img src="images/img/shu.png" />
-										</p>
-									</li>
-									<li>
-										<p class="navbar-text">
-											<a href="${cxt}/jsp/jiapage/fuwuzhongxin.jsp#zb" style="text-decoration: none; ">招标前准备</a>
-											<a href="${cxt}/jsp/jiapage/falvshengming.jsp" style="text-decoration: none;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;法律声明</a>
-
-										</p>
-									</li>
-								</ul>
-							</div>
-
-							<div class="pull-left r1">
-								<h5><span class=" glyphicon glyphicon-list "></span>&nbsp;&nbsp;&nbsp;技术服务</h5>
-							</div>
-							<div class="r2   pull-left">
-								<ul class="r2-3" style="height: 220px;">
-									<li style="color: #00BFFF;">
-										<p class="navbar-text">电子采购与招标投标系统技术支持
-											<br />（供应商注册、CA证书办理、电子招投标相关业务)
-											<br /> 电话：400-139-0123
-											<br />
-											<a href="#" style="position: relative;left: -18px;">
-										        邮箱：support@chinamobile.com
-											</a>
-											<br />
-											<br /> 登录密码重置技术支持
-											<br />电话：400-139-0123
-											<br />
-											<a href="#" style="position: relative;left: -18px;">
-										        邮箱：support@foxmail.com
-											</a>
-										</p>
-										<li/>
-										<li>
-											<img src="images/img/kefu.png" />
-											<button class="btn btn-default" type="submit" >进入客服</button>
-										</li>
-
-								</ul>
-
-							</div>						</div>
+                               </ul>
 					</div>
 				</div>
 			</div>
