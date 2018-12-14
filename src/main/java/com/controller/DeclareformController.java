@@ -54,6 +54,15 @@ public class DeclareformController {
 		mv.addObject("pg", pg);
 		return mv;
 	}
+	@RequestMapping(value = "/maindata")
+	public ModelAndView mainshow(Integer page) {
+//		PageHelper.startPage(page, 8);
+		List<Declareform> list = declareformService.selectAllBysign(0,1);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("zhaobiao/listshow");
+		mv.addObject("list", list);
+		return mv;
+	}
 
 	@RequestMapping(value = "/data2/{page}")
 	public ModelAndView show2(@PathVariable("page") int page) {
@@ -69,7 +78,15 @@ public class DeclareformController {
 		mv.addObject("pg", pg);
 		return mv;
 	}
-
+	@RequestMapping(value = "/maindata2")
+	public ModelAndView mainshow2(Integer page) {
+//		PageHelper.startPage(page, 8);
+		List<Declareform> list = declareformService.selectAllBysign(1,1);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("zhaobiao/listshow");
+		mv.addObject("list", list);
+		return mv;
+	}
 	@RequestMapping(value = "/data3/{page}")
 	public ModelAndView show3(@PathVariable("page") int page) {
 		PageHelper.startPage(page, 5);
@@ -84,7 +101,15 @@ public class DeclareformController {
 		mv.addObject("pg", pg);
 		return mv;
 	}
-
+	@RequestMapping(value = "/maindata3")
+	public ModelAndView mainshow3(Integer page) {
+//		PageHelper.startPage(page, 8);
+		List<Declareform> list = declareformService.selectAllBysign(2,1);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("zhaobiao/listshow");
+		mv.addObject("list", list);
+		return mv;
+	}
 	@RequestMapping(value = "/search")
 	public ModelAndView search(Integer page, String title) {
 

@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import net.sf.jsqlparser.statement.delete.Delete;
@@ -73,7 +74,8 @@ public class Declareform2Controller {
 	// 增加招标文件到数据库
 	@RequestMapping(value = "/insertfabu")
 	public String insertzb(Declareform declareform, String[] filess,
-			String finishdate0, String opentime0) throws ParseException {
+			String finishdate0, String opentime0, HttpSession session)
+			throws ParseException {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		Date date1 = (Date) formatter.parse(formatter.format(new Date()));
 		Date date2 = (Date) formatter.parse(finishdate0.replace("T", " "));
@@ -83,6 +85,8 @@ public class Declareform2Controller {
 		declareform.setOpentime(date3);
 		declareform.setSign(0);
 		declareform.setStatus(0);
+		Admin admin = (Admin) session.getAttribute("user");
+		declareform.setPublisher(admin.getId());
 		declareformService.insertDeclareform(declareform);
 		Declareform d2 = declareformService
 				.selectDeclareformBytitle(declareform.getTitle());
@@ -113,6 +117,26 @@ public class Declareform2Controller {
 		mv.setViewName("zhaobiao/zbset");
 		mv.addObject("list", list);
 		mv.addObject("pg", pg);
+		mv.addObject("path", "fabuzbset");
+		return mv;
+	}
+
+	// 我的发布招标设置
+	@RequestMapping(value = "/myfabuzbset/{page}")
+	public ModelAndView myfabuzbset(@PathVariable("page") int page,
+			HttpSession session) {
+		PageHelper.startPage(page, 10);
+		// ////////////////////////////
+		Admin admin = (Admin) session.getAttribute("user");
+		List<Declareform> list = declareformService.selectAllBystatus(0,
+				admin.getId());
+		// ////////////////////////
+		PageInfo pg = new PageInfo(list);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("zhaobiao/zbset");
+		mv.addObject("list", list);
+		mv.addObject("pg", pg);
+		mv.addObject("path", "myfabuzbset");
 		return mv;
 	}
 
@@ -141,6 +165,7 @@ public class Declareform2Controller {
 
 		return "forward:/fabuzbset/1";
 	}
+
 	@ResponseBody
 	@RequestMapping(value = "/deletezb")
 	public String deletezb(int id) {
@@ -188,12 +213,42 @@ public class Declareform2Controller {
 				}
 			}
 		}
-		// ////////////////////////
 		PageInfo pg = new PageInfo(list);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("zhaobiao/houtai/zhengzaizb");
 		mv.addObject("list", list);
 		mv.addObject("pg", pg);
+		mv.addObject("path", "zhengzaizb");
+		return mv;
+	}
+
+	// 正在招标项目
+	@RequestMapping(value = "/myzhengzaizb/{page}")
+	public ModelAndView myzhengzaizb(@PathVariable("page") int page,
+			HttpSession session) throws ParseException {
+		PageHelper.startPage(page, 10);
+		// ////////////////////////////
+		Admin admin = (Admin) session.getAttribute("user");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		Date date1 = (Date) formatter.parse(formatter.format(new Date()));
+		List<Declareform> list = declareformService.selectmyAllBysign(
+				admin.getId(), 0, 1);
+		if (list.size() != 0) {
+			for (Declareform declareform : list) {
+				if (declareform.getFinishdate().getTime() < date1.getTime()
+						&& date1.getTime() < declareform.getOpentime()
+								.getTime()) {
+					declareform.setSign(1);
+					declareformService.updateById(declareform);
+				}
+			}
+		}
+		PageInfo pg = new PageInfo(list);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("zhaobiao/houtai/zhengzaizb");
+		mv.addObject("list", list);
+		mv.addObject("pg", pg);
+		mv.addObject("path", "myzhengzaizb");
 		return mv;
 	}
 
@@ -221,6 +276,36 @@ public class Declareform2Controller {
 		mv.setViewName("zhaobiao/houtai/jiezhizb");
 		mv.addObject("list", list);
 		mv.addObject("pg", pg);
+		mv.addObject("path", "jiezhizb");
+		return mv;
+	}
+
+	// 我的已截止招标待开标项目
+	@RequestMapping(value = "/myjiezhizb/{page}")
+	public ModelAndView myjiezhizb(@PathVariable("page") int page,
+			HttpSession session) throws ParseException {
+		PageHelper.startPage(page, 10);
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		Date date1 = (Date) formatter.parse(formatter.format(new Date()));
+		// ////////////////////////////
+		Admin admin = (Admin) session.getAttribute("user");
+		List<Declareform> list = declareformService.selectmyAllBysign(
+				admin.getId(), 1, 1);
+		if (list.size() != 0) {
+			for (Declareform declareform : list) {
+				if (declareform.getOpentime().getTime() < date1.getTime()) {
+					declareform.setSign(2);
+					declareformService.updateById(declareform);
+				}
+			}
+		}
+		// ////////////////////////
+		PageInfo pg = new PageInfo(list);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("zhaobiao/houtai/jiezhizb");
+		mv.addObject("list", list);
+		mv.addObject("pg", pg);
+		mv.addObject("path", "myjiezhizb");
 		return mv;
 	}
 
@@ -231,7 +316,6 @@ public class Declareform2Controller {
 		PageHelper.startPage(page, 10);
 		// SimpleDateFormat formatter = new
 		// SimpleDateFormat("yyyy-MM-dd HH:mm");
-		// ////////////////////////////
 		// Admin admin = (Admin) session.getAttribute("user");
 		List<Declareform> list = declareformService.selectAllBysign(2, 1);
 		List<Declareform> list2 = new ArrayList<Declareform>();
@@ -247,6 +331,35 @@ public class Declareform2Controller {
 		mv.setViewName("zhaobiao/houtai/kekaibiao");
 		mv.addObject("list", list2);
 		mv.addObject("pg", pg);
+		mv.addObject("path", "kekaibiao");
+		return mv;
+	}
+
+	// 我的可开标项目
+	@RequestMapping(value = "/mykekaibiao/{page}")
+	public ModelAndView mykekaibiao(@PathVariable("page") int page,
+			HttpSession session) {
+		PageHelper.startPage(page, 10);
+		// SimpleDateFormat formatter = new
+		// SimpleDateFormat("yyyy-MM-dd HH:mm");
+		// ////////////////////////////
+		Admin admin = (Admin) session.getAttribute("user");
+		List<Declareform> list = declareformService.selectmyAllBysign(
+				admin.getId(), 2, 1);
+		List<Declareform> list2 = new ArrayList<Declareform>();
+		for (Declareform declareform : list) {
+			if (declareform.getHit() == null
+					|| ("").equals(declareform.getHit())) {
+				list2.add(declareform);
+			}
+		}
+		// ////////////////////////
+		PageInfo pg = new PageInfo(list2);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("zhaobiao/houtai/kekaibiao");
+		mv.addObject("list", list2);
+		mv.addObject("pg", pg);
+		mv.addObject("path", "mykekaibiao");
 		return mv;
 	}
 
@@ -309,6 +422,33 @@ public class Declareform2Controller {
 		mv.setViewName("zhaobiao/houtai/finishzb");
 		mv.addObject("list", list2);
 		mv.addObject("pg", pg);
+		mv.addObject("path", "finishzb");
+		return mv;
+	}
+
+	// 已完成招标项目
+	@RequestMapping(value = "/myfinishzb/{page}")
+	public ModelAndView myfinishzb(@PathVariable("page") int page,
+			HttpSession session) {
+		PageHelper.startPage(page, 10);
+		// SimpleDateFormat formatter = new
+		// SimpleDateFormat("yyyy-MM-dd HH:mm");
+		// ////////////////////////////
+		Admin admin = (Admin) session.getAttribute("user");
+		List<Declareform> list = declareformService.selectmyAllBysign(admin.getId(), 2, 1);
+		List<Declareform> list2 = new ArrayList<Declareform>();
+		for (Declareform declareform : list) {
+			if (declareform.getHit() != null) {
+				list2.add(declareform);
+			}
+		}
+		// ////////////////////////
+		PageInfo pg = new PageInfo(list2);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("zhaobiao/houtai/finishzb");
+		mv.addObject("list", list2);
+		mv.addObject("pg", pg);
+		mv.addObject("path", "myfinishzb");
 		return mv;
 	}
 
@@ -321,10 +461,24 @@ public class Declareform2Controller {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("zhaobiao/houtai/feibiao");
 		mv.addObject("list", list);
+		mv.addObject("path", "feibiao");
 		mv.addObject("pg", pg);
 		return mv;
 	}
-
+	// 我的废标项目
+		@RequestMapping(value = "/myfeibiao/{page}")
+		public ModelAndView myfeibiao(@PathVariable("page") int page,HttpSession session) {
+			PageHelper.startPage(page, 5);
+			Admin admin = (Admin) session.getAttribute("user");
+			List<Declareform> list = declareformService.selectmyAllBysign(admin.getId(), 2, 2);
+			PageInfo pg = new PageInfo(list);
+			ModelAndView mv = new ModelAndView();
+			mv.setViewName("zhaobiao/houtai/feibiao");
+			mv.addObject("list", list);
+			mv.addObject("path", "myfeibiao");
+			mv.addObject("pg", pg);
+			return mv;
+		}
 	// 废标项目
 	@RequestMapping(value = "/feibiaoset")
 	public String feibiaoset(int id) {

@@ -9,10 +9,11 @@ public interface DeclareformService {
 
 	// 根据招标类型查询所有数据
 	List<Declareform> selectAllBysign(int sign,int status);
+	//查询自己所有正在招标的项目 
+	List<Declareform> selectmyAllBysign(Integer publisher,Integer sign,Integer status);
 
 	// 查询所有数据
 	List<Declareform> selectAll();
-
 	// 搜索查询
 	List<Declareform> selectAllByTitle(String title, int sign,int status);
 
