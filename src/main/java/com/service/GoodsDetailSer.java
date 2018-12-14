@@ -16,8 +16,13 @@ public interface GoodsDetailSer {
 	GoodsDetail selectdetailbyid(Integer id);
 	List<GoodsPrice> selectgp();
 	List<GoodsPrice> selecta();
+	GoodsPrice selectbytitle(String goodstitle);
 	int insertgoodsdetail(GoodsDetail goodsdetail);
 	GoodsDetail selectdetailbyspriceid(Integer id);
 	List<Admin> selectall2();
+	int insertgp(GoodsPrice goodsprice);
+	Admin selectbyadmin(String adminname);
+	Integer updateform(Integer id,Integer form);
+	List<GoodsPrice> selectform();
 
 }

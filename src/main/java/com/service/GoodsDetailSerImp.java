@@ -104,4 +104,29 @@ public class GoodsDetailSerImp implements GoodsDetailSer{
 		// TODO Auto-generated method stub
 		return gp.selectall2();
 	}
+	@Override
+	public int insertgp(GoodsPrice goodsprice) {
+		// TODO Auto-generated method stub
+		return gp.insert(goodsprice);
+	}
+	@Override
+	public Admin selectbyadmin(String adminname) {
+		// TODO Auto-generated method stub
+		return gp.selectbyadmin(adminname);
+	}
+	@Override
+	public GoodsPrice selectbytitle(String goodstitle) {
+		// TODO Auto-generated method stub
+		return gp.selectbytitle(goodstitle);
+	}
+	@Override
+	public Integer updateform(Integer id, Integer form) {
+		// TODO Auto-generated method stub
+		return gp.updateform(id, form);
+	}
+	@Override
+	public List<GoodsPrice> selectform() {
+		// TODO Auto-generated method stub
+		return gp.selectform();
+	}
 }

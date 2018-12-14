@@ -8,24 +8,46 @@
 		admin a on g.userid=a.id
 	</select>
 	
+	<select id="selectbytitle" resultType="com.bean.GoodsPrice">
+	select * from goodsprice where goodstitle=#{goodstitle}
+	</select>
+	
 	<select id="selectall2" resultType="com.bean.Admin">
 	select * from admin 
 	</select>
-
-	<select id="selecta" resultMap="ma">
+	
+	<select id="selectbyadmin" resultType="com.bean.Admin">
+	select * from admin where adminname=#{adminname}
+	</select>
+	<select id="selectform" resultMap="ma">
 		select p.id
-		pid,goodstitle,lastdate,d.id did,num,getdate, g.id gid,goodsname,a.id
+		pid,goodstitle,lastdate,form,d.id did,num,getdate, g.id gid,goodsname,a.id
 		aid,adminname from
 		goodsprice p left join goodsdetail d on
 		d.goodspriceid=p.id left join
 		goods g on d.goodsid=g.id left join admin
-		a on p.userid=a.id
+		a on p.userid=a.id where form=1
+	</select>
+	
+	<!-- 改变状态 -->
+	<update id="updateform" parameterType="String">
+	update goodsprice set form=#{form} where id=#{id}
+	</update>
+	<select id="selecta" resultMap="ma">
+		select p.id
+		pid,goodstitle,lastdate,form,d.id did,num,getdate, g.id gid,goodsname,a.id
+		aid,adminname from
+		goodsprice p left join goodsdetail d on
+		d.goodspriceid=p.id left join
+		goods g on d.goodsid=g.id left join admin
+		a on p.userid=a.id where form=0
 	</select>
 
 	<resultMap type="com.bean.GoodsPrice" id="ma">
 		<id column="pid" property="id" />
 		<result column="goodstitle" property="goodstitle" />
 		<result column="lastdate" property="lastdate" />
+		<result column="form" property="form"/>
 		<association property="admin" javaType="com.bean.Admin">
 			<id column="aid" property="id" />
 			<result column="adminname" property="adminname" />

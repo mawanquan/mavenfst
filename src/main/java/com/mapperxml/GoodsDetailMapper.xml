@@ -8,7 +8,7 @@
 		select * from goodsdetail where goodspriceid=#{goodspriceid}
 	</select>
 	
-	<insert id="insertgoodsdetail">
+	<insert id="insertgoodsdetail" parameterType="com.bean.GoodsDetail">
 	insert into goodsdetail (goodspriceid,goodsid,num,getdate)value(goodspriceid=#{goodspriceid},goodsid=#{goodsid},num=#{num},getdate=#{getdate}) 
 	</insert>
 	

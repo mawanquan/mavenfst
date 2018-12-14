@@ -11,4 +11,8 @@ public interface GoodsPriceMapper extends Mapper<com.bean.GoodsPrice>{
 	List<GoodsPrice> selectgp();
 	List<GoodsPrice> selecta();
 	List<Admin> selectall2();
+	GoodsPrice selectbytitle(String goodstitle);
+	Admin selectbyadmin(String adminname);
+	Integer updateform(Integer id,Integer form);
+	List<GoodsPrice> selectform();
 }
