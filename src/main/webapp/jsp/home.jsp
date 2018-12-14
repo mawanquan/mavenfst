@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -80,7 +81,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<a href="${cxt}/jsp/jiapage/caigougonggao.jsp">招标采购公告</a>
 									</li>
 									<li>
-										<a href="${cxt}/jsp/jiapage/gongyingshanggonggao.jsp">供应商公告</a>
+										<a href="/mavenfst/select1">供应商公告</a>
 									</li>
 									<li>
 										<a href="tousuzhongxin.html">投诉中心</a>
@@ -1273,27 +1274,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 							<div class="r2 pull-left">
 								<ul class="r2-2">
+								<li><a href="${cxt }/selecta1" id="ok">展开通告</a></li>
+								<c:forEach items="${list }" var="v">
 									<li>
-										<a href="#"><span class="glyphicon glyphicon-record" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="small text-muted">2018-11-15</span> &nbsp;&nbsp;&nbsp;<span style="color:#333;">系统停机公告</span></a>
-
+										<a href="${cxt }/ajaxdelbyid/${v.id}"><span class="glyphicon glyphicon-record" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;<span style="color:#333;"> ${v.title}</span></a>
+                                   
 									</li>
-									<li>
-										<a href="#"><span class="glyphicon glyphicon-record" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="small text-muted">2018-11-15</span> &nbsp;&nbsp;&nbsp;<span style="color:#333;">系统停机公告</span></a>
-
-									</li>
-									<li>
-										<a href="#"><span class="glyphicon glyphicon-record" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="small text-muted">2018-11-15</span> &nbsp;&nbsp;&nbsp;<span style="color:#333;">系统停机公告</span></a>
-
-									</li>
-									<li>
-										<a href="#"><span class="glyphicon glyphicon-record" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="small text-muted">2018-11-15</span> &nbsp;&nbsp;&nbsp;<span style="color:#333;">系统停机公告</span></a>
-
-									</li>
-									<li>
-										<a href="#"><span class="glyphicon glyphicon-record" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="small text-muted">2018-11-15</span> &nbsp;&nbsp;&nbsp;<span style="color:#333;">系统停机公告</span></a>
-
-									</li>
-
+								 </c:forEach>	
 								</ul>
 							</div>
 

@@ -15,8 +15,8 @@
         <association property="admin" javaType="com.bean.Admin">
         <id property="id" column="id1" />
         
-        </association>
-	</resultMap>
+        </association> 
+	</resultMap>   
 
 	<select id="selectAllProclamationJionSuppliers" resultMap="selectAllProclamationJionSuppliersMap"><!--连表查询 -->
 		select a.id id,a.number number,a.title title,a.time time,a.comment
