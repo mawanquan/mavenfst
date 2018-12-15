@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Component;
 
 import com.bean.Answer;
+import com.bean.Complain;
 import com.dao.AnswerMapper;
 
 /**
@@ -57,6 +58,17 @@ public class AnswerServiceImp implements AnswerService {
 	@Override
 	public int insert(Answer answer) {
 		return answerMapper.insert(answer);
+	}
+
+	/**
+	 * 后台查询投诉对象
+	 * 
+	 * @return
+	 */
+	@Override
+	public Complain selectcomplainkeyid(Integer id) {
+
+		return answerMapper.selectcomplainkeyid(id);
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -59,4 +60,23 @@ public class ComplainServiceImp implements ComplainService {
 
 		return complainMapper.selectcomplainById(id);
 	}
+
+	/*
+	 * 根据登录用户查询自己所有投诉内容
+	 */
+	@Override
+	public List<Complain> selectcomplainBysupplierid(Integer suppliersid) {
+
+		return complainMapper.selectcomplainBysupplierid(suppliersid);
+	}
+
+	/**
+	 * 统计供货商地址信息
+	 */
+	@Override
+	public List<Map<String, Object>> selectAddress() {
+
+		return complainMapper.selectAddress();
+	}
+
 }

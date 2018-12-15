@@ -1,7 +1,6 @@
 package com.bean;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import javax.persistence.Id;
 import javax.persistence.Transient;
@@ -32,7 +31,7 @@ public class Answer implements Serializable {
 	@Id
 	private Integer id;
 
-	private Date answertime;
+	private String answertime;
 
 	private String answercontent;
 
@@ -58,12 +57,12 @@ public class Answer implements Serializable {
 		this.id = id;
 	}
 
-	public Date getAnswertime() {
+	public String getAnswertime() {
 		return answertime;
 	}
 
-	public void setAnswertime(Date answertime) {
-		this.answertime = answertime;
+	public void setAnswertime(String string) {
+		this.answertime = string;
 	}
 
 	public String getAnswercontent() {

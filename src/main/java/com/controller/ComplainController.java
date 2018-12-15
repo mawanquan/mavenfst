@@ -1,6 +1,8 @@
 package com.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -71,12 +73,45 @@ public class ComplainController {
 	public String insertComplain(Complain complain, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		Suppliers sl = (Suppliers) session.getAttribute("supplier");
-
 		complain.setSuppliersid(sl.getSupplierid());
-
 		complain.setName(sl.getSuppliername());
 		int r = complainService.insert(complain);
 		return "redirect:/selectcomplain?page=1";
-
 	}
+
+	/*
+	 * 根据登录用户查询自己所有投诉内容
+	 */
+	@RequestMapping("/lihai")
+	public String selectcomplainBysupplierid2(HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		Suppliers sl = (Suppliers) session.getAttribute("supplier");
+		System.out.println(sl.getSupplierid());
+		List<Complain> list3 = complainService.selectcomplainBysupplierid(sl
+				.getSupplierid());
+		req.setAttribute("list3", list3);
+		req.setAttribute("data", "/jsp/selectcomplainBysupplierid.jsp");
+		return "/toubiaofront/toubiaomain";
+	}
+
+	/**
+	 * 统计供货商地址信息
+	 */
+	@RequestMapping("/tongji")
+	public String selectAddress(HttpServletRequest req) {
+		List<Map<String, Object>> list4 = complainService.selectAddress();
+		req.setAttribute("list4", list4);
+
+		List<List<Object>> list = new ArrayList<List<Object>>();
+		for (Map<String, Object> map : list4) {
+			List<Object> lis2 = new ArrayList<Object>();
+			lis2.add("'" + map.get("address") + "'");
+			lis2.add(map.get("num"));
+			list.add(lis2);
+		}
+		req.setAttribute("list", list);
+		System.out.println(list);
+		return "tongji";
+	}
+
 }

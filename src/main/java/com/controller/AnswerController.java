@@ -1,5 +1,7 @@
 package com.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bean.Admin;
 import com.bean.Answer;
+import com.bean.Complain;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.service.AnswerService;
@@ -40,9 +43,10 @@ public class AnswerController {
 	 * 根据主键查询一个对象
 	 */
 	@RequestMapping("/selectbyprimarykeyanswer")
-	public String selectByPrimaryKeyAnswer(HttpServletRequest req, Integer id) {
-		Answer answer = answerService.selectByPrimaryKey(id);
-		req.setAttribute("answer", answer);
+	public String selectcomplainkeyid(HttpServletRequest req, Integer id) {
+
+		Complain complain = (Complain) answerService.selectcomplainkeyid(id);
+		req.setAttribute("complain", complain);
 		return "selectbyprimarykeyanswer";
 	}
 
@@ -74,10 +78,11 @@ public class AnswerController {
 
 		HttpSession session = request.getSession();
 		Admin aw = (Admin) session.getAttribute("user");
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd  HH:mm");
 
 		answer.setComplainid(dlkfdkid);
 		answer.setAdminid(aw.getId());
-
+		answer.setAnswertime(df.format(new Date()));
 		int r = answerService.insert(answer);
 
 		return "redirect:/selectanswer?page=1";

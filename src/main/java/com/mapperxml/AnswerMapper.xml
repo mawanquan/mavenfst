@@ -20,13 +20,38 @@
 		</association>
 
 	</resultMap>
+	
+	<resultMap type="com.bean.Complain" id="selectcomplainByIdmap">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="caption" property="caption" />
+		<result column="content" property="content" />
+		<association property="answer" javaType="com.bean.Answer">
+			<id column="id1" property="id" />
+			<result column="answertime" property="answertime" />
+			<result column="answercontent" property="answercontent" />
+
+		</association>
+
+		<association property="admin" javaType="com.bean.Admin">
+			<id column="id2" property="id" />
+			<result column="adminname" property="adminname" />
+		</association>
+
+	</resultMap>
+	
 
 
 	<select id="selectanswer" resultMap="selectanswermap">
 		select  a.id id,a.answertime,b.id id1,b.name,b.caption,b.content, c.id id2,c.adminname  from answer a
 		right join complain b on a.complainid=b.id
 		left join admin c on a.adminid
-		= c.id group by b.id
+		= c.id group by b.id order by id1 desc
+	</select>
+	
+	<select id="selectcomplainkeyid" resultMap="selectcomplainByIdmap"  >
+		select * from complain a left join answer b on a.id=b.complainid
+		left join admin c on b.adminid = c.id where a.id=#{id}
 	</select>
 
 </mapper>

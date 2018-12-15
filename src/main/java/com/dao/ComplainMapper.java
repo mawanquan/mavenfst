@@ -1,6 +1,7 @@
 package com.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
@@ -26,4 +27,14 @@ public interface ComplainMapper extends Mapper<Complain> {
 
 	List<Complain> selectcomplainById();
 
+	/*
+	 * 根据登录用户查询自己所有投诉内容
+	 */
+
+	List<Complain> selectcomplainBysupplierid(Integer suppliersid);
+
+	/**
+	 * 统计供货商地址信息
+	 */
+	List<Map<String, Object>> selectAddress();
 }

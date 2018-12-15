@@ -3,6 +3,7 @@ package com.service;
 import java.util.List;
 
 import com.bean.Answer;
+import com.bean.Complain;
 
 /**
  * service层接口
@@ -33,5 +34,12 @@ public interface AnswerService {
 	 * 增加一个对象
 	 */
 	int insert(Answer answer);
+
+	/**
+	 * 后台查询投诉对象
+	 * 
+	 * @return
+	 */
+	Complain selectcomplainkeyid(Integer id);
 
 }

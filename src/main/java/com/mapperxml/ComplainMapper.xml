@@ -38,12 +38,42 @@
 
 	</resultMap>
 	
+	<resultMap type="com.bean.Complain" id="selectcomplainBySuppliersidmap">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="caption" property="caption" />
+		<result column="content" property="content" />
+		
+		<association property="suppliers" javaType="com.bean.Suppliers">
+			<id column="id1" property="supplierid" />
+			<result column="address" property="address" />
+		</association>
+		<association property="answer" javaType="com.bean.Answer">
+			<id column="id2" property="id" />
+			<result column="answertime" property="answertime" />
+			<result column="answercontent" property="answercontent" />
+
+		</association>
+
+		
+
+	</resultMap>
+	
+	<resultMap type="com.bean.Suppliers" id="selectAddressmap">
+		<id column="supplierid" property="supplierid" />
+		<result column="address" property="address" />
+		
+		
+	</resultMap>
+	
+	
+	
 	<select id="selectcomplain" resultMap="selectcomplainmap">
 
 		select a.id id,a.name,a.caption,a.content,b.id id1,b.answertime , c.id id2,c.adminname  from complain a
 		left join answer b on a.id=b.complainid
 		left join admin c on b.adminid
-		= c.id group by a.id
+		= c.id group by a.id order by id desc
 
 	</select>
 
@@ -51,6 +81,14 @@
 		select * from complain a left join answer b on a.id=b.complainid
 		left join admin c on b.adminid = c.id where a.id=#{id}
 	</select>
+	<select id="selectcomplainBysupplierid" resultMap="selectcomplainBySuppliersidmap"  >
+		select * from complain a left join suppliers b on a.suppliersid=b.supplierid
+		left join answer c on a.id = c.complainid where a.suppliersid=#{id}
+	</select>
+ <select id="selectAddress"  resultType="map">
+ select address, count(supplierid) num from suppliers group by address
+ 
+ </select>
 
 </mapper>
 

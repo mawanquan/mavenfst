@@ -28,6 +28,17 @@ public class Complain implements Serializable {
 		this.answer = answer;
 	}
 
+	public Suppliers getSuppliers() {
+		return suppliers;
+	}
+
+	public void setSuppliers(Suppliers suppliers) {
+		this.suppliers = suppliers;
+	}
+
+	@Transient
+	Suppliers suppliers;
+
 	@Id
 	private Integer id;
 
