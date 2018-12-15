@@ -25,6 +25,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
        
-       comment: ${proclamation.comment}
+        ${proclamation.comment}
   </body>
 </html>

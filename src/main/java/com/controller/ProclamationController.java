@@ -43,6 +43,22 @@ public class ProclamationController {
 		return "a";
 
 	}
+	@RequestMapping("/selectselect")
+	public String selectproclamation11(HttpServletRequest req) {
+		List<Proclamation> list = proclamationService.SelectAll();
+		req.setAttribute("list", list);
+
+		return "gengduo";
+
+	}
+	@RequestMapping("/select1")
+	public String selectproclamation1(HttpServletRequest req) {
+		List<Proclamation> list = proclamationService.SelectAll();
+		req.setAttribute("list", list);
+
+		return "jiapage/gongyingshanggonggao";
+
+	}
 	
 	
 	@RequestMapping("/selecta")
@@ -53,7 +69,15 @@ public class ProclamationController {
 		return "proclamation/index";
 
 	}
-	
+	@RequestMapping(value="/selecta1")
+	public String selectaproclamationa(HttpServletRequest req) {
+		System.out.println("jsjjsjsjsjjsjs");
+		List<Proclamation> list = proclamationService.SelectAll();
+		req.setAttribute("list", list);
+        
+		return "home";
+
+	}
 
 	// 修改一个对象
 	@RequestMapping(value = "/updateproclamaltion")

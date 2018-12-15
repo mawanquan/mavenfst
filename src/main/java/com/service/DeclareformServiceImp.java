@@ -95,4 +95,10 @@ public class DeclareformServiceImp implements DeclareformService {
 		return declarefileMapper.delete(d);
 	}
 
+	@Override
+	public List<Declareform> selectmyAllBysign(Integer publisher, Integer sign,
+			Integer status) {
+		return declareformMapper.selectmyAllBysign(publisher, sign, status);
+	}
+
 }
