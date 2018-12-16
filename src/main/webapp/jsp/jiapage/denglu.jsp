@@ -14,7 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 		<link href="${css}bootstrap.min.css" rel="stylesheet">
-		<link href="${css}my.css" rel="stylesheet">
+		<link href="${css}my1.css" rel="stylesheet">
 		<script src="${js}jquery-2.0.0.min.js"></script>
 		<script src="${js}bootstrap.min.js"></script>
 		<script type="text/javascript">

@@ -4,11 +4,11 @@ html {
 	margin-bottom: 1px;
 }
 
-/* body, div, ul {
+body, div, ul {
 	margin: 0;
 	padding: 0;
 }
- */
+
 img {
 	border: 0;
 	margin-top: 8px;
@@ -193,73 +193,4 @@ h5 {
 }
 .timer{
 	color: orange;
-}
-
-/*********************************************头上**********************************/
-
-.header .top-bar {
-	padding-top: 5px;
-	background-color: white;
-	border-top: 3px solid white;
-}
-
-.header .top-bar .top-bar-1 {
-	padding-top: 4px;
-}
-
-.header .top-bar .top-bar-1 img {
-	border-radius: 3px;
-	height: 40px;
-	width: 340px;
-}
-
-.header .top-bar .top-bar-2 {
-	padding-top: 15px;
-	padding-left: 280px;
-	color: gray;
-}
-
-
-
-.header .top-bar .top-bar-3 {
-	/* padding-top: 0px; */
-	
-	
-}
-.header .top-bar .top-bar-3 .btn {
-/*position: relative;left: -6px;  border-radius:0px; background-color: white;*/
-}
-
-
-
-/**********************************头下***********************************************/
-
-.header .top-bot {
-	padding-top: 4px;
-}
-
-.header .top-bot .top-bot-col {
-	background-color: #BCE8F1;
-	margin-bottom: 13px;
-	border-bottom: 4px solid #5BC0DE;
-	border-radius: 0px;
-}
-
-.header .top-bot .top-bot-col .top-bot-1 ul {
-	border-bottom: 3px solid #5BC0DE;
-}
-
-.header .top-bot .top-bot-col .top-bot-1 li {
-	position: relative;
-	right: 30px;
-	font-size: 12px;
-}
-
-.header .top-bot .top-bot-col .top-bot-1 li>a {
-	height: 45px;
-}
-
-.header .top-bot .top-bot-col .top-bot-1 li.active a,
-.header .top-bot .top-bot-col .top-bot-1 li a:hover {
-	background-color: #5BC0DE;
 }
