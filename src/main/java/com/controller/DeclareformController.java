@@ -56,7 +56,7 @@ public class DeclareformController {
 	}
 	@RequestMapping(value = "/maindata")
 	public ModelAndView mainshow(Integer page) {
-//		PageHelper.startPage(page, 8);
+		PageHelper.startPage(page, 10);
 		List<Declareform> list = declareformService.selectAllBysign(0,1);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("zhaobiao/listshow");
@@ -80,7 +80,7 @@ public class DeclareformController {
 	}
 	@RequestMapping(value = "/maindata2")
 	public ModelAndView mainshow2(Integer page) {
-//		PageHelper.startPage(page, 8);
+		PageHelper.startPage(page, 10);
 		List<Declareform> list = declareformService.selectAllBysign(1,1);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("zhaobiao/listshow");
@@ -103,7 +103,7 @@ public class DeclareformController {
 	}
 	@RequestMapping(value = "/maindata3")
 	public ModelAndView mainshow3(Integer page) {
-//		PageHelper.startPage(page, 8);
+		PageHelper.startPage(page, 10);
 		List<Declareform> list = declareformService.selectAllBysign(2,1);
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("zhaobiao/listshow");

@@ -25,8 +25,14 @@
 	-->
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="css/zbstyle.css" />
+<script src="${js}bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
 <script type="text/javascript">
+	function getNow() {
+		var now = new Date();
+		document.getElementById("time").innerHTML = now.toLocaleString();
+		setTimeout(getNow, 1000);
+	}
 	$(function() {
 
 		$(".date").each(
@@ -38,11 +44,10 @@
 									+ d.getDate() + "日");
 
 				});
-		$(".path").each(
-				function() {
-					var d = $(this).text();
-					$(this).text(d.substr(d.lastIndexOf('/')+1));
-				});
+		$(".path").each(function() {
+			var d = $(this).text();
+			$(this).text(d.substr(d.lastIndexOf('/') + 1));
+		});
 	});
 	/* $(function(){
 		$(".path").each(
@@ -65,10 +70,6 @@ h1 {
 	margin: 50px;
 }
 
-h1 {
-	
-}
-
 p {
 	text-indent: 2em;
 }
@@ -79,14 +80,77 @@ p {
 </style>
 </head>
 
-<body>
-	<div id="total" class="container"
-		style="width: 70%; align-content: center;">
+<body onload="getNow()">
+	<div id="total" class="container">
+			<!-- 头部   style="width: 70%;-->
+	<!--***********************头部************************-->
+	<div class="header">
+		<div class="container-fluid">
+			<!---------------------------头上------------------------------>
+			<div class="top-bar">
+				<div class="row">
+					<div class="col-xs-4">
+						<div class="top-bar-1 ">
+							<img src="images/img/mobile.png" />
+						</div>
+					</div>
+					<div class="col-xs-5 top-bar-2 " id="time"></div>
+					<div class="col-xs-3">
+						<div class="top-bar-3 ">
 
-		<div id="header" class="nav">
-			<!--头部内嵌首页-->
+							<form class="navbar-form  form-inline">
 
+								<div class="form-group"
+									style="width: 20px; position: relative;left:-20px">
+									<input type="text" class="form-control" placeholder="关键字搜索">
+								</div>
+								<button type="submit" class="btn btn-default  "
+									style="position: relative;left: 160px">
+									<span class="glyphicon glyphicon-search"></span>
+								</button>
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<!---------------------------头下------------------------------>
+			<div class="top-bot">
+				<nav class="navbar navbar-default top-bot-col">
+					<div class="container-fluid ">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed"
+								data-toggle="collapse"
+								data-target="#bs-example-navbar-collapse-1"
+								aria-expanded="false">
+								<span class="sr-only">Toggle navigation</span> <span
+									class="icon-bar"></span> <span class="icon-bar"></span> <span
+									class="icon-bar"></span>
+							</button>
+						</div>
+						<div class="collapse navbar-collapse"
+							id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav  top-bot-1 ">
+								<li class="active"><a href="${cxt}/jsp/home.jsp"><span
+										class="glyphicon glyphicon-home"></span>&nbsp;首页</a></li>
+								<li><a href="${cxt}/jsp/jiapage/caigougonggao.jsp">招标采购公告</a>
+								</li>
+								<li><a href="${cxt}/jsp/jiapage/gongyingshanggonggao.jsp">供应商公告</a>
+								</li>
+								<li><a href="/mavenfst/selectcomplain?page=1">投诉中心</a></li>
+								<li><a href="${cxt}/jsp/jiapage/fuwuzhongxin.jsp">服务中心</a>
+								</li>
+								<li><a href="${cxt}/jsp/jiapage/falvshengming.jsp">法律声明</a>
+								</li>
+							</ul>
+
+						</div>
+					</div>
+				</nav>
+			</div>
 		</div>
+	</div>
+		<!-- ======================================== -->
 		<div id="mid" style="height:auto;">
 			<table class="zb_table" width="100%" border="0" cellspacing="0"
 				cellpadding="0">
@@ -128,9 +192,10 @@ p {
 						</td>
 					</tr>
 					<tr>
-						<td style="padding: 0px 40px;font-size: 12px;"><c:forEach items="${listfile}"
-								var="v" varStatus="n">
-								附件${n.count}:<a target="_blank" class="path" href="/mavenfst/preview?id=${v.id}">${v.filepath}</a>
+						<td style="padding: 0px 40px;font-size: 12px;"><c:forEach
+								items="${listfile}" var="v" varStatus="n">
+								附件${n.count}:<a target="_blank" class="path"
+									href="/mavenfst/preview?id=${v.id}">${v.filepath}</a>
 								<br>
 							</c:forEach></td>
 					</tr>

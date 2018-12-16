@@ -28,36 +28,12 @@
 		document.getElementById("time").innerHTML = now.toLocaleString();
 		setTimeout(getNow, 1000);
 	}
-	$(function(){
-		$("#1").load("/mavenfst/maindata");
-		$("#2").load("/mavenfst/maindata2");
-		$("#3").load("/mavenfst/maindata3");
+	$(function() {
+
 		var date1 = new Date();
-
-		$(".timer").each(
-				function() {
-
-					var d = new Date($(this).text());
-					var times = (d.getTime() - date1.getTime()) / 1000;
-					var day = 0, hour = 0, minute = 0, second = 0;//时间默认值
-					if (times > 0) {
-						day = Math.floor(times / (60 * 60 * 24));
-						hour = Math.floor(times / (60 * 60)) - (day * 24);
-						minute = Math.floor(times / 60) - (day * 24 * 60)
-								- (hour * 60);
-					}
-					if (day <= 9) {
-						day = '0' + day;
-					}
-					if (hour <= 9) {
-						hour = '0' + hour;
-					}
-					if (minute <= 9) {
-						minute = '0' + minute;
-					}
-					$(this).text(day + "天" + hour + "时" + minute + "分");
-
-				});
+		$("#1").load("/mavenfst/maindata?page=1");
+		$("#2").load("/mavenfst/maindata2?page=1");
+		$("#3").load("/mavenfst/maindata3?page=1");
 
 	});
 </script>
@@ -183,13 +159,12 @@
 
 					<div class="l1">
 						<ul class="nav nav-tabs  ul-1" role="tablist">
-							<li role="presentation" class="active"><a
-								href="/mavenfst/maindata" aria-controls="1" role="tab"
-								data-toggle="tab">正在招标</a></li>
-							<li role="presentation"><a href="/mavenfst/maindata2"
-								aria-controls="2" role="tab" data-toggle="tab">即将开标</a></li>
-							<li role="presentation"><a href="/mavenfst/maindata3"
-								aria-controls="3" role="tab" data-toggle="tab">正在候选人公示</a></li>
+							<li role="presentation" class="active"><a href="#1"
+								aria-controls="1" role="tab" data-toggle="tab">正在招标</a></li>
+							<li role="presentation"><a href="#2" aria-controls="2"
+								role="tab" data-toggle="tab">即将开标</a></li>
+							<li role="presentation"><a href="#3" aria-controls="3"
+								role="tab" data-toggle="tab">正在候选人公示</a></li>
 
 							<li
 								style="padding-right: 10px; border: none;float: right;background-color: transparent;position: relative;top: -1px;">
@@ -198,15 +173,9 @@
 							</li>
 						</ul>
 						<div class="tab-content tab-1">
-							<div role="tabpanel" class="tab-pane active" id="1">
-								
-							</div>
-							<div role="tabpanel" class="tab-pane" id="2">
-								
-							</div>
-							<div role="tabpanel" class="tab-pane" id="3">
-								
-							</div>
+							<div role="tabpanel" class="tab-pane active" id="1"></div>
+							<div role="tabpanel" class="tab-pane" id="2"></div>
+							<div role="tabpanel" class="tab-pane" id="3"></div>
 
 						</div>
 					</div>
