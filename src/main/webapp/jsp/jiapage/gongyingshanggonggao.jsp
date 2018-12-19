@@ -1,12 +1,42 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
 %>
 
 <!DOCTYPE html>
 <html>
+<head>
+<base href="<%=basePath%>">
 
+<title>My JSP 'a.jsp' starting page</title>
+
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="This is my page">
+
+	<link rel="stylesheet" type="text/css" href="${css }/bootstrap.min.css">
+	
+
+<script src="js/jquery-2.0.0.min.js"></script>
+<script type="text/javascript">
+$(function() {
+$(".tdate").each(function(){
+var d = new Date($(this).text());
+					$(this).text(
+							d.getFullYear() + "年" + (d.getMonth() + 1) + "月"
+									+ d.getDate() + "日");
+});
+					
+
+	});
+	
+</script>
 	<head>
 	<base href="<%=basePath%>">
 	<meta charset="utf-8">
@@ -117,71 +147,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<div style="padding-left: 30px; margin-top: 0px;">
 									<img src="images/img/m21.png" />
 								</div>
-								<div>
-									标题&nbsp;&nbsp;<input type="text" placeholder="请输入检索的内容" />&nbsp;&nbsp;时间&nbsp;&nbsp;
-									<!--日历1-->
-									<input type="text" class="demo-input" placeholder="请选择日期" id="test1">
-									<script>
-										lay('#version').html('-v' + laydate.v);
-
-										//执行一个laydate实例
-										laydate.render({
-											elem: '#test1' //指定元素
-										});
-									</script>&nbsp;&nbsp;
-									<!--日历2-->
-
-									到&nbsp;&nbsp;&nbsp;&nbsp;
-
-									<input type="text" class="demo-input" placeholder="请选择日期" id="test2">
-									<script>
-										lay('#version').html('-v' + laydate.v);
-
-										//执行一个laydate实例
-										laydate.render({
-											elem: '#test2' //指定元素
-										});
-									</script>
-									<!--
-			<input type="text" placeholder="请输入检索的内容" />&nbsp;&nbsp;-->
-									<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" style="background-color: transparent; border: none; color: black;line-height: 18px; padding-bottom:8px;">
-									  搜索
-</button>
+				
 								</div>
 
 								<div class="m2-1-1 ">
 									<legend>&nbsp;&nbsp;&nbsp;查询结果</legend>
 								</div>
 								<div>
+								
 									<table class="table table-striped">
-										<thead>
-											<tr>
-												<th>Student-ID</th>
-												<th>First Name</th>
-												<th>Last Name</th>
-												<th>Grade</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td>001</td>
-												<td>Rammohan </td>
-												<td>Reddy</td>
-												<td>A+</td>
-											</tr>
-											<tr>
-												<td>002</td>
-												<td>Smita</td>
-												<td>Pallod</td>
-												<td>A</td>
-											</tr>
-											<tr>
-												<td>003</td>
-												<td>Rabindranath</td>
-												<td>Sen</td>
-												<td>A+</td>
-											</tr>
-										</tbody>
+									<c:forEach items="${list}" var="v">
+									   
+									   <tr id="${v.id}">
+			                            	<td>${v.id}</td>
+				                            <td>${v.number}</td>
+			                              	<td>${v.title}</td>
+			                               	<td class="tdate">${v.time}</td>
+				                            <td>${v.comment}</td>
+									</tr>
+										</c:forEach>
 									</table>
 									<!--分页-->
 									<nav aria-label="Page navigation" style="margin: 0 auto; text-align: center;">

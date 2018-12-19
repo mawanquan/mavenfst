@@ -33,6 +33,7 @@
 		$("#1").load("/mavenfst/maindata?page=1");
 		$("#2").load("/mavenfst/maindata2?page=1");
 		$("#3").load("/mavenfst/maindata3?page=1");
+		$("#re").load("/mavenfst/selecta1");
 
 	});
 </script>
@@ -91,7 +92,7 @@
 										class="glyphicon glyphicon-home"></span>&nbsp;首页</a></li>
 								<li><a href="${cxt}/jsp/jiapage/caigougonggao.jsp">招标采购公告</a>
 								</li>
-								<li><a href="${cxt}/jsp/jiapage/gongyingshanggonggao.jsp">供应商公告</a>
+								<li><a href="${cxt}/select1">供应商公告</a>
 								</li>
 								<li><a href="/mavenfst/selectcomplain?page=1">投诉中心</a></li>
 								<li><a href="${cxt}/jsp/jiapage/fuwuzhongxin.jsp">服务中心</a>
@@ -764,7 +765,7 @@
 							<h5>
 								<span class=" glyphicon glyphicon-list "></span>&nbsp;&nbsp;&nbsp;系统通知
 								<li style="padding-right: 10px; border: none;float: right;">
-									<a href="/mavenfst/selecta"
+									<a href="/mavenfst/selectselect"
 									style="font-size: 12px; color: white;padding-top: 15px;">更多</a>
 								</li>
 							</h5>
@@ -772,27 +773,7 @@
 						</div>
 						<div class="r2 pull-left">
 							<ul class="r2-2">
-								<li><a href="#"><span
-										class="glyphicon glyphicon-record" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-										class="small text-muted">2018-11-15</span> &nbsp;&nbsp;&nbsp;<span
-										style="color:#333;">系统停机公告</span></a></li>
-								<li><a href="#"><span
-										class="glyphicon glyphicon-record" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-										class="small text-muted">2018-11-15</span> &nbsp;&nbsp;&nbsp;<span
-										style="color:#333;">系统停机公告</span></a></li>
-								<li><a href="#"><span
-										class="glyphicon glyphicon-record" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-										class="small text-muted">2018-11-15</span> &nbsp;&nbsp;&nbsp;<span
-										style="color:#333;">系统停机公告</span></a></li>
-								<li><a href="#"><span
-										class="glyphicon glyphicon-record" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-										class="small text-muted">2018-11-15</span> &nbsp;&nbsp;&nbsp;<span
-										style="color:#333;">系统停机公告</span></a></li>
-								<li><a href="#"><span
-										class="glyphicon glyphicon-record" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
-										class="small text-muted">2018-11-15</span> &nbsp;&nbsp;&nbsp;<span
-										style="color:#333;">系统停机公告</span></a></li>
-
+								<div id="re"></div>
 							</ul>
 						</div>
 

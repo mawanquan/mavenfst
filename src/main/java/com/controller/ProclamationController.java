@@ -40,7 +40,23 @@ public class ProclamationController {
 		List<Proclamation> list = proclamationService.SelectAll();
 		req.setAttribute("list", list);
 
-		return "a";
+		return "proclamation/a";
+
+	}
+	@RequestMapping("/selectselect")
+	public String selectproclamation11(HttpServletRequest req) {
+		List<Proclamation> list = proclamationService.SelectAll();
+		req.setAttribute("list", list);
+
+		return "proclamation/gengduo";
+
+	}
+	@RequestMapping("/select1")
+	public String selectproclamation1(HttpServletRequest req) {
+		List<Proclamation> list = proclamationService.SelectAll();
+		req.setAttribute("list", list);
+
+		return "jiapage/gongyingshanggonggao";
 
 	}
 	
@@ -53,7 +69,17 @@ public class ProclamationController {
 		return "proclamation/index";
 
 	}
-	
+	@RequestMapping(value="/selecta1")
+	public String selectaproclamationa(HttpServletRequest req,Integer page) {
+//		PageHelper.startPage(page, 2);// 第几页，每页条数
+		System.out.println("jsjjsjsjsjjsjs");
+		List<Proclamation> list = proclamationService.SelectAll();
+//		PageInfo pageInfo = new PageInfo(list);// 就是一个包含了分页数据的对象
+		req.setAttribute("list", list);
+//		req.setAttribute("pageInfo", pageInfo);
+		return "proclamation/T";
+
+	}
 
 	// 修改一个对象
 	@RequestMapping(value = "/updateproclamaltion")
@@ -65,7 +91,7 @@ public class ProclamationController {
 		proclamation.setTime(time);
 		proclamation.setComment(comment);
 		proclamationService.updateByPrimaryKey(proclamation);
-		return "proclamation/index";
+		return "proclamation/e";
 	}
 
 	/**
@@ -80,7 +106,7 @@ public class ProclamationController {
 		
 		proclamation.setNumber(ad.getId());
 		proclamationService.insert(proclamation);
-		return "a";
+		return "proclamation/e";
 
 	}
 
@@ -89,7 +115,7 @@ public class ProclamationController {
 	public ModelAndView ajaxDelById1(@PathVariable("id") Integer id) {
 		Proclamation proclamation = proclamationService.selectByPrimaryKey(id);
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("b");
+		mv.setViewName("proclamation/b");
 		mv.addObject("proclamation", proclamation);
 
 		return mv;
@@ -100,7 +126,7 @@ public class ProclamationController {
 	public ModelAndView ajaxDelById11(@PathVariable("id") Integer id) {
 		Proclamation proclamation = proclamationService.selectByPrimaryKey(id);
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("c");
+		mv.setViewName("proclamation/c");
 		mv.addObject("proclamation", proclamation);
 
 		return mv;
