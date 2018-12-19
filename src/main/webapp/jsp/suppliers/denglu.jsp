@@ -23,98 +23,116 @@
 
 
 <style>
-.myform-group {
-	margin-bottom: 5px
-}
+		#tab1{
+				
+				background-color:#89B8E2 ;
+		}
+			.myform-group {
+				margin-bottom: 5px;
+				
+			}
+			
+			.form-horizontal {
+				float: left;
+				width: 550px;
+				height: 300px;
+			
+			}
+			.container{
+			margin-left: 50px
+			}
+		</style>
 
-.form-horizontal {
-	width: 1000px;
-	height: 1000px;
-}
-</style>
-
-</head>
-<script>
-	$(function() { //发送验证码 
-		$(".sendVerifyCode").on("click", function() {
-			var number = $("input[name=number]").val();
-			$.ajax({
-				url : getBasePath() + "/sendSms.html",
-				async : true,
-				type : "post",
-				dataType : "json",
-				data : {
-					"number" : number
-				},
-				success : function(data) {
-					if (data == 'fail') {
-						alert("发送验证码失败");
-						return;
+	</head>
+	<script>
+		$(function() { //发送验证码 
+			$(".sendVerifyCode").on("click", function() {
+					var number = $("input[name=val]").val(); //获取手机号码
+					var url = "${cxt}/setredisdata"; //设置ajax提交路径s
+					$.post(url, {
+						"key": number
+					}, function() {}, 'json');
+				})
+				//提交
+			$(".sub-btn").on("click", function() {
+				var data = {};
+				//获取值进行比对
+				data.suppliername = $.trim($("input[name=suppliername]").val());
+				data.supplierspwd = $.trim($("input[name=supplierspwd]").val());
+				data.val = $.trim($("input[name=val]").val());
+				data.verifyCode = $.trim($("input[name=verifyCode]").val());
+				$.ajax({
+					url: getBasePath() + "/register.html",
+					async: true,
+					type: "post",
+					dataType: "json",
+					data: data,
+					success: function(data) {
+						if(data == 'fail') {
+							alert("登录失败");
+							return;
+						}
+						alert("登录成功");
 					}
-				}
-			});
-		})
-		//提交
-		$(".sub-btn").on("click", function() {
-			var data = {};
-			data.userId = $.trim($("input[name=userId]").val());
-			data.password = $.trim($("input[name=password]").val());
-			data.number = $.trim($("input[name=number]").val());
-			data.verifyCode = $.trim($("input[name=verifyCode]").val());
-			$.ajax({
-				url : getBasePath() + "/register.html",
-				async : true,
-				type : "post",
-				dataType : "json",
-				data : data,
-				success : function(data) {
-					if (data == 'fail') {
-						alert("登录失败");
-						return;
-					}
-					alert("登录成功");
-				}
-			});
-		})
-	});
-</script>
-<body>
+				});
+			})
+		});
+	</script>
 
-	<div id="" style="width: 800px;">
+	<body>
 
-		<form class="form-horizontal" style="background:#EEEEEE;" action="/mavenfst/a/selectsupplierqqqq" method="post">
-			<div style="font-size: 30px;text-align: center;">
-				登&nbsp;&nbsp;录</div>${s.sign }
-			<div class="form-group myform-group">
-				<label for="supplierid" class="col-sm-2 control-label">登录名</label>
-				<div class="col-sm-10">
-					<input type="text" class="form-control" name="suppliername"
-						placeholder="请输入登录账号">
+		<div id="tab1" style="width:auto;height: 600px;">
+<div> <img src="images/20181215164516.png" height="101px" width="520" style="text-align: center;padding-bottom: 30px; margin: 0 auto;text-align: center; margin-left: 400px;"/>
+</div>
+<div class="container" >
+	<div class="row">
+		<div class="col-md-6">
+	
+	<img src="images/20181215164535.png" height="300px" width="480px"  />
+</div>
+			<div class="col-md-6">
+				<form class="form-horizontal" style="background:#FFFFFF;" action="/mavenfst/a/selectsupplierqqqq" method="post">
+				<div style="font-size: 30px;text-align: center;">
+					登&nbsp;&nbsp;录</div>
+					 <h5>${s.sign }</h5>
+				<div class="form-group myform-group">
+					<label for="supplierid" class="col-sm-2 control-label">登录名</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="suppliername" placeholder="请输入登录账号">
+					</div>
 				</div>
-			</div>
-			<div class="form-group myform-group">
-				<label for="supplierspwd" class="col-sm-2 control-label">登录密码</label>
-				<div class="col-sm-10">
-					<input type="password" class="form-control" name="supplierspwd"
-						placeholder="请输入登录密码">
+				<div class="form-group myform-group">
+					<label for="supplierspwd" class="col-sm-2 control-label">登录密码</label>
+					<div class="col-sm-10">
+						<input type="password" class="form-control" name="supplierspwd" placeholder="请输入登录密码">
+					</div>
 				</div>
-			</div>
+				<div class="form-group myform-group">
+					<label for="supplierstel" class="col-sm-2 control-label">手机号</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="val" placeholder="请输入手机号">
+					</div>
+				</div>
+<h5>${message}</h5>
+				<div class="form-group myform-group">
+					<%-- <div>${message}</div> --%>
+					<label for="supplierspwd" class="col-sm-2 control-label">验证码</label>
+					<div class="col-sm-10">
+						<input name="verifyCode">
+						<button type="button" class="sendVerifyCode">获取短信验证码</button>
+					</div>
+				</div>
 
-			<div class="form-group myform-group">
-				<label for="supplierspwd" class="col-sm-2 control-label">验证码</label>
-				<div class="col-sm-10">
-					<input name="verifyCode">
-					<button type="button" class="sendVerifyCode">获取短信验证码</button>
+				<div class="sub-btn">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn  btn-primary">登录</button>
+					</div>
 				</div>
-			</div>
-
-			<div class="sub-btn">
-				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn  btn-primary">登录</button>
-				</div>
-			</div>
-		</form>
+			</form></div>
 	</div>
-</body>
+</div>
+		</div>
+	</body>
 
 </html>
+

@@ -2,11 +2,13 @@ package com.controller;
 
 import java.io.File;
 import java.util.List;
+import java.util.Random;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,7 +36,7 @@ public class SuppliersController {
 		String img1 = "images";
 
 		String path = imgpath + img1 + img.getOriginalFilename();
-		suppliers.setAptitudeimg(img1 + "/"+img.getOriginalFilename());
+		suppliers.setAptitudeimg(img1 + "/" + img.getOriginalFilename());
 		try {
 			img.transferTo(new File(path));
 		} catch (Exception e) {
@@ -46,42 +48,54 @@ public class SuppliersController {
 	}
 
 	/**
+	 * /*@RequestMapping("/addSupplier") public String addSupplier(Suppliers
+	 * suppliers){ suppliers.setSign("刚注册待审核");
+	 * suppliersService.insert(suppliers); return "suppliers/denglu";//
+	 * 后面要改，登录成功之后是跳转到首页 }
+	 */
+	// *************************** ** 登录(HttpServletRequest
+	// req)*****************************************/
 
-	/*@RequestMapping("/addSupplier")
-	public String addSupplier(Suppliers suppliers){
-		suppliers.setSign("刚注册待审核");
-		suppliersService.insert(suppliers);
-		return "suppliers/denglu";// 后面要改，登录成功之后是跳转到首页
-	}*/
-	// *************************** ** 登录(HttpServletRequest req)*****************************************/
-
+	////////////////////////////ajax异步验证码
+	
+	  
 	@RequestMapping("/a/selectsupplierqqqq")
 	public ModelAndView selectSupplier(Suppliers suppliers,
-			HttpServletRequest req) {// ModelAndView是springMvc视频第6课
-		/* System.out.println(111); */
-		// service
-		Suppliers s = suppliersService.selectBylogin(suppliers);
-		ModelAndView mv = new ModelAndView();
-		// sign(状态)必须是供货商才能输入用户名和密码登录进入后台首页
-		if (s != null && "已经是供货商".equals(s.getSign())) {// 判断状态是否为已经是供应商
-			req.getSession().setAttribute("supplier", s);
-			mv.setViewName("home");
-		} else {
-			mv.setViewName("/suppliers/denglu");
+			HttpServletRequest req,String val,String verifyCode) {// ModelAndView是springMvc视频第6课
+		//redis验证码
+		System.err.println(val+"===="+verifyCode);
+		boolean sta = suppliersService.getRedisData(val, verifyCode);
+		if(sta){
+			Suppliers s = suppliersService.selectBylogin(suppliers);
+			ModelAndView mv = new ModelAndView();
+			// sign(状态)必须是供货商才能输入用户名和密码登录进入后台首页
+			if (s!= null && "已经是供货商".equals(s.getSign())) {// 判断状态是否为已经是供应商
+				req.getSession().setAttribute("supplier", s);
+				mv.setViewName("home");
+			} else {
+				mv.setViewName("/suppliers/denglu");
+			}
+			mv.addObject("s", s);
+			return mv;
+		}else{
+			
+			ModelAndView mv = new ModelAndView();
+			mv.setViewName("suppliers/denglu");
+			mv.addObject("message", "验证码不对");
+		mv.addObject("suppliername", suppliers.getSuppliername());
+			mv.addObject("supplierspwd", suppliers.getSupplierspwd());
+			return mv;
 		}
-		mv.addObject("s", s);
-		return mv;
-
+		
 	}
 
-	// ***********(修改分两步，先查询后修改)****************
-	// **修改(先查询)供货商信息(前台)*****************************************/
+	// **修改供货商信息*****************************************/
 
 	@RequestMapping("/selectsuppliers")
 	public ModelAndView selectByPrimaryKey(HttpServletRequest req) {
 		System.out.println("sadsadsd");
 		Suppliers sup = (Suppliers) req.getSession().getAttribute("supplier");
-		 System.out.println(sup+"==============="); 
+		System.out.println(sup + "===============");
 		Suppliers suppliers = suppliersService.selectsuppliers(sup
 				.getSupplierid());
 		ModelAndView mv = new ModelAndView();
@@ -89,37 +103,41 @@ public class SuppliersController {
 		mv.addObject("suppliers", suppliers);
 		return mv;
 	}
-	// **修改（后修改）供货商信息(前台)*****************************************/
 
-		@RequestMapping("/upsuppliers")
-		public ModelAndView upsuppliers(Suppliers suppliers) {
-			
-				suppliersService.upsuppliers(suppliers);
-				ModelAndView mv = new ModelAndView();
+	// **修改供货商信息*****************************************/
 
-				mv.addObject("data", "/jsp/suppliers/xgxx.jsp");
-				mv.addObject("suppliers", suppliers);
-				return mv;
-		}
-	//********************** **修改（再删除）供货商信息(前台)*****************************************/
+	@RequestMapping("/upsuppliers")
+	public ModelAndView upsuppliers(Suppliers suppliers) {
 
-		@ResponseBody
-		@RequestMapping("/deleteByPrimaryKey1")
-		public Integer deleteByPrimaryKey1(HttpServletRequest req, Integer id) {
-			
-			 Suppliers s=suppliersService.selectone(id);
-			String v= s.getAptitudeimg();
-			
-			String imgpath = req.getServletContext().getRealPath("");
-			System.out.println(imgpath+"/"+v);
-			String path=imgpath+"/"+v;
-			new File(path).delete();
-			int num = suppliersService.deleteByPrimaryKey(id);
-			return num;
-			
-		}
+		suppliersService.upsuppliers(suppliers);
+		ModelAndView mv = new ModelAndView();
+
+		mv.addObject("data", "/jsp/suppliers/xgxx.jsp");
+		mv.addObject("suppliers", suppliers);
+		return mv;
+	}
+
+	// **********************
+	// **修改*****************************************/
+
+	@ResponseBody
+	@RequestMapping("/deleteByPrimaryKey1")
+	public Integer deleteByPrimaryKey1(HttpServletRequest req, Integer id) {
+
+		Suppliers s = suppliersService.selectone(id);
+		String v = s.getAptitudeimg();
+
+		String imgpath = req.getServletContext().getRealPath("");
+		System.out.println(imgpath + "/" + v);
+		String path = imgpath + "/" + v;
+		new File(path).delete();
+		int num = suppliersService.deleteByPrimaryKey(id);
+		return num;
+
+	}
+
 	// *************************** **
-	// 审核(后台)*****************************************/
+	// 审核****************************************/
 
 	/*******
 	 ** 刚注册，待采购员审核**
@@ -171,10 +189,6 @@ public class SuppliersController {
 
 		return mv;
 	}
-
-	/*******
-	 ** 待财务审核**
-	 * *******/
 	@RequestMapping("/suppliersshenhe4")
 	// 对应suppliersxinxi4.jsp
 	public ModelAndView suppliersShenhe4() {
@@ -188,7 +202,6 @@ public class SuppliersController {
 
 		return mv;
 	}
-
 	/*******
 	 ** 财务审核通过,待交保证金**
 	 * *******/
@@ -301,7 +314,7 @@ public class SuppliersController {
 
 	}
 
-	// 根据id【修改】一个供应商状态在【刚注册审核通过页面】(刚注册审核通过(待财务审核)审核通过)
+	// 根据id【修改】
 	@RequestMapping("/updateSign/{id}")
 	public String updateByPrimaryKeySelective(HttpServletRequest req,
 			@PathVariable("id") Integer id) {
@@ -315,7 +328,7 @@ public class SuppliersController {
 		return "redirect:/suppliersshenhe1";
 	}
 
-	// 根据id【修改】一个供应商状态在【刚注册审核通过页面】(刚注册审核通过(待财务审核)审核不通过)
+	// 根据id【修改】
 	@RequestMapping("/updateSign2/{id}")
 	public String updateByPrimaryKeySelective2(HttpServletRequest req,
 			@PathVariable("id") Integer id) {
@@ -329,7 +342,7 @@ public class SuppliersController {
 		return "redirect:/suppliersshenhe1";
 	}
 
-	// 根据id【修改】一个供应商状态在【财务审核页面】(刚注册审核通过(待财务审核)审核通过)
+	// 根据id【修改】
 	@RequestMapping("/updateSign3/{id}")
 	public String updateByPrimaryKeySelective3(HttpServletRequest req,
 			@PathVariable("id") Integer id) {
@@ -343,7 +356,7 @@ public class SuppliersController {
 		return "redirect:/suppliersshenhe4";
 	}
 
-	// 根据id【修改】一个供应商状态在【待财务审核页面】(刚注册审核通过(待财务审核)审核不通过)
+	// 根据id【修改】一个供应商状态在
 	@RequestMapping("/updateSign4/{id}")
 	public String updateByPrimaryKeySelective4(HttpServletRequest req,
 			@PathVariable("id") Integer id) {
@@ -357,7 +370,7 @@ public class SuppliersController {
 		return "redirect:/suppliersshenhe4";// 从定向
 	}
 
-	// 根据id【修改】一个供应商状态在【待财务通过审核页面】(已是供货商===财务审核通过，交完保证金)
+	// 根据id【修改】一个供应商状态在
 	@RequestMapping("/updateSign5/{id}")
 	public String updateByPrimaryKeySelective5(HttpServletRequest req,
 			@PathVariable("id") Integer id) {
@@ -371,7 +384,7 @@ public class SuppliersController {
 		return "redirect:/suppliersshenhe5";
 	}
 
-	// 根据id【修改】一个供应商状态在【待财务审核页面】(已是供货商，有不良记录===加入黑名单)
+	// 根据id【修改】一个供应商状态在
 	@RequestMapping("/updateSign6/{id}")
 	public String updateByPrimaryKeySelective6(HttpServletRequest req,
 			@PathVariable("id") Integer id) {
@@ -389,7 +402,6 @@ public class SuppliersController {
 	// 删除(关闭黑名单商家)*****************************************/
 
 	@ResponseBody
-	// 异步
 	@RequestMapping("/deleteByPrimaryKeyaa")
 	public Integer deleteByPrimaryKey(HttpServletRequest req, Integer id) {
 		/* System.out.println(id); */
@@ -397,4 +409,17 @@ public class SuppliersController {
 		/* System.out.println("SDSADASDSd"); */
 		return num;
 	}
+
+	// 增加redis手机对应的短信
+	// 异步  //  key对应的是手机号码
+	@ResponseBody
+	@RequestMapping("/setredisdata")
+	public String setRedisData(String key) {
+		System.out.println(key);
+		String value =new Random().nextInt(9000)+1000+"";//随机生成
+		suppliersService.setRedisData(key, value);
+		return "aaa";
+	}
+	// 查询redis手机对应的短信
+		
 }
