@@ -104,6 +104,7 @@ public class ComplainController {
 
 		List<List<Object>> list = new ArrayList<List<Object>>();
 		for (Map<String, Object> map : list4) {
+
 			List<Object> lis2 = new ArrayList<Object>();
 			lis2.add("'" + map.get("address") + "'");
 			lis2.add(map.get("num"));
@@ -114,4 +115,68 @@ public class ComplainController {
 		return "tongji";
 	}
 
+	/**
+	 * 统计供货商地址信息
+	 */
+	@RequestMapping("/selectgoodsprice")
+	public String selectgoodsprice(HttpServletRequest req) {
+		List<Map<String, Object>> list5 = complainService.selectgoodsprice();
+
+		List<Integer> listaaa = new ArrayList<Integer>();
+		for (int i = 1; i <= 12; i++) {
+			listaaa.add(0);
+		}
+		for (Map<String, Object> map : list5) {
+			int a = Integer.parseInt(map.get("mon").toString());// 月份
+			listaaa.set(a - 1, Integer.parseInt(map.get("num").toString()));
+		}
+
+		req.setAttribute("list5", listaaa);
+
+		System.out.println(listaaa);
+		return "selectgoodsprice";
+	}
+
+	/**
+	 * 统计个月招标信息
+	 */
+	@RequestMapping("/selectdeclare")
+	public String selectdeclare(HttpServletRequest req, String year) {
+		List<Map<String, Object>> list5 = complainService.selectdeclare(year);
+
+		List<Integer> listaaa = new ArrayList<Integer>();
+		for (int i = 1; i <= 12; i++) {
+			listaaa.add(0);
+		}
+		for (Map<String, Object> map : list5) {
+			int a = Integer.parseInt(map.get("mon").toString());// 月份
+			listaaa.set(a - 1, Integer.parseInt(map.get("num").toString()));
+		}
+
+		req.setAttribute("list5", listaaa);
+
+		System.out.println(listaaa);
+		return "selectdeclaress";
+	}
+
+	/**
+	 * 统计各年招聘信息
+	 */
+	@RequestMapping("/selectdeclareyear")
+	public String selectdeclareyear(HttpServletRequest req) {
+		List<Map<String, Object>> list4 = complainService.selectdeclareyear();
+		req.setAttribute("list4", list4);
+
+		List<List<Object>> list = new ArrayList<List<Object>>();
+		for (Map<String, Object> map : list4) {
+
+			List<Object> lis2 = new ArrayList<Object>();
+			lis2.add("'" + map.get("applydate") + "'");
+			lis2.add(map.get("countNum"));
+			list.add(lis2);
+		}
+		req.setAttribute("list", list);
+		System.out.println(list);
+		return "selectdeclareyear";
+	}
 }

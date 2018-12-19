@@ -79,4 +79,31 @@ public class ComplainServiceImp implements ComplainService {
 		return complainMapper.selectAddress();
 	}
 
+	/**
+	 * 统计供货商地址信息
+	 */
+	@Override
+	public List<Map<String, Object>> selectgoodsprice() {
+
+		return complainMapper.selectgoodsprice();
+	}
+
+	/**
+	 * 统计个月招标信息
+	 */
+	@Override
+	public List<Map<String, Object>> selectdeclare(String year) {
+
+		return complainMapper.selectdeclare(year);
+	}
+
+	/**
+	 * 统计各年招标数
+	 */
+	@Override
+	public List<Map<String, Object>> selectdeclareyear() {
+
+		return complainMapper.selectdeclareyear();
+	}
+
 }

@@ -29,8 +29,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 		</style>
 
-
-
   </head>
   
   
@@ -71,7 +69,7 @@ Highcharts.chart('container', {
         text: '供货商地址统计'
     },
     subtitle: {
-        text: '3D donut in Highcharts'
+        text: ''
     },
     plotOptions: {
         pie: {

@@ -37,4 +37,20 @@ public interface ComplainMapper extends Mapper<Complain> {
 	 * 统计供货商地址信息
 	 */
 	List<Map<String, Object>> selectAddress();
+
+	/**
+	 * 统计采购商品信息
+	 */
+	List<Map<String, Object>> selectgoodsprice();
+
+	/**
+	 * 统计个月招标信息
+	 */
+	List<Map<String, Object>> selectdeclare(String year);
+
+	/**
+	 * 统计各年招标数
+	 */
+	List<Map<String, Object>> selectdeclareyear();
+
 }

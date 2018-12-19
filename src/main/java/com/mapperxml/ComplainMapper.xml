@@ -85,10 +85,25 @@
 		select * from complain a left join suppliers b on a.suppliersid=b.supplierid
 		left join answer c on a.id = c.complainid where a.suppliersid=#{id}
 	</select>
+	<!-- 统计供货商地址信息 -->
  <select id="selectAddress"  resultType="map">
  select address, count(supplierid) num from suppliers group by address
- 
  </select>
+
+<!-- 按月统计采购 -->
+ <select id="selectgoodsprice"  resultType="map">
+ SELECT month(lastdate) mon,count(*) num FROM goodsprice WHERE SUBSTRING(lastdate, 1, 4)='2018' GROUP BY SUBSTRING(lastdate, 6, 2)
+ </select>
+
+<!-- 按月统计招标 -->
+ <select id="selectdeclare"  resultType="map" parameterType="String">
+SELECT month(applydate) mon,count(*) num FROM declareform WHERE SUBSTRING(applydate, 1, 4)=#{year} GROUP BY SUBSTRING(applydate, 6, 2)
+ </select>
+<!-- 统计每年的招标数 -->
+ <select id="selectdeclareyear"  resultType="map">
+SELECT count(*) countNum, YEAR(applydate) applydate FROM declareform GROUP BY YEAR(applydate) ORDER BY  YEAR(applydate) DESC;
+ </select>
+
 
 </mapper>
 
