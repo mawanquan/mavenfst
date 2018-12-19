@@ -56,7 +56,7 @@ var d = new Date($(this).text());
 			</tr>
 		</c:forEach>
 		<tr>
-		  <a href="mavenfst/home.jsp"><input type="button" >退出</a>
+		  <a href="${cxt}"><input type="button" value="退出"></a>
 		</tr>
 		</table>
   </body>

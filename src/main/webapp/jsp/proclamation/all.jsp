@@ -17,9 +17,7 @@
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
-<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+	<link rel="stylesheet" type="text/css" href="${css }/bootstrap.min.css">
 <script src="${js}/jquery-2.0.0.min.js"></script>
 <script type="text/javascript">
 	function atime() {
@@ -29,15 +27,17 @@
 		document.getElementById("time").value = mydate.toLocaleDateString();
 
 	}
+	
 </script>
 </head>
 <body>
 	<form action="/mavenfst/insertproclamation" method="post">
-		<table>
+		<table class="table table-striped  table-striped table-bordered table-hover"
+		style="text-align: center;">
 			
 			<tr>
 				<td>标题：</td>
-				<td><input type="text" name="title"></td>
+				<td><input  name="title"></td>
 			</tr>
 			<tr>
 				<td>时间：</td>
@@ -47,13 +47,10 @@
 				<td>公告内容：</td>
 				<td><textarea rows="10" cols="20" name="comment"></textarea></td>
 			</tr>
-			<tr>
-				<td>对应路径：</td>
-				<td><input type="file" name="filepath"></td>
-			</tr>
+		
 			<tr>
 				<td>发布：</td>
-				<td><input type="submit" value="提交"></td>
+				<td><input type="submit" value="提交" ></td>
 			</tr>
 		</table>
 	</form>

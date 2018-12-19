@@ -69,6 +69,8 @@ var d = new Date($(this).text());
 			<td>title</td>
 			<td>time</td>
 			<td>comment</td>
+			<td></td>
+			<td></td>
 		</tr>
 		<c:forEach items="${list }" var="v">
 			<tr id="${v.id}">

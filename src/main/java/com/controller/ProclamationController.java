@@ -40,7 +40,7 @@ public class ProclamationController {
 		List<Proclamation> list = proclamationService.SelectAll();
 		req.setAttribute("list", list);
 
-		return "a";
+		return "proclamation/a";
 
 	}
 	@RequestMapping("/selectselect")
@@ -48,7 +48,7 @@ public class ProclamationController {
 		List<Proclamation> list = proclamationService.SelectAll();
 		req.setAttribute("list", list);
 
-		return "gengduo";
+		return "proclamation/gengduo";
 
 	}
 	@RequestMapping("/select1")
@@ -70,12 +70,14 @@ public class ProclamationController {
 
 	}
 	@RequestMapping(value="/selecta1")
-	public String selectaproclamationa(HttpServletRequest req) {
+	public String selectaproclamationa(HttpServletRequest req,Integer page) {
+//		PageHelper.startPage(page, 2);// 第几页，每页条数
 		System.out.println("jsjjsjsjsjjsjs");
 		List<Proclamation> list = proclamationService.SelectAll();
+//		PageInfo pageInfo = new PageInfo(list);// 就是一个包含了分页数据的对象
 		req.setAttribute("list", list);
-        
-		return "home";
+//		req.setAttribute("pageInfo", pageInfo);
+		return "proclamation/T";
 
 	}
 
@@ -89,7 +91,7 @@ public class ProclamationController {
 		proclamation.setTime(time);
 		proclamation.setComment(comment);
 		proclamationService.updateByPrimaryKey(proclamation);
-		return "proclamation/index";
+		return "proclamation/e";
 	}
 
 	/**
@@ -104,7 +106,7 @@ public class ProclamationController {
 		
 		proclamation.setNumber(ad.getId());
 		proclamationService.insert(proclamation);
-		return "a";
+		return "proclamation/e";
 
 	}
 
@@ -113,7 +115,7 @@ public class ProclamationController {
 	public ModelAndView ajaxDelById1(@PathVariable("id") Integer id) {
 		Proclamation proclamation = proclamationService.selectByPrimaryKey(id);
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("b");
+		mv.setViewName("proclamation/b");
 		mv.addObject("proclamation", proclamation);
 
 		return mv;
@@ -124,7 +126,7 @@ public class ProclamationController {
 	public ModelAndView ajaxDelById11(@PathVariable("id") Integer id) {
 		Proclamation proclamation = proclamationService.selectByPrimaryKey(id);
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("c");
+		mv.setViewName("proclamation/c");
 		mv.addObject("proclamation", proclamation);
 
 		return mv;
