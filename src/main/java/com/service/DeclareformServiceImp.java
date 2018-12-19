@@ -53,6 +53,7 @@ public class DeclareformServiceImp implements DeclareformService {
 	@Override
 	public int updateById(Declareform declareform) {
 		return declareformMapper.updateByPrimaryKey(declareform);
+		
 	}
 
 	@Override

@@ -392,11 +392,18 @@ public class Declareform2Controller {
 
 	// 中标项目
 	@RequestMapping(value = "/zhongbiao")
-	public String zhongbiao(Integer id, String hit) {
+	public String zhongbiao(Integer id, Integer hit) {
 		// ////////////////////////////
+	    String str=	hit.toString();
 		Declareform declareform = declareformService.selectDeclareformById(id);
-		declareform.setHit(hit);
+		declareform.setHit(str);
 		declareformService.updateById(declareform);
+		//发邮件
+		toubiaoFrontService.upToubiao2(id,str);
+		
+		
+		
+		
 		return "forward:/kekaibiao/1";
 	}
 

@@ -122,4 +122,24 @@ public class ToubiaoFrontServiceImp implements ToubiaoFrontService {
 			Integer start) {
 		return joinzbxxMapper.selBidsxxAllByDecidandStart(decid, start);
 	}
+
+	@Override
+	public Integer upToubiao2(Integer id,String str) {
+		int num=0;
+		List<Joinzbxx> list = joinzbxxMapper.selBidsxxAllByDecidandStart(id, 1);
+		for (Joinzbxx joinzbxx : list) {
+			if(joinzbxx.getSupplierid().toString().equals(str)){
+				//中标
+				joinzbxx.setStart(3);
+				num+=this.joinzbxxMapper.updateByPrimaryKeySelective(joinzbxx);
+				
+			}else{
+				//落标
+				joinzbxx.setStart(4);
+				num+=this.joinzbxxMapper.updateByPrimaryKeySelective(joinzbxx);
+			}
+			
+		}
+		return num;
+	}
 }

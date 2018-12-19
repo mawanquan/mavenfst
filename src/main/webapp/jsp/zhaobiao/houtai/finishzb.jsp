@@ -47,7 +47,7 @@ html, html body, td {
 			<tr>
 				<td>${v.publisher}</td>
 				<td><a href="/mavenfst/show?id=${v.id}">${v.title}</a></td>
-				<td>${v.content}</td>
+				<td style="width: 500px;">${v.content}</td>
 				<td>${v.zbmoney}</td>
 				<td>${v.hit}</td>
 			</tr>

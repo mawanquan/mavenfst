@@ -67,7 +67,7 @@ html, html body, td {
 <body>
 	
 	<!--搜索结果-->
-	<h1>即将开标查询</h1>
+	<h1>待开标查询</h1>
 	<div id="searchResult" class="searchResult">
 		<div class="container_div2_div_ul2 clearL " id="list">
 			<table class="table table-striped table-hover" width="100%"

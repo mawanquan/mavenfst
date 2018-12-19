@@ -2,8 +2,8 @@
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
+	+ request.getServerName() + ":" + request.getServerPort()
+	+ path + "/";
 %>
 
 <!DOCTYPE html>
@@ -18,16 +18,17 @@
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
-
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />  -->
 <link rel="stylesheet" type="text/css" href="css/zbstyle.css" />
+<%-- <script src="${js}bootstrap.min.js"></script> --%>
 <script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
 <script type="text/javascript">
+	
 	/* function clickKaibiao(obj) {
 		$(obj).parent().addClass("table_tit");
 		$(obj).parent().siblings().removeClass("table_tit");
 		$("#zbSearch").text($(obj).text() + "查询");
-	}
+	} onload="getNow()"
 	 */
 	$(function() {
 		$(".li" + ${active}).addClass("table_tit");
@@ -36,12 +37,13 @@
 </head>
 
 <body>
+	<!-- 头部 -->
+
+	<%-- <jsp:include page="/jsp/jiapage/denglu.jsp"></jsp:include> --%>
 	<div id="total" class="container">
+<jsp:include page="/jsp/jiapage/denglu.jsp"></jsp:include>
+		<!-- ============================= -->
 
-		<div id="header" class="nav">
-			<!--头部内嵌首页-->
-
-		</div>
 		<div id="content">
 			<table class="table" width="100%" border="0" cellspacing="0"
 				cellpadding="0">
@@ -53,7 +55,7 @@
 							<li class="li2"><a href="<%=path%>/data2/1" id="jijiang">即将开标</a></li>
 							<li class="li3"><a href="<%=path%>/data3/1" id="gongshi">正在候选人公示</a></li>
 						</ul>
-					</td>
+		</td>
 					<td class="include">
 						<div class="right">
 							<jsp:include page="${data}"></jsp:include></div>
