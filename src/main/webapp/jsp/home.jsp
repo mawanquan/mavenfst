@@ -30,7 +30,6 @@
 	}
 	$(function() {
 
-		var date1 = new Date();
 		$("#1").load("/mavenfst/maindata?page=1");
 		$("#2").load("/mavenfst/maindata2?page=1");
 		$("#3").load("/mavenfst/maindata3?page=1");

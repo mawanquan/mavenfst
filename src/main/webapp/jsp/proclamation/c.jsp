@@ -35,30 +35,32 @@ function dtime() {
 
 <body>
     <form action="${cxt}/updateproclamaltion" method="post">
-	
-		<div>
-		     <input type="hidden" name="id"  value="${proclamation.id}" />
-		</div>
-		<div>
-		<input type="hidden" name="number" value="${proclamation.number}">
-		</div>
-		<div>
-		    <label>标题:</label>
-		    <div><input type="text" name="title"
-						value="${proclamation.title}" /></div>
-		</div>
-		<div>
-		   <label>内容:</label>
-		 <div><input type="text" name="comment"
-						value="${proclamation.comment}" /></div>
-		</div>
-		<div>
-		    <input id="time" name="time" onclick="dtime()" value="${proclamation.time}">
-		</div>
-		<div>
-		<input type="submit" value="修改"/>
-		</div>
-	
+	<table class="table table-striped  table-striped table-bordered table-hover"
+		style="text-align: center;">
+		<tr>
+		    <td> <input type="hidden" name="id"  value="${proclamation.id}" /></td>
+		</tr>
+		<tr>
+		<td><input type="hidden" name="number" value="${proclamation.number}"></td>
+		</tr>
+		<tr>
+		    <td>标题:</td>
+		    <td><input type="text" name="title"
+						value="${proclamation.title}" /></td>
+		</tr>
+		<tr>
+		   <td>内容:</td>
+		 <td><input type="text" name="comment"
+						value="${proclamation.comment}" /></td>
+		</tr>
+		<tr>
+		<td>时间:</td>
+		   <td> <input id="time" name="time" onclick="dtime()" value="${proclamation.time}"></td>
+		</tr>
+		<tr>
+		<td><input type="submit" value="修改"/></td>
+		</tr>
+	</table>
 	</form>
 </body>
 </html>
