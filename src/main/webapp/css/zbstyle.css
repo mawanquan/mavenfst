@@ -1,13 +1,14 @@
 html {
 	color: #000;
 	height: 100%;
+	width:100%;
 	margin-bottom: 1px;
 }
 
-body, div, ul {
+/* body, div, ul {
 	margin: 0;
 	padding: 0;
-}
+} */
 
 img {
 	border: 0;
@@ -38,10 +39,9 @@ a:hover {
 body {
 	background: #f0f1ec;
 	background-repeat: repeat;
-	width: 1124.17px;
 	margin:0px auto;
-	margin: 0px;
 	padding: 0px;
+	width:100%;
 	font-family: "微软雅黑", "宋体";
 	font-size: 12px;
 	color: #454545;
@@ -73,9 +73,9 @@ a:hover {
 
 .container{
 	background-color: white;
-	width: 80%;
 	height: auto;
 	padding: 0px;
+	width:80%;
 }
 
 /*header头部

@@ -23,16 +23,13 @@
 <!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<link href="${css}my1.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="css/zbstyle.css" />
 <script src="${js}bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
 <script type="text/javascript">
-	function getNow() {
-		var now = new Date();
-		document.getElementById("time").innerHTML = now.toLocaleString();
-		setTimeout(getNow, 1000);
-	}
+	
 	$(function() {
 
 		$(".date").each(
@@ -80,7 +77,7 @@ p {
 </style>
 </head>
 
-<body onload="getNow()">
+<body>
 	<div id="total" class="container">
 	<!--***********************头部************************-->
 	<jsp:include page="/jsp/jiapage/denglu.jsp"></jsp:include>

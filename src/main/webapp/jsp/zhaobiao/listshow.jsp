@@ -36,7 +36,7 @@
 	<tbody>
 		<c:forEach items="${list}" var="v">
 			<tr style="width:100%;height: 35px;" class="_data_tr_flag active">
-				<td style="width:75%" align="left"><a
+				<td style="width:75%" align="left"><a target="_blank"
 					href="/mavenfst/show?id=${v.id}">${v.title}</a></td>
 					<td style="width:25%;padding-left:50px;">还有<span
 								class="timer">${v.finishdate}</span></td>

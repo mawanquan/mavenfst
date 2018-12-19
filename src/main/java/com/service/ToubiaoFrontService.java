@@ -25,6 +25,7 @@ public interface ToubiaoFrontService {
 	Integer delJoinzbfileByid(Integer id);
 
 	Integer upToubiao(Joinzbxx joinzbxx);
+	
 
 	Joinzbxx selBidsSupidAndDecid(Integer supplierid, Integer id);
 
@@ -32,5 +33,7 @@ public interface ToubiaoFrontService {
 
 	// 联表查询招标商信息
 	List<Joinzbxx> selBidsxxAllByDecidandStart(Integer decid, Integer start);
+
+	Integer upToubiao2(Integer id, String str);
 
 }
