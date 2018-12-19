@@ -156,8 +156,8 @@ var d = new Date($(this).text());
 								<div>
 								
 									<table class="table table-striped">
-									<c:forEach items="${list }" var="v">
-									    <tr>
+									<c:forEach items="${list}" var="v">
+									   
 									   <tr id="${v.id}">
 			                            	<td>${v.id}</td>
 				                            <td>${v.number}</td>

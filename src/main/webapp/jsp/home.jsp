@@ -1,6 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -29,10 +28,12 @@
 		document.getElementById("time").innerHTML = now.toLocaleString();
 		setTimeout(getNow, 1000);
 	}
-	$(function(){
+
+	$(function() {
 		$("#1").load("/mavenfst/maindata");
 		$("#2").load("/mavenfst/maindata2");
 		$("#3").load("/mavenfst/maindata3");
+		$("#re").load("/mavenfst/selecta1");
 		var date1 = new Date();
 
 		$(".timer").each(
@@ -76,48 +77,10 @@
 							<img src="images/img/mobile.png" />
 						</div>
 					</div>
-</div>
-				<!---------------------------头下------------------------------>	<nav class="navbar navbar-default top-bot-col">
-						<div class="container-fluid ">
-							<div class="navbar-header">
-								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-								        <span class="sr-only">Toggle navigation</span>
-								        <span class="icon-bar"></span>
-								        <span class="icon-bar"></span>
-								        <span class="icon-bar"></span>
-						      		</button>
-							</div>
-							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-								<ul class="nav navbar-nav  top-bot-1 ">
-									<li class="active">
-										<a href="${cxt}/jsp/home.jsp"><span class="glyphicon glyphicon-home"></span>&nbsp;首页</a>
-									</li>
-									<li>
-										<a href="${cxt}/jsp/jiapage/caigougonggao.jsp">招标采购公告</a>
-									</li>
-									<li>
-										<a href="/mavenfst/select1">供应商公告</a>
-									</li>
-									<li>
-										<a href="tousuzhongxin.html">投诉中心</a>
-									</li>
-									<li>
-										<a href="${cxt}/jsp/jiapage/fuwuzhongxin.jsp">服务中心</a>
-									</li>
-									<li>
-										<a href="${cxt}/jsp/jiapage/falvshengming.jsp">法律声明</a>
-									</li>
-									<c:if test="${!empty supplier  }">
-                                    <li>
-										<a href="${cxt}/bids/zhaobiaoall?page=1">我的后台</a>
-									</li>
-									</c:if>
-									<c:if test="${!empty supplier}">
-                                    <li>
-										<a href="${cxt}/common/tuichu">退出</a>
-									</li>
-									</c:if>
-								</ul>
+					<div class="col-xs-5 top-bar-2 " id="time"></div>
+					<div class="col-xs-3">
+						<div class="top-bar-3 ">
+
 							<form class="navbar-form  form-inline">
 
 								<div class="form-group"
@@ -155,8 +118,7 @@
 										class="glyphicon glyphicon-home"></span>&nbsp;首页</a></li>
 								<li><a href="${cxt}/jsp/jiapage/caigougonggao.jsp">招标采购公告</a>
 								</li>
-								<li><a href="${cxt}/jsp/jiapage/gongyingshanggonggao.jsp">供应商公告</a>
-								</li>
+								<li><a href="${cxt}/select1">供应商公告</a></li>
 								<li><a href="/mavenfst/selectcomplain?page=1">投诉中心</a></li>
 								<li><a href="${cxt}/jsp/jiapage/fuwuzhongxin.jsp">服务中心</a>
 								</li>
@@ -237,15 +199,9 @@
 							</li>
 						</ul>
 						<div class="tab-content tab-1">
-							<div role="tabpanel" class="tab-pane active" id="1">
-								
-							</div>
-							<div role="tabpanel" class="tab-pane" id="2">
-								
-							</div>
-							<div role="tabpanel" class="tab-pane" id="3">
-								
-							</div>
+							<div role="tabpanel" class="tab-pane active" id="1"></div>
+							<div role="tabpanel" class="tab-pane" id="2"></div>
+							<div role="tabpanel" class="tab-pane" id="3"></div>
 
 						</div>
 					</div>
@@ -461,7 +417,7 @@
 											style="padding-right: 10px; border: none;float: right;background-color: transparent;position: relative;top: -1px;">
 											<a href="#settings"
 											style="font-size: 12px; color: #333;padding-top: 15px;">更多</a>
-										</li>
+										</li>ede
 									</ul>
 									<div class="tab-content tab-1">
 										<div role="tabpanel" class="tab-pane active" id="j3">
@@ -803,7 +759,7 @@
 							<li>
 								<p class="navbar-text">
 									<a href="${cxt}/jsp/suppliers/denglu.jsp">供应商登录</a> <a
-										href="denglu.html">代理登录</a> <a href="denglu.html">专家登录</a>
+										href="denglu.html"></a> <a href="denglu.html">专家登录</a>
 								</p>
 							</li>
 						</ul>
@@ -823,7 +779,7 @@
 						<div class=" pull-right">
 							<p style="position: relative;top: -95px;">
 								<span class="small text-muted">还没有供应商账号，去</span> <a
-									href="zhuce.html">【注 册】</a><br /> <span
+									href="jsp/suppliers/zhuce.jsp">【注 册】</a><br /> <span
 									class="small text-muted">第三方检测机构</span> <a href="zhuce.html">【注
 									册】</a>
 							</p>
@@ -841,17 +797,12 @@
 							</h5>
 
 						</div>
-						
-							<div class="r2 pull-left">
-								<ul class="r2-2">
-								<li><a href="${cxt }/selecta1" id="ok">展开通告</a></li>
-								<c:forEach items="${list }" var="v">
-									<li>
-										<a href="${cxt }/ajaxdelbyid/${v.id}"><span class="glyphicon glyphicon-record" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;<span style="color:#333;"> ${v.title}</span></a>
-                                   	</li>
-								 </c:forEach>	
-								</ul>
-							</div>
+						<div class="r2 pull-left">
+							<ul class="r2-2">
+
+										<div id="re"></div>
+							</ul>
+						</div>
 
 						<div class="pull-left r1">
 							<h5>
@@ -899,7 +850,9 @@
 								<li><img src="images/img/kefu.png" />
 									<button class="btn btn-default" type="submit">进入客服</button></li>
 
-                               </ul>
+							</ul>
+
+						</div>
 					</div>
 				</div>
 			</div>
