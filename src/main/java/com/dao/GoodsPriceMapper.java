@@ -1,14 +1,17 @@
 package com.dao;
 
-import java.util.List;
-
-import tk.mybatis.mapper.common.Mapper;
-
-import com.bean.Admin;
 import com.bean.GoodsPrice;
 
-public interface GoodsPriceMapper extends Mapper<com.bean.GoodsPrice>{
-	List<GoodsPrice> selectgp();
-	List<GoodsPrice> selecta();
-	List<Admin> selectall2();
+public interface GoodsPriceMapper {
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(GoodsPrice record);
+
+    int insertSelective(GoodsPrice record);
+
+    GoodsPrice selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(GoodsPrice record);
+
+    int updateByPrimaryKey(GoodsPrice record);
 }

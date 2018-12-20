@@ -44,7 +44,7 @@
 			$.get("/mavenfst/deletezb", {
 				"id" : id
 			}, function(data) {
-				if (data=="") {
+				if (data) {
 					$(t).parents("tr").remove();
 				}
 
@@ -92,7 +92,7 @@ html, html body, td {
 						<button type="button" class="btn btn-primary btn-xs"
 							onclick="delrow(this,${v.id})">删除</button></td>
 					<td><a href="<%=path%>/fabuzb?id=${v.id}"><button
-								type="button" class="btn btn-primary btn-xs">发布项目</button></a></td>
+								type="button" class="btn btn-primary btn-xs">发布招标项目</button></a></td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -100,15 +100,15 @@ html, html body, td {
 	</div>
 	<div class="page">
 		<ul class="pagination">
-			<li><a href="/mavenfst/${path}/1">首页</a></li>
-			<li><a href="/mavenfst/${path}/${pg.pageNum-1}"
+			<li><a href="/mavenfst/fabuzbset/1">首页</a></li>
+			<li><a href="/mavenfst/fabuzbset/${pg.pageNum-1}"
 				aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 			</a></li>
-			<li><a href="/mavenfst/${path}/${pg.pageNum}">${pg.pageNum}</a></li>
-			<li><a href="/mavenfst/${path}/${pg.pageNum+1}"
+			<li><a href="/mavenfst/fabuzbset/${pg.pageNum}">${pg.pageNum}</a></li>
+			<li><a href="/mavenfst/fabuzbset/${pg.pageNum+1}"
 				aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 			</a></li>
-			<li><a href="/mavenfst/${path}/${pg.pages}">末页</a></li>
+			<li><a href="/mavenfst/fabuzbset/${pg.pages}">末页</a></li>
 		</ul>
 	</div>
 </body>

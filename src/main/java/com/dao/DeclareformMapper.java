@@ -12,7 +12,6 @@ public interface DeclareformMapper extends Mapper<Declareform>{
     
 	//根据招标类型查询所有数据
 	List<Declareform> selectAllBysign(int sign,int status);
-	List<Declareform> selectmyAllBysign(Integer publisher,Integer sign,Integer status);
 	//搜索查询
 	List<Declareform> selectAllByTitle(String title,int sign,int status);
 	

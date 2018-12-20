@@ -21,6 +21,7 @@
 <meta http-equiv="description" content="This is my page">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 <script type="text/javascript" src="${cxt }/js/jquery-2.0.0.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/zbstyle.css" />
 <script type="text/javascript">
 	$(function() {
 
@@ -65,20 +66,21 @@ html, html body, td {
 </head>
 
 <body>
+	<div class="table_ss" id="zbSearch">正在招标项目</div>
 	
 	<!--搜索结果-->
-	<h1>正在招标项目</h1>
+	<h5>查询结果</h5>
 	<div id="searchResult" class="searchResult">
 		<div class="container_div2_div_ul2 clearL " id="list">
-			<table class="table table-striped table-hover" width="100%"
+			<table class="table-striped table-hover" width="100%"
 				cellspacing="0" cellpadding="0" border="0">
 				<tbody>
-					<tr class="">
+					<tr class="table_tr">
 						<td style="padding-left:120px">标题</td>
 						<td style="padding-left:85px">距离招标截止时间</td>
 					</tr>
 					<c:forEach items="${list}" var="v">
-						<tr style="width:100%;" class="">
+						<tr style="width:100%;" class="_data_tr_flag active">
 							<td style="width:75%" align="left"><a
 								href="/mavenfst/show?id=${v.id}">${v.title}</a></td>
 							<td style="width:25%;padding-left:50px;">还有<span
@@ -90,15 +92,15 @@ html, html body, td {
 		</div>
 		<div class="page">
 			<ul class="pagination">
-				<li><a href="/mavenfst/${path}/1">首页</a></li>
-				<li><a href="/mavenfst/${path}/${pg.pageNum-1}"
+				<li><a href="/mavenfst/zhengzaizb/1">首页</a></li>
+				<li><a href="/mavenfst/zhengzaizb/${pg.pageNum-1}"
 					aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 				</a></li>
-				<li><a href="/mavenfst/${path}/${pg.pageNum}">${pg.pageNum}</a></li>
-				<li><a href="/mavenfst/${path}/${pg.pageNum+1}"
+				<li><a href="/mavenfst/zhengzaizb/${pg.pageNum}">${pg.pageNum}</a></li>
+				<li><a href="/mavenfst/zhengzaizb/${pg.pageNum+1}"
 					aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 				</a></li>
-				<li><a href="/mavenfst/${path}/${pg.pages}">末页</a></li>
+				<li><a href="/mavenfst/zhengzaizb/${pg.pages}">末页</a></li>
 			</ul>
 		</div>
 	</div>

@@ -3,12 +3,11 @@ package com.bean;
 import java.io.Serializable;
 
 import java.util.Date;
-
+//采购询价物资明细表
 import java.util.List;
 
 import javax.persistence.Id;
 import javax.persistence.Transient;
-//采购询价物资明细表
 public class GoodsDetail implements Serializable {
 	@Id
     private Integer id;
@@ -18,6 +17,17 @@ public class GoodsDetail implements Serializable {
     private Date getdate;
     @Transient
     private Goods goods;
+    @Transient
+    private GoodsPrice goodsprice;
+    
+
+	public GoodsPrice getGoodsprice() {
+		return goodsprice;
+	}
+
+	public void setGoodsprice(GoodsPrice goodsprice) {
+		this.goodsprice = goodsprice;
+	}
 
 	public Integer getGoodspriceid() {
 		return goodspriceid;

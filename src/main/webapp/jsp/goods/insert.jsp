@@ -19,22 +19,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+
   </head>
   
-  <body class="bg-warning" style="background-color: #00FF66">
-   
+  <body>
    <form action="<%=path%>/goods/insertgoods" method="post">
-   <fieldset ><legend style="font-size: 30px;">增加物品</legend>
-  <div align="center" style="font-size: 20px;">
-   物&nbsp资<input type="text" name="goodsname" style="margin: 10px"><br>
-  编&nbsp码<input type="text" name="goodscode" style="margin: 10px"><br>
- 型&nbsp号<input type="text" name="type" style="margin: 10px"><br>
-单&nbsp位<input type="text" name="unit" style="margin: 10px"><br>
+   <fieldset ><legend>增加物品</legend>
+   物资<input type="text" name="goodsname"><br>
+  编码 <input type="text" name="goodscode"><br>
+ 型号<input type="text" name="type"><br>
+ 单位<input type="text" name="unit"><br>
+  数量<input type="text" name="num"><br>
+ 截止日期<input type="text" name="getdate"><br>
    <input type="submit" value="提交">
-   </div>
    </fieldset>
    </form>
-   
   </body>
 </html>

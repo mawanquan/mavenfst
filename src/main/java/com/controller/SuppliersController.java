@@ -101,7 +101,7 @@ public class SuppliersController {
 				mv.addObject("suppliers", suppliers);
 				return mv;
 		}
-	//********************** **修改（再删除）供货商信息(前台)*****************************************/
+	//*************************** ** 审核(后台)*****************************************/
 
 		@ResponseBody
 		@RequestMapping("/deleteByPrimaryKey1")

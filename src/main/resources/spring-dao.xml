@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:aop="http://www.springframework.org/schema/aop"
-	xmlns:redis="http://www.springframework.org/schema/redis"
-	xmlns:task="http://www.springframework.org/schema/task"
 	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
-		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.2.xsd
-		http://www.springframework.org/schema/redis http://www.springframework.org/schema/redis/spring-redis-1.0.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
@@ -19,6 +13,7 @@
 	<!-- 配置整合mybatis过程 -->
 	<!-- 自动扫描service层 -->
 	<context:component-scan base-package="com.service" />
+	<context:component-scan base-package="com.untils"/>
 	<!--========配置基于Mybatis的事务切面类================ -->
 	<!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
 	<bean id="transactionManager"
@@ -44,14 +39,13 @@
 	</aop:config>
 	<!--============================================== -->
 
-
+	
 	<!-- 引入配置文件 -->
-	<!-- <context:property-placeholder location="classpath:redis.properties" ignore-resource-not-found="true" ignore-unresolvable="true"/> -->
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location" value="classpath:jdbc.properties" />
 	</bean>
-	
+
 	<!-- 配置dbcp数据源 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
@@ -70,7 +64,34 @@
 		<!-- 获取连接最大等待时间 -->      
 		<property name="maxWait" value="${maxWait}"></property>
 	</bean>
+  
+	
+	<!-- 配置一个简单邮件对象 -->
+	<bean id="mailMessage" class="org.springframework.mail.SimpleMailMessage">
+		<property name="from">
+			<value>${mail.from}</value>
+		</property>
+		<!-- 查看SimpleMailMessage源码还可以注入标题,内容等 -->
+	</bean>
 
+	<!-- 申明邮件发送接口JavaMailSenderImpl对象 -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="host" value="${mail.host}" />
+		<property name="username" value="${mail.username}" />
+		<property name="password" value="${mail.password}" />
+		<property name="javaMailProperties">
+			<props>
+				<!-- 设置认证开关 -->
+				<prop key="mail.smtp.auth">true</prop>
+				<!-- 启动调试开关 -->
+				<prop key="mail.debug">true</prop>
+				<!-- 设置发送延时 -->
+				<prop key="mail.smtp.timeout">0</prop>
+			</props>
+		</property>
+	</bean>
 	<!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />

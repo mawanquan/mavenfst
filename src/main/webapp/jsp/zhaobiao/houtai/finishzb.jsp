@@ -47,7 +47,7 @@ html, html body, td {
 			<tr>
 				<td>${v.publisher}</td>
 				<td><a href="/mavenfst/show?id=${v.id}">${v.title}</a></td>
-				<td style="width: 500px;">${v.content}</td>
+				<td>${v.content}</td>
 				<td>${v.zbmoney}</td>
 				<td>${v.hit}</td>
 			</tr>
@@ -56,15 +56,15 @@ html, html body, td {
 	</div>
 	<div class="page">
 		<ul class="pagination">
-			<li><a href="/mavenfst/${path}/1">首页</a></li>
-			<li><a href="/mavenfst/${path}/${pg.pageNum-1}"
+			<li><a href="/mavenfst/finishzb/1">首页</a></li>
+			<li><a href="/mavenfst/finishzb/${pg.pageNum-1}"
 				aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 			</a></li>
-			<li><a href="/mavenfst/${path}/${pg.pageNum}">${pg.pageNum}</a></li>
-			<li><a href="/mavenfst/${path}/${pg.pageNum+1}"
+			<li><a href="/mavenfst/finishzb/${pg.pageNum}">${pg.pageNum}</a></li>
+			<li><a href="/mavenfst/finishzb/${pg.pageNum+1}"
 				aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 			</a></li>
-			<li><a href="/mavenfst/${path}/${pg.pages}">末页</a></li>
+			<li><a href="/mavenfst/finishzb/${pg.pages}">末页</a></li>
 		</ul>
 	</div>
 </body>

@@ -9,30 +9,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	<head>
 		<meta charset="utf-8">
-		<base href="<%=basePath%>">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="${css}bootstrap.min.css" rel="stylesheet">
-		<link href="${css}my.css" rel="stylesheet">
-		<script src="${js}jquery-2.0.0.min.js"></script>
-		<script src="${js}bootstrap.min.js"></script>
+		<link href="${css}/bootstrap.min.css" rel="stylesheet">
+		<link href="${css}/my.css" rel="stylesheet">
+		<script src="${js}/jquery-2.0.0.min.js"></script>
+		<script src="${js}/bootstrap.min.js"></script>
 	</head>
 
 	<body>
 		<!--***********************头部************************-->
 		<div class="header">
 			<div class="container-fluid">
+				<!---------------------------头上------------------------------>
 				<div class="top-bar">
 					<div class="row">
-						<div class="col-xs-4">
+						<div class="col-md-4">
 							<div class="top-bar-1 ">
-								<img src="images/images/img/mobile.png" />
+								<img src="img/mobile.png" />
 							</div>
 						</div>
 
-						<div class="col-xs-8">
+						<div class="col-md-8">
 							<div class="top-bar-3 ">
-								<form class="navbar-form navbar-right ">
+								<form class="navbar-form navbar-right " <!--style="border-color:white ; border-radius:0px; " -->>
 									<div class="form-group">
 										<input type="text" class="form-control" placeholder="关键字搜索">
 									</div>
@@ -96,9 +96,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="container-fluid ">
 			<div class="tail">
 				<div class="row">
-					<div class="col-xs-4 tail-1">
+					<div class="col-md-4 tail-1">
 					</div>
-					<div class="col-xs-5 tail-2">
+					<div class="col-md-5 tail-2">
 						<li>
 							<p>京IQP备05002571号 | 热吧招标版权所有</p>
 						</li>
@@ -106,7 +106,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<p>技术支持工作时间（工作日）：上午 9：00~12：00 下午 13：00~18:00</p>
 						</li>
 					</div>
-					<div class="col-xs-3 tail-3">
+					<div class="col-md-3 tail-3">
 					</div>
 				</div>
 			</div>

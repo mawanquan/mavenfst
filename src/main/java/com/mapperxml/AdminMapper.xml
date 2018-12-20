@@ -26,13 +26,11 @@
 		<result column="adminstart" jdbcType="INTEGER" property="adminstart" />
 		<result column="admindate" jdbcType="VARCHAR" property="admindate" />
 		<result column="branchid" jdbcType="INTEGER" property="branchid" />
-		
 		<association property="branch" javaType="com.bean.Branch">
 			<id column="id2" jdbcType="INTEGER" property="id" />
 			<result column="branchname" jdbcType="VARCHAR" property="branchname" />
 			<result column="branchnameid" jdbcType="INTEGER" property="branchnameid" />
 		</association>
-		
 	</resultMap>
 
 

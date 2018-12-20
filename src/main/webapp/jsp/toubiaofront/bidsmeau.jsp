@@ -45,7 +45,7 @@
 	         }else{
 	         var htm="";
 	         for(var i=0;i<reg.length;i++){
-	        htm+="<tr id='"+reg[i].id+"'><td><a href=''>"+reg[i].decl.title+"</a></td><td><button class='btn btn-danger' type='button' onclick='up(0,"+reg[i].id+")'>弃标</button></td>";
+	        htm+="<tr id='"+reg[i].id+"'><td><a href='${cxt}/bids/upjpoinzbxxzbfile?id="+reg[i].id+"'>"+reg[i].decl.title+"</a></td><td><button class='btn btn-danger' type='button' onclick='up(0,"+reg[i].id+")'>弃标</button></td>";
 	             }
 	              $("#nowbids table").append(htm);
 	           }
@@ -66,15 +66,15 @@
 	         }else{
 	           for(var i=0;i<reg.length;i++){
 	               if(reg[i].start==0){
-	                   var htm1="<tr  id='"+reg[i].id+"'><td><a href=''>"+reg[i].decl.title+"</a></td><td><button class='btn btn-danger' type='button' onclick='del("+reg[i].id+")'>彻底删除</button></td>";
+	                   var htm1="<tr  id='"+reg[i].id+"'><td><a href='${cxt}/bids/upjpoinzbxxzbfile?id="+reg[i].id+"'>"+reg[i].decl.title+"</a></td><td><button class='btn btn-danger' type='button' onclick='del("+reg[i].id+")'>彻底删除</button></td>";
 	          		   $("#bidszero").append(htm1);
 	           
 	           	   }else if(reg[i].start==3){
-	           		  var htm2="<tr  id='"+reg[i].id+"'><td><a href=''>"+reg[i].decl.title+"</a></td><td><button class='btn btn-danger' type='button' onclick='del("+reg[i].id+")'>彻底删除</button></td>";
+	           		  var htm2="<tr  id='"+reg[i].id+"'><td><a href='${cxt}/bids/upjpoinzbxxzbfile?id="+reg[i].id+"'>"+reg[i].decl.title+"</a></td><td><button class='btn btn-danger' type='button' onclick='del("+reg[i].id+")'>彻底删除</button></td>";
 	           		  $("#bidsthree").append(htm1);
 	               }
 	              else if(reg[i].start==4){
-	                  var htm3="<tr  id='"+reg[i].id+"'><td><a href=''>"+reg[i].decl.title+"</a></td><td><button class='btn btn-danger' type='button' onclick='del("+reg[i].id+")'>彻底删除</button></td>";
+	                  var htm3="<tr  id='"+reg[i].id+"'><td><a href='${cxt}/bids/upjpoinzbxxzbfile?id="+reg[i].id+"'>"+reg[i].decl.title+"</a></td><td><button class='btn btn-danger' type='button' onclick='del("+reg[i].id+")'>彻底删除</button></td>";
 	                  $("#bidsfour").append(htm1);
 	                   }
 	            } 

@@ -1,9 +1,7 @@
 body {
-	background-color: white;
-	max-width:1124.17px;
-	min-width: 1124.17px;
 	margin:0px auto;
-	min-height: 1000px
+	background-color: white;
+	max-width: 1124.17px;
 }
 
 li {
@@ -43,8 +41,7 @@ li {
 
 
 .header .top-bar .top-bar-3 {
-	/* padding-top: 0px; */
-	
+	padding-top: 0px;
 	
 }
 .header .top-bar .top-bar-3 .btn {
@@ -196,7 +193,7 @@ li {
 }
 .body1 .b1 .tab-1 table{
 	
-	width: 810px;
+	width: 850px;
 }
 .body1 .b1 .tab-1 td{
 	line-height: 18px;
@@ -211,13 +208,12 @@ li {
 .body1 .b2 {
 	background-color: #f6f6f6;
 	padding-left: 0px;
-	width: 265px;
 }
 
 .body1 .b2 .r1 {
 	padding-left: 10px;
 	height: 38px;
-	width: 264px;
+	width: 254px;
 	margin: 0px;
 	border-radius: 3px;
 	background-color: #31B0D5;
@@ -237,7 +233,6 @@ li {
 	height: 160px;
 	padding-left: 0px;
 	margin-bottom: 0px;
-	/*background-color: red;*/
 }
 
 .body1 .b2 .r2 li {
@@ -248,9 +243,7 @@ li {
 	padding-left: 18px;
 }
 
-.body1 .b2 .r2 .r2-1 {
-	
-}
+.body1 .b2 .r2 .r2-1 {}
 
 .body1 .b2 .r2 .r2-1-1 {
 	position: relative;
@@ -271,7 +264,6 @@ li {
 	width: 72px;
 	position: relative;
 	top: -20px;
-	
 }
 
 .body1 .b2 .r2 .r2-2 li>a{

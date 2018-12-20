@@ -23,42 +23,36 @@
 	
 	<script src="js/jquery-2.0.0.min.js"></script>
 	<script type="text/javascript">
-function dtime() {
-	  
-		var mydate = new Date();
-		alert(mydate.toLocaleDateString());
-		document.getElementById("time").value = mydate.toLocaleDateString();
+$(function() {
+$(".ddate").each(function(){
+var d = new Date($(this).text());
+					$(this).text(
+							d.getFullYear() + "年" + (d.getMonth() + 1) + "月"
+									+ d.getDate() + "日");
+});
+					
 
-	}
+	});
 	</script>
 </head>
 
 <body>
-    <form action="${cxt}/updateproclamaltion" method="post">
+
+	<table class="table table-striped  table-striped table-bordered table-hover"
+		style="text-align: center;">
+		<tr>
+		    <td>标题</td>
+		    <td>时间</td>
+		    <td>内容</td>
+		</tr>
+		<tr>
+			<td>${proclamation.title}</td>
+			<td class="ddate">${proclamation.time}</td>
+			<td>${proclamation.comment}</td>
+			<td><a href="/mavenfst/updateproclamaltion"><input type="submit" value="修改"/></a></td>
+		</tr>
+		
+	</table>
 	
-		<div>
-		     <input type="hidden" name="id"  value="${proclamation.id}" />
-		</div>
-		<div>
-		<input type="hidden" name="number" value="${proclamation.number}">
-		</div>
-		<div>
-		    <label>标题:</label>
-		    <div><input type="text" name="title"
-						value="${proclamation.title}" /></div>
-		</div>
-		<div>
-		   <label>内容:</label>
-		 <div><input type="text" name="comment"
-						value="${proclamation.comment}" /></div>
-		</div>
-		<div>
-		    <input id="time" name="time" onclick="dtime()" value="${proclamation.time}">
-		</div>
-		<div>
-		<input type="submit" value="修改"/>
-		</div>
-	
-	</form>
 </body>
 </html>

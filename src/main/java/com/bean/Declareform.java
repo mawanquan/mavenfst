@@ -4,11 +4,9 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Id;
 import javax.persistence.Transient;
 
 public class Declareform implements Serializable {
-	@Id
     private Integer id;
 
     private Integer publisher;
@@ -26,6 +24,8 @@ public class Declareform implements Serializable {
     private Double zbmoney;
 
     private Integer sign;
+
+
 
     private String hit;
 
