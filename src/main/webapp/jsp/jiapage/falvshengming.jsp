@@ -41,7 +41,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<button type="submit" class="btn btn-default " >
 										<span class="glyphicon glyphicon-search"></span>	
 									</button>
-								</form
 								<div class="form-group"
 									style="width: 20px; position: relative;left:-20px">
 									<input type="text" class="form-control" placeholder="关键字搜索">

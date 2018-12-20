@@ -26,19 +26,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="row">
 					<div class="col-xs-4">
 						<div class="top-bar-1 ">
-							<img src="images/img/mobile.png" />						</div>
+							<img src="images/img/mobile.png" />			
 					</div>
 					<div class="col-xs-5 top-bar-2 " id="time"></div>
 					<div class="col-xs-3">
 						<div class="top-bar-3 ">
 
-<div class="col-md-8">
+                          <div class="col-md-8">
 							<div class="top-bar-3 ">
 								<form class="navbar-form navbar-right ">
-									<div class="form-group" <!--style="position: border-color:white ; border-radius:0px; "-->>
+									<div class="form-group" >
+									<!--style="position: border-color:white ; border-radius:0px; "-->
 										<input type="text" class="form-control" placeholder="关键字搜索">
 									</div>
-									<button type="submit" class="btn btn-default " <!--style="position: relative;left: -6px;  border-radius:0px; background-color: white;"-->>
+									<button type="submit" class="btn btn-default ">
 										<span class="glyphicon glyphicon-search"></span>	
 									</button>
 								</form>

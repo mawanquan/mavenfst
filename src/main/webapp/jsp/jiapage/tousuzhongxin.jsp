@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 						<div class="col-md-8">
 							<div class="top-bar-3 ">
-								<form class="navbar-form navbar-right " <!--style="border-color:white ; border-radius:0px; " -->
+								<!--style="border-color:white ; border-radius:0px; " -->
 									<div class="form-group">
 										<input type="text" class="form-control" placeholder="关键字搜索">
 									</div>
