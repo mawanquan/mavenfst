@@ -1,5 +1,6 @@
 package com.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -20,7 +21,10 @@ import com.bean.Suppliers;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.service.AdminService;
-
+/**
+ * @author 马万全
+ *
+ */
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
@@ -35,9 +39,35 @@ public class AdminController {
 		this.adminService = adminService;
 	}
 
+	@RequestMapping("/tuichu")
+	public String goTuichu(HttpServletRequest req) {
+		Admin suo = (Admin) req.getSession().getAttribute("user");
+		if (suo != null) {
+			req.getSession().removeAttribute("supplier");
+			return "redirect:/admin/gologinview";
+		}
+		return "redirect:/admin/gologinview";
+	}
+	
+	
 // 查询所有用户数据
+	
+	/**
+	 * @param page
+	 * @param name
+	 * @param brid
+	 * @param model
+	 * @return
+	 * @throws UnsupportedEncodingException 
+	 */
 	@RequestMapping("/selalluser")
-	public String selAllUser(Integer page, String name, String brid, Model model) {
+	public String selAllUser(Integer page, String name, String brid, Model model,HttpServletRequest request) throws UnsupportedEncodingException {
+		if (request.getMethod().equals("GET")) {
+			if (name != null && !"".equals(name)) {
+				name = new String(name.getBytes("iso-8859-1"), "utf-8");
+			}
+		}
+		
 		Admin admin = new Admin();
 		Integer id = null;
 		if ("0".equals(brid) || null == brid || "".equals(brid)) {
@@ -48,13 +78,15 @@ public class AdminController {
 		}
 		admin.setAdminname(name);
 		admin.setAdminstart(0);
-		PageHelper.startPage(page, 1);
+		PageHelper.startPage(page, 5);
 		List<Admin> lisadmin = this.adminService.selAllAdmin(admin);
 		PageInfo pageinfo = new PageInfo(lisadmin);
 		List<Branch> lisbranch = this.adminService.selBranchNot();
 		model.addAttribute("lisbranch", lisbranch);
 		model.addAttribute("pageinfo", pageinfo);
 		model.addAttribute("lisuser", lisadmin);
+		model.addAttribute("name", name);
+		model.addAttribute("brid", brid);
 		return "manage/manageadmin";
 	}
 

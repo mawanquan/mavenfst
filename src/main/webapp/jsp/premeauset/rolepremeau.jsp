@@ -240,8 +240,8 @@
 		<div class="col-md-5" id="onediv">
 
 			<table class="table table-striped table-bordered ">
-				<tr>
-					<th style="font-size: 20px">角色资源</th>
+				<tr >
+					<th colspan="2" style="font-size: 20px">角色资源</th>
 				</tr>
 
 				<c:forEach items="${lisallrole}" var="g">

@@ -27,7 +27,11 @@ $(function(){
 	$(".nav li a").click(function(){
 		$(".nav li a.selected").removeClass("selected")
 		$(this).addClass("selected");
-	})	
+	});
+   var time=new Date();
+   var strtime=time.getFullYear()+"年"+(time.getMonth()+1)+"月"+time.getDay()+"日";
+   $("#time").text(strtime);
+		
 })	
 </script>
 
@@ -39,11 +43,12 @@ $(function(){
     </div>
     <div class="topright">    
     <ul>
-    <li><a href="login.html" target="_parent">退出</a></li>
+    <li><a href="${cxt}/admin/tuichu" target="_parent">退出</a></li>
     </ul>
     
     <div class="user">
-    <span>admin</span>
+    <span>${user.adminname}</span>
+    <span id="time"></span>
     </div>    
     </div>
 </body>

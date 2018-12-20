@@ -86,7 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            options+="<option value='"+reg[i].id+"'>"+reg[i].branchname+"</option>";
          } 
          
-         var htms="<tr><td><span>部门名称2222：</span><input class='form-control' type='text'  name='branchname' ></td><td><select class='form-control'  name='branchnameid'>"+options+"</select></td><td><button onclick='removethis(this)' class='btn btn-primary' >移除</button></td></tr>";
+         var htms="<tr><td><span>部门名称 ：</span><input class='form-control' type='text'  name='branchname' ></td><td><select class='form-control'  name='branchnameid'>"+options+"</select></td><td><button onclick='removethis(this)' class='btn btn-primary' >移除</button></td></tr>";
         $("#biaoge").append(htms);
         },
         'json')
@@ -141,7 +141,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <table class="table table-striped table-bordered ">
 				<tr>
 					<th style="font-size: 20px">资源信息</th>
-					 <th>
+					 <th style="text-align: right;">
 		                <button  class='btn btn-primary' data-toggle="modal" data-target="#myModal3">添加权限</button>
 		            </th>
 				</tr>
@@ -151,7 +151,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<dl class="leftmenus">
 								<dd>
 									<div class="titles" onclick="caidan(this)">
-										<li ><cite></cite><a style="font-size: 20px">${v.branchname}</a>
+										<li><cite></cite><a style="font-size: 20px">${v.branchname}</a>
 										 <button id="up" class='btn btn-primary' data-toggle="modal" data-target="#myModal2" onclick="updaterole(${v.id})">修改</button>
                                          <button  id="del1" onclick="dels('${v.id}')" class='btn btn-danger'>删除</button>
                                          </li>
@@ -231,8 +231,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <div id="insrole">
       <table id="biaoge">
           <tr id="twotrs">
-              <th> <button type="button" onclick="insertrole(0)" class='btn btn-primary' >添加一行</button></th>
-               <th> <button type="button" onclick="insertrole(1)" class='btn btn-primary' >添加一行子类</button></th>
+              <th style="text-align: center;"> <button type="button" onclick="insertrole(0)" class='btn btn-primary' >添加部门</button></th>
+               <th style="padding-left: 100%"> <button type="button" onclick="insertrole(1)" class='btn btn-primary' >添加分布门</button></th>
           </tr>
       </table>
       </div>

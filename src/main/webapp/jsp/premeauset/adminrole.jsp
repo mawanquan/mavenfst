@@ -29,6 +29,12 @@
 	gotopage(page);
 	
 	})
+	$(".date").each(
+				function() {
+                         
+					var d = new Date($(this).text());
+					$(this).text(d.getFullYear() + "年" + (d.getMonth() + 1) + "月"+ d.getDate() + "日");
+				});
 	});
 	function dels(id){
 	    $("#hiddenid input").val(id);
@@ -86,11 +92,11 @@ function mychechbox(myid){
 		<form class="form-inline" method="post">
 			<div class="form-group">
 				<label for="exampleInputName2">姓名：</label> <input type="text"
-					class="form-control" id="exampleInputName2" /> <select
+					class="form-control" id="exampleInputName2" value="${name}"/> <select
 					class='form-control' id='xiala' name='branchid'>
 					<option value="0">请选择</option>
 					<c:forEach items="${lisbranchs}" var="b">
-						<option value="${b.id}">${b.branchname}</option>
+						<option value="${b.id}" <c:if test="${b.id eq brid}">selected</c:if>>${b.branchname}</option>
 					</c:forEach>
 				</select>
 			</div>
@@ -110,7 +116,7 @@ function mychechbox(myid){
 					<td>${vm.adminname}</td>
 					<td>${vm.branch.branchname}</td>
 					<td>${vm.adminstart}</td>
-					<td>${vm.admindate}</td>
+					<td class="date">${vm.admindate}</td>
 					<td>
 					<div class="form-group">
 					<div class="col-sm-10" id="bushudelita">

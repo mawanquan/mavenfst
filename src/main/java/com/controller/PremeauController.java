@@ -1,10 +1,12 @@
 package com.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -234,7 +236,12 @@ public class PremeauController {
 	// 获取所有的role和用户 以及部门
 	@RequestMapping("/selalladminpre")
 	public String selAllAdminPre(Integer page, String name, String brid,
-			Model model) {
+			Model model,HttpServletRequest request) throws UnsupportedEncodingException {
+		if (request.getMethod().equals("GET")) {
+			if (name != null && !"".equals(name)) {
+				name = new String(name.getBytes("iso-8859-1"), "utf-8");
+			}
+		}
 		Admin admin = new Admin();
 		Integer id = null;
 		if ("0".equals(brid) || null == brid || "".equals(brid)) {
@@ -245,7 +252,7 @@ public class PremeauController {
 		}
 		admin.setAdminname(name);
 		admin.setAdminstart(0);
-		PageHelper.startPage(page, 1);
+		PageHelper.startPage(page, 5);
 		// 获取用户
 		List<Admin> lisadmin = this.premeauService.selAllAdminPre(admin);
 		PageInfo pageinfo = new PageInfo(lisadmin);
@@ -254,6 +261,8 @@ public class PremeauController {
 		model.addAttribute("lisbranchs", lisbranch);
 		model.addAttribute("pageinfo", pageinfo);
 		model.addAttribute("lisadmin", lisadmin);
+		model.addAttribute("name", name);
+		model.addAttribute("brid", brid);
 		return "premeauset/adminrole";
 	}
 
