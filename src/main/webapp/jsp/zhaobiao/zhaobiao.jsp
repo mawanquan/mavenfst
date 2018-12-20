@@ -41,7 +41,7 @@
 
 	<%-- <jsp:include page="/jsp/jiapage/denglu.jsp"></jsp:include> --%>
 	<div id="total" class="container">
-<jsp:include page="/jsp/jiapage/denglu.jsp"></jsp:include>
+ <jsp:include page="/jsp/jiapage/denglu.jsp"></jsp:include>
 		<!-- ============================= -->
 
 		<div id="content">
