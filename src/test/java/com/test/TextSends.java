@@ -20,7 +20,7 @@ public class TextSends {
 		EmailMessage em = new EmailMessage();
 		em.setSubject("hello");
 		em.setText("第3个邮件");
-		em.setTouser("1044958122@qq.com");
+		em.setTouser("1543182674@qq.com");
 		//Email email=new Email();
 		//email.myEmail(em);
 		sendTo(em);

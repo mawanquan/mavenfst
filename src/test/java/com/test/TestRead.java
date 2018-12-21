@@ -9,15 +9,16 @@ import javax.jms.MessageConsumer;
 import javax.jms.MessageListener;
 import javax.jms.Queue;
 import javax.jms.Session;
-
+ 
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 import com.bean.EmailMessage;
-import com.untils.Email;
+import com.untils.Email; 
 
 public class TestRead {
+	
 	public static void main(String[] args) throws JMSException {
-		// 1.创建连接工厂
+		// 1.创建连接工厂 
 		ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(
 				"tcp://192.168.43.181:61616");
 		// 2.获取连接
