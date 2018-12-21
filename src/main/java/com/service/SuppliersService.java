@@ -9,7 +9,8 @@ import com.bean.Suppliers;
 public interface SuppliersService {
 	// **********注册************
 	int insert(Suppliers record);
-	// **********关闭商家(拉入黑名单之后)************
+
+	
 	int deleteByPrimaryKey(int id);
 
 	// **********登录************
@@ -18,17 +19,28 @@ public interface SuppliersService {
 	// /******************审核*************
 	List<Suppliers> selectAllsuppliers(Suppliers s);
 
-	// 根据id查询一个供应商
+	
 	public Suppliers selectone(int id);
-	//根据id修改状态(后台)
-	int updateSign(Suppliers suppliers);
-	//根据id修改（先查询）状态(前台修改供货商信息)
 
+	int updateSign(Suppliers suppliers);
+
+	
 	Suppliers selectsuppliers(Integer id);
-	//根据id修改（后修改）状态(前台修改供货商信息)
-int upsuppliers(Suppliers suppliers);
-		
-//**********删除照片************
+
+	
+	int upsuppliers(Suppliers suppliers);
+
 
 	int deleteByPrimaryKey1(int id);
+	
+	
+	// 增加redis手机对应的短信
+	public boolean setRedisData(String key, String value) ;
+
+	// 查询redis手机对应的短信
+
+
+boolean getRedisData(String key,String val);
+
+
 }

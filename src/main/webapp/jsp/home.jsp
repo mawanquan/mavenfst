@@ -391,7 +391,7 @@
 											style="padding-right: 10px; border: none;float: right;background-color: transparent;position: relative;top: -1px;">
 											<a href="#settings"
 											style="font-size: 12px; color: #333;padding-top: 15px;">更多</a>
-										</li>
+										</li>ede
 									</ul>
 									<div class="tab-content tab-1">
 										<div role="tabpanel" class="tab-pane active" id="j3">
@@ -726,36 +726,21 @@
 						<ul class="r2-1">
 							<li>
 								<p class="navbar-text">
-									<img src="images/img/h1.png" /> <img src="images/img/h2.png" />
-									<img src="images/img/h3.png" />
+									&nbsp;&nbsp;<img src="images/img/h1.png" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="images/img/h4.png" />
 								</p>
 							</li>
 							<li>
 								<p class="navbar-text">
-									<a href="${cxt}/jsp/suppliers/denglu.jsp">供应商登录</a> <a
-										href="denglu.html">代理登录</a> <a href="denglu.html">专家登录</a>
+									<a href="${cxt}/jsp/suppliers/denglu.jsp">供应商登录</a>
+									<a href="${cxt}/admin/gologinview">员工登录</a>
 								</p>
 							</li>
 						</ul>
-						<ul class="r2-1 r2-1-1" style="">
-							<li>
-								<p class="navbar-text">
-									<img src="images/img/h4.png" /> <img src="images/img/h5.png" />
-								</p>
-							</li>
-							<li>
-								<p class="navbar-text">
-									<a href="${cxt}/admin/gologinview">员工登录</a> <a
-										href="denglu.html">检测机构登录</a>
-								</p>
-							</li>
-						</ul>
+						<br><br><br>
 						<div class=" pull-right">
 							<p style="position: relative;top: -95px;">
-								<span class="small text-muted">还没有供应商账号，去</span> <a
-									href="zhuce.html">【注 册】</a><br /> <span
-									class="small text-muted">第三方检测机构</span> <a href="zhuce.html">【注
-									册】</a>
+								<span class="small text-muted">还没有供应商账号，去</span><a
+									href="jsp/suppliers/zhuce.jsp">【注 册】</a><br /> 
 							</p>
 						</div>
 

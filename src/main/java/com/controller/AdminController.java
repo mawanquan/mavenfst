@@ -1,5 +1,6 @@
 package com.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -37,9 +38,14 @@ public class AdminController {
 
 // 查询所有用户数据
 	@RequestMapping("/selalluser")
-	public String selAllUser(Integer page, String name, String brid, Model model) {
+	public String selAllUser(Integer page, String name, String brid, Model model,HttpServletRequest request) throws UnsupportedEncodingException {
 		Admin admin = new Admin();
 		Integer id = null;
+		if (request.getMethod().equals("GET")) {
+			if (name != null && !"".equals(name)) {
+				name = new String(name.getBytes("iso-8859-1"), "utf-8");
+			}
+		}
 		if ("0".equals(brid) || null == brid || "".equals(brid)) {
 			admin.setBranchid(null);
 		} else {
@@ -48,13 +54,15 @@ public class AdminController {
 		}
 		admin.setAdminname(name);
 		admin.setAdminstart(0);
-		PageHelper.startPage(page, 1);
+		PageHelper.startPage(page, 5);
 		List<Admin> lisadmin = this.adminService.selAllAdmin(admin);
 		PageInfo pageinfo = new PageInfo(lisadmin);
 		List<Branch> lisbranch = this.adminService.selBranchNot();
 		model.addAttribute("lisbranch", lisbranch);
 		model.addAttribute("pageinfo", pageinfo);
 		model.addAttribute("lisuser", lisadmin);
+		model.addAttribute("name", name);
+		model.addAttribute("brid", brid);
 		return "manage/manageadmin";
 	}
 

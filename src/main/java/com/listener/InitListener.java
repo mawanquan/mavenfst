@@ -12,6 +12,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.bean.Branch;
 import com.service.AdminServiceImp;
+import com.untils.Read;
 @WebListener
 public class InitListener implements ServletContextListener {
 
@@ -29,8 +30,15 @@ public class InitListener implements ServletContextListener {
 		context.setAttribute("css", context.getContextPath()+"/css/");
 		context.setAttribute("js", context.getContextPath()+"/js/");
 		context.setAttribute("img", context.getContextPath()+"/images/");
-		
-
+		/*new Thread(){
+			public void run() {
+				 ApplicationContext app=new ClassPathXmlApplicationContext("applicationContext.xml");
+				Read read=  (Read) app.getBean("read");
+				read.read();
+			};
+			
+		}.start();
+*/
 	}
 
 }

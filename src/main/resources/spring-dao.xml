@@ -18,13 +18,15 @@
 
 	<!-- 配置整合mybatis过程 -->
 	<!-- 自动扫描service层 -->
-	<context:component-scan base-package="com.service" />
+	<context:component-scan base-package="com.service,com.redisdao,com.untils" />
 	<!--========配置基于Mybatis的事务切面类================ -->
 	<!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean> 
+	
+	
 	<!--手动配置事务的建议 -->
 	 <tx:advice id="tx_advice" transaction-manager="transactionManager">
 		<tx:attributes>
@@ -44,13 +46,50 @@
 	</aop:config>
 	<!--============================================== -->
 
-
+ <!-- <context:property-placeholder location="classpath:redis.properties" ignore-resource-not-found="true" ignore-unresolvable="true"/>
+	 -->
 	<!-- 引入配置文件 -->
-	<!-- <context:property-placeholder location="classpath:redis.properties" ignore-resource-not-found="true" ignore-unresolvable="true"/> -->
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location" value="classpath:jdbc.properties" />
 	</bean>
+	
+   
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<property name="maxIdle" value="${redis.maxIdle}" />
+        <property name="maxWaitMillis" value="${redis.maxWait}" />
+        <property name="testOnBorrow" value="${redis.testOnBorrow}" />
+        <property name="maxTotal" value="${redis.maxTotal}" /> 
+        <property name="blockWhenExhausted" value="true" /> 
+	</bean>
+	
+	<!-- jedis连接工程的配置 -->
+    <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"> 
+        <property name="hostName" value="${redis.host}" />
+        <property name="port" value="${redis.port}" />
+        <property name="poolConfig" ref="jedisPoolConfig" /> 
+        <!-- <property name="password" value="${redis.password}" /> -->
+        <property name="usePool" value="true"/> 
+        <property name="timeout" value="${redis.timeout}"></property>
+    </bean> 
+
+    <!-- redisTemplate配置 -->
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">   
+        <property name="connectionFactory"   ref="jedisConnectionFactory" />  
+        <property name="keySerializer">   
+            <bean class="org.springframework.data.redis.serializer.StringRedisSerializer" />   
+        </property>      
+        <property name="valueSerializer">   
+            <!-- <bean class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" /> -->  
+            <bean class="org.springframework.data.redis.serializer.StringRedisSerializer" /> 
+        </property>   
+        <property name="hashKeySerializer">     
+           <bean class="org.springframework.data.redis.serializer.StringRedisSerializer"/>     
+        </property>   
+        <property name="hashValueSerializer">   
+           <bean class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"/>     
+        </property> 
+     </bean> 
 	
 	<!-- 配置dbcp数据源 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
@@ -90,7 +129,33 @@
 			</array>
 		</property> 
 	</bean>
+   <!-- 加载Properties文件 -->
+	<!-- 配置一个简单邮件对象 -->
+	<bean id="mailMessage" class="org.springframework.mail.SimpleMailMessage">
+		<property name="from">
+			<value>${mail.from}</value>
+		</property>
+		<!-- 查看SimpleMailMessage源码还可以注入标题,内容等 -->
+	</bean>
 
+	<!-- 申明邮件发送接口JavaMailSenderImpl对象 -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="host" value="${mail.host}" />
+		<property name="username" value="${mail.username}" />
+		<property name="password" value="${mail.password}" />
+		<property name="javaMailProperties">
+			<props>
+				<!-- 设置认证开关 -->
+				<prop key="mail.smtp.auth">true</prop>
+				<!-- 启动调试开关 -->
+				<prop key="mail.debug">true</prop>
+				<!-- 设置发送延时 -->
+				<prop key="mail.smtp.timeout">0</prop>
+			</props>
+		</property>
+	</bean>
 	<!-- DAO接口所在包名，Spring会自动查找其下的类 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.dao" />
