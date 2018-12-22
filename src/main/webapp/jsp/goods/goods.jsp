@@ -39,6 +39,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      }
 }
 
+
+	// 删除
+	function deletea(id) {
+	    if(confirm('确实要删除吗?')) {
+	$.post("<%=path%>/goods/deletebyid",{"id":id},
+	function(data){
+	            if(data =="OK"){
+	                alert("删除成功！");	
+	                window.location.reload();                
+	            }else{
+	                alert("删除失败！");
+	                window.location.reload();
+	            }
+	        });
+	    }
+	}
+	
+	function updateC(id){
+	
+	}
 </script>
   </head>
   

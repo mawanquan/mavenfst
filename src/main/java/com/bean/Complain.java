@@ -28,39 +28,6 @@ public class Complain implements Serializable {
 		this.answer = answer;
 	}
 
-	public Suppliers getSuppliers() {
-		return suppliers;
-	}
-
-	public void setSuppliers(Suppliers suppliers) {
-		this.suppliers = suppliers;
-	}
-
-	@Transient
-	Suppliers suppliers;
-
-	public GoodsPrice getGoodsPrice() {
-		return goodsPrice;
-	}
-
-	public void setGoodsPrice(GoodsPrice goodsPrice) {
-		this.goodsPrice = goodsPrice;
-	}
-
-	@Transient
-	GoodsPrice goodsPrice;
-
-	public Declareform getDeclareform() {
-		return declareform;
-	}
-
-	public void setDeclareform(Declareform declareform) {
-		this.declareform = declareform;
-	}
-
-	@Transient
-	Declareform declareform;
-
 	@Id
 	private Integer id;
 

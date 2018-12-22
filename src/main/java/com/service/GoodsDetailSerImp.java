@@ -1,5 +1,4 @@
 package com.service;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -10,7 +9,6 @@ import com.bean.Admin;
 import com.bean.Goods;
 import com.bean.GoodsDetail;
 import com.bean.GoodsPrice;
-import com.bean.GoodsPriceTwo;
 import com.dao.AdminMapper;
 import com.dao.GoodsDetailMapper;
 import com.dao.GoodsMapper;
@@ -92,7 +90,7 @@ public class GoodsDetailSerImp implements GoodsDetailSer{
 		return gdm.insert(goodsdetail);
 	}
 	@Override
-	public List<GoodsDetail> selectdetailbyspriceid(Integer id) {
+	public GoodsDetail selectdetailbyspriceid(Integer id) {
 		// TODO Auto-generated method stub
 		return gdm.selectdetailbyspriceid(id);
 	}
@@ -106,56 +104,4 @@ public class GoodsDetailSerImp implements GoodsDetailSer{
 		// TODO Auto-generated method stub
 		return gp.selectall2();
 	}
-	@Override
-	public int insertgp(GoodsPrice goodsprice) {
-		// TODO Auto-generated method stub
-		gp.insertgp(goodsprice);
-		GoodsPrice b=selectbytitle(goodsprice.getGoodstitle());
-
-		List<GoodsDetail> a=goodsprice.getGoodsdetail();
-		System.out.println(b.getId());
-		int num=0;
-		for (GoodsDetail goodsDetail : a) {
-			goodsDetail.setGoodspriceid(b.getId());
-			 num=this.gdm.insert(goodsDetail);
-		}
-		return num;
-	}
-	@Override
-	public Admin selectbyadmin(String adminname) {
-		// TODO Auto-generated method stub
-		return gp.selectbyadmin(adminname);
-	}
-	@Override
-	public GoodsPrice selectbytitle(String goodstitle) {
-		// TODO Auto-generated method stub
-		return gp.selectbytitle(goodstitle);
-	}
-	@Override
-	public Integer updateform(Integer id) {
-		// TODO Auto-generated method stub
-		return gp.updateform(id);
-	}
-	@Override
-	public List<GoodsPrice> selectform() {
-		// TODO Auto-generated method stub
-		return gp.selectform();
-	}
-	@Override
-	public Integer updatemany(List<Integer> ids) {
-		// TODO Auto-generated method stub
-		return gp.updatemany(ids);
-	}
-	@Override
-	public GoodsPriceTwo selecttw(Integer goodspriceid) {
-		// TODO Auto-generated method stub
-		return gp.selecttw(goodspriceid);
-	}
-	@Override
-	public GoodsPrice selectid(Integer id) {
-		// TODO Auto-generated method stub
-		return gp.selectByPrimaryKey(id);
-	}
-
-
 }

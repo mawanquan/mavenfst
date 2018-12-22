@@ -12,20 +12,8 @@ public class GoodsPriceTwo implements Serializable {
     private Integer goodspriceid;
 
     private String filepath;
-    
-    private String detail;
 
 	private static final long serialVersionUID = 1L;
-	
-	
-
-	public String getDetail() {
-		return detail;
-	}
-
-	public void setDetail(String detail) {
-		this.detail = detail;
-	}
 
 	public Integer getId() {
         return id;

@@ -12,5 +12,5 @@ public interface GoodsMapper extends Mapper<Goods>{
 	List<Goods> selectbyothers(@Param(value = "goodsname") String goodsname,@Param(value = "goodscode")String goodscode,@Param(value = "type")String type);
 	int insertgoods(Goods goods);
 	int updategoods(Goods goods);
-	Goods selectbygoodsname(@Param(value = "goodsname")String goodsname);
+	Goods selectbygoodsname(String goodsname);
 }

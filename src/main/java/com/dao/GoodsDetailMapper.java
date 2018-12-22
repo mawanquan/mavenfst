@@ -11,5 +11,5 @@ import com.bean.GoodsDetail;
 public interface GoodsDetailMapper extends Mapper<GoodsDetail>{
 	int deletebygoodsid(Integer id);
 	GoodsDetail selectdetailbyid(Integer id);
-	List<GoodsDetail> selectdetailbyspriceid(Integer id);
+	GoodsDetail selectdetailbyspriceid(Integer id);
 }

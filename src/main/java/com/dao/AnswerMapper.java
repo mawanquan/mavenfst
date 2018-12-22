@@ -10,13 +10,4 @@ public interface AnswerMapper extends Mapper<Answer> {
 
 	List<Answer> selectanswer();
 
-	/**
-	 * 根据主键查询回复对象
-	 * 
-	 * @return
-	 */
-	Answer selectanswerbyid(Integer id);
-
-	List<Answer> selectanswerbyid();
-
 }
