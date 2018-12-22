@@ -34,6 +34,16 @@ html, html body, td {
 	text-align: right;
 }
 </style>
+<!-- <script type="text/javascript">
+	$(function() {
+		var boo = ${ok};
+
+		if (boo) {
+			alert("项目设置完成");
+		}
+
+	});
+</script> -->
 </head>
 
 <body>
@@ -44,8 +54,10 @@ html, html body, td {
 				<td>发布人</td>
 				<td class="title">标题</td>
 				<td class="content">内容</td>
-				<td>招标金额</td><td></td> </tr>
-				<c:forEach items="${list}" var="v">
+				<td>招标金额</td>
+				<td></td>
+			</tr>
+			<c:forEach items="${list}" var="v">
 				<tr>
 					<td>${v.admin.adminname}</td>
 					<td>${v.title}</td>
