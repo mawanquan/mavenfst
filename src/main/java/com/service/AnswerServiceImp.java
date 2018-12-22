@@ -31,8 +31,9 @@ public class AnswerServiceImp implements AnswerService {
 	 * 根据主键查询一个对象
 	 */
 	@Override
-	public Answer selectByPrimaryKey(Integer id) {
-		return answerMapper.selectByPrimaryKey(id);
+	public Answer selectanswerbyid(Integer id) {
+
+		return answerMapper.selectanswerbyid(id);
 	}
 
 	/**
