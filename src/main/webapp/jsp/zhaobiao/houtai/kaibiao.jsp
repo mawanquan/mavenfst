@@ -43,7 +43,7 @@ html, html body, td {
 			<td></td>
 		</tr>
 		<tr>
-			<td>${d.publisher}</td>
+			<td>${d.admin.adminname}</td>
 			<td>${d.title}</td>
 			<td>${d.content}</td>
 			<td>${d.zbmoney}</td>

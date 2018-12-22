@@ -3,14 +3,19 @@ package com.service;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.jms.JMSException;
 
 import org.springframework.stereotype.Service;
 
 import com.bean.Declareform;
+import com.bean.EmailMessage;
 import com.bean.Joinzbfile;
 import com.bean.Joinzbxx;
+import com.bean.Suppliers;
 import com.dao.JoinzbfileMapper;
 import com.dao.JoinzbxxMapper;
+import com.dao.SuppliersMapper;
+import com.untils.TextSends;
 
 @Service("toubiaoFrontServiceImp")
 public class ToubiaoFrontServiceImp implements ToubiaoFrontService {
@@ -18,6 +23,17 @@ public class ToubiaoFrontServiceImp implements ToubiaoFrontService {
 	JoinzbxxMapper joinzbxxMapper;
 	@Resource(name = "joinzbfileMapper")
 	JoinzbfileMapper joinzbfileMapper;
+	@Resource(name = "suppliersMapper")
+	SuppliersMapper suppliersMapper;
+	
+
+	public SuppliersMapper getSuppliersMapper() {
+		return suppliersMapper;
+	}
+
+	public void setSuppliersMapper(SuppliersMapper suppliersMapper) {
+		this.suppliersMapper = suppliersMapper;
+	}
 
 	public JoinzbfileMapper getJoinzbfileMapper() {
 		return joinzbfileMapper;
@@ -124,17 +140,29 @@ public class ToubiaoFrontServiceImp implements ToubiaoFrontService {
 	}
 
 	@Override
-	public Integer upToubiao2(Integer id,String str) {
+	public Integer upToubiao2(Integer id,String str,String title) throws JMSException {
 		int num=0;
 		List<Joinzbxx> list = joinzbxxMapper.selBidsxxAllByDecidandStart(id, 1);
 		for (Joinzbxx joinzbxx : list) {
 			if(joinzbxx.getSupplierid().toString().equals(str)){
 				//中标
+				Suppliers supp=this.suppliersMapper.selectByPrimaryKey(joinzbxx.getSupplierid());
+				EmailMessage emailMessage=new EmailMessage();
+				emailMessage.setSubject(title+"招标结果");
+				emailMessage.setText("亲爱的"+supp.getSuppliername()+"恭喜中标");
+				emailMessage.setTouser(supp.getSuppliersemail());
+				TextSends.sendTo(emailMessage);
 				joinzbxx.setStart(3);
 				num+=this.joinzbxxMapper.updateByPrimaryKeySelective(joinzbxx);
 				
 			}else{
 				//落标
+				Suppliers supp=this.suppliersMapper.selectByPrimaryKey(joinzbxx.getSupplierid());
+				EmailMessage emailMessage=new EmailMessage();
+				emailMessage.setSubject(title+"招标结果");
+				emailMessage.setText("亲爱的"+supp.getSuppliername()+"非常抱歉您落标了");
+				emailMessage.setTouser(supp.getSuppliersemail());
+				TextSends.sendTo(emailMessage);
 				joinzbxx.setStart(4);
 				num+=this.joinzbxxMapper.updateByPrimaryKeySelective(joinzbxx);
 			}

@@ -3,7 +3,7 @@
 <mapper namespace="com.dao.DeclareformMapper">
 	<!--根据招标类型查询所有的数据 -->
 	<resultMap type="com.bean.Declareform" id="selectAllBysignmap">
-		<id column="id" property="id" />
+		<id column="id1" property="id" />
 		<result column="publisher" property="publisher" />
 		<result column="title" property="title" />
 		<result column="content" property="content" />
@@ -13,6 +13,10 @@
 		<result column="zbmoney" property="zbmoney" />
 		<result column="hit" property="hit" />
 		<result column="status" property="status" />
+		<association property="admin" javaType="com.bean.Admin">
+			<id column="id2" property="id" />
+			<result column="adminname" property="adminname" />
+		</association>
 
 		<!-- <association property="declareform" javaType="com.bean.Declareform" 
 			select="com.dao.DeclarefileMapper.selectAllByDeclareid" column="declareid"> 
@@ -20,17 +24,16 @@
 	</resultMap>
 	<select id="selectAllBysign" resultMap="selectAllBysignmap"
 		parameterType="int">
-		select id,publisher
-		,title,content,applydate,finishdate,opentime,zbmoney,hit from
-		declareform where
+		select a.id id1,publisher
+		,title,content,applydate,finishdate,opentime,zbmoney,sign,hit,b.id id2,adminname from
+		declareform a LEFT JOIN admin b on publisher=b.id where
 		sign=#{0} and status=#{1}
 	</select>
 	<select id="selectmyAllBysign" resultMap="selectAllBysignmap"
 		parameterType="Integer">
-		select id,publisher
-		,title,content,applydate,finishdate,opentime,zbmoney,hit
-		from
-		declareform where
+		select a.id id1,publisher
+		,title,content,applydate,finishdate,opentime,zbmoney,sign,hit,b.id id2,adminname from
+		declareform a LEFT JOIN admin b on publisher=b.id where
 		publisher=#{0} and sign=#{1} and status=#{2}
 	</select>
 	<!--================================================== -->
@@ -81,7 +84,7 @@
 	</select>
 	<!-- ========================================== -->
 	<resultMap type="com.bean.Declareform" id="selectAllBystatus2map">
-		<id column="id" property="id" />
+		<id column="id1" property="id" />
 		<result column="publisher" property="publisher" />
 		<result column="title" property="title" />
 		<result column="content" property="content" />
@@ -91,16 +94,23 @@
 		<result column="zbmoney" property="zbmoney" />
 		<result column="hit" property="hit" />
 		<result column="status" property="status" />
+		<association property="admin" javaType="com.bean.Admin">
+			<id column="id2" property="id" />
+			<result column="adminname" property="adminname" />
+		</association>
 	</resultMap>
 	<select id="selectAllBystatus2" resultMap="selectAllBystatus2map">
-		select id,publisher
+		<!-- select id,publisher
 		,title,content,applydate,finishdate,opentime,zbmoney,sign,hit from
-		declareform where status=#{status}
+		declareform where status=#{status} -->
+		select a.id id1,publisher
+		,title,content,applydate,finishdate,opentime,zbmoney,sign,hit,b.id id2,adminname from
+		declareform a LEFT JOIN admin b on publisher=b.id where status=#{status}
 	</select>
 	<!-- =================== -->
-	<select id="selectByid" resultType="com.bean.Declareform">
-		select id,publisher
-		,title,content,applydate,finishdate,opentime,zbmoney,sign,hit from
-		declareform where id=#{id}
+	<select id="selectByid" resultMap="selectAllBystatus2map">
+		select a.id id1,publisher
+		,title,content,applydate,finishdate,opentime,zbmoney,sign,hit,status,b.id id2,adminname from
+		declareform a left JOIN admin b on publisher=b.id where a.id=#{id}
 	</select>
 </mapper>

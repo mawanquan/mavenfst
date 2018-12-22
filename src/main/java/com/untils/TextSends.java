@@ -1,4 +1,4 @@
-package com.test;
+package com.untils;
 
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
