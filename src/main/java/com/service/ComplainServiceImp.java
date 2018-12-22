@@ -106,4 +106,15 @@ public class ComplainServiceImp implements ComplainService {
 		return complainMapper.selectdeclareyear();
 	}
 
+	/**
+	 * 登录用户查询自己的投诉详细
+	 * 
+	 * @return
+	 */
+	@Override
+	public Complain selectcomplainById2(Integer id) {
+
+		return complainMapper.selectcomplainById2(id);
+	}
+
 }

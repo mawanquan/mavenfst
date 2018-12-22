@@ -81,6 +81,11 @@
 		select * from complain a left join answer b on a.id=b.complainid
 		left join admin c on b.adminid = c.id where a.id=#{id}
 	</select>
+	
+	<select id="selectcomplainById2" resultMap="selectcomplainByIdmap"  >
+		select * from complain a left join answer b on a.id=b.complainid
+		left join admin c on b.adminid = c.id where a.id=#{id}
+	</select>
 	<select id="selectcomplainBysupplierid" resultMap="selectcomplainBySuppliersidmap"  >
 		select * from complain a left join suppliers b on a.suppliersid=b.supplierid
 		left join answer c on a.id = c.complainid where a.suppliersid=#{id}

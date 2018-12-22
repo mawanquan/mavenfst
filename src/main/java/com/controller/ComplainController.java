@@ -82,7 +82,7 @@ public class ComplainController {
 	/*
 	 * 根据登录用户查询自己所有投诉内容
 	 */
-	@RequestMapping("/lihai")
+	@RequestMapping("/selectcomplainBysupplierid")
 	public String selectcomplainBysupplierid2(HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		Suppliers sl = (Suppliers) session.getAttribute("supplier");
@@ -92,6 +92,16 @@ public class ComplainController {
 		req.setAttribute("list3", list3);
 		req.setAttribute("data", "/jsp/selectcomplainBysupplierid.jsp");
 		return "/toubiaofront/toubiaomain";
+	}
+
+	/**
+	 * 根据主键查询一个对象
+	 */
+	@RequestMapping("/selectcomplainById2")
+	public String selectcomplainById2(HttpServletRequest req, Integer id) {
+		Complain complain = (Complain) complainService.selectcomplainById2(id);
+		req.setAttribute("complain", complain);
+		return "selectcomplainById2";
 	}
 
 	/**
