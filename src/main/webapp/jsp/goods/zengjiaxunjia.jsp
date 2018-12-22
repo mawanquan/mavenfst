@@ -21,10 +21,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+	<script type="text/javascript" src="${cxt }/js/jquery-2.0.0.min.js"></script>
+	<script type="text/javascript">
+	function app(id){
+	
+	var tr=$("#"+id);
+	var trs=tr.prop("checked");
+		if(trs){
+		var str="数量<input type='text'name='nums' id='num"+id+"'>";
+		var str2="采购时间<input type='text'name='getdates' id='getdate"+id+"'>";
+		tr.parent().append(str+str2);
+		}else{
+		alert("ok");
+		$("#num"+id).remove();
+		$("#getdate"+id).remove();
+		}
+	}
 
+	
+	</script>
   </head>
   
-  <body style="background-color:#FFFF99 ">
+  <body class="bg-warning">
   <form action="<%=path%>/goods/zengjia" method="post">
   <fieldset><legend style="font-size: 30px;">添加</legend>
   <table class="table table-bordered">
@@ -33,11 +51,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<c:forEach items="${list2}" var="a"><option>${a.adminname}</option></c:forEach> 
  				</select></td></tr>
  <tr><td>截 止 日 期:</td><td><input type="text" name="lastdate"></td></tr>
-  <tr><td>物 资:</td><td><select name="goodsname"><option value="0" selected="selected">请选择</option> 
-			<c:forEach items="${list}" var="b"><option>${b.goodsname}</option></c:forEach> 
- 				</select></td></tr>
-  <tr><td>数 量:</td><td><input type="text" name="num"></td></tr>
- <tr><td> 采 购 时 间:</td><td><input type="text" name="getdate"></td></tr>
+ <tr><td>选择需要的物资：</td><td>
+ <c:forEach items="${list}" var="c">
+ <div><input type="checkbox" id="${c.id}" value="${c.id}" name="goodsname" onclick="app(${c.id})">${c.goodsname}
+ </div>
+ 
+ </c:forEach></td>
+ </tr>
+ <tr><td><input type="button" value="选择物资" onclick="a()"></td></tr>	
+ 	
+ 				
+ 				
 <tr><td><input align="middle" style="font-size: 20px" type="submit" value="提交"></td></tr>
 </table>
 

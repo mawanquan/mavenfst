@@ -20,8 +20,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-
+<link rel="stylesheet" type="text/css" href="${css}bootstrap.min.css">
+<script type="text/javascript" src="${js}/jquery-2.0.0.min.js"></script>
+<script type="text/javascript" src="${js}/bootstrap.min.js"></script>
+<script type="text/javascript">
+	function detail(id){
+			$("tr[name='trs']").each(function(i) {
+				$(this).attr("style", "display:none");
+			});
+	       $("#"+id).attr("style", "display: block");
+	}
+	</script>
   </head>
   
   <body>
@@ -31,9 +40,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<td>标题</td>
 				<td>发布人</td>
 				<td>截止日期</td>
-				<td>物资</td>
-				<td>数量</td>
-				<td>采购时间</td>
 			</tr>
 			
 			<c:forEach items="${list}" var="c">
@@ -41,10 +47,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<td>${c.goodstitle}</td>
 					<td>${c.admin.adminname}</td>
 					<td>${c.lastdate}</td>
-					<td>${c.goodsdetail[0].goods.goodsname}</td>
-					<td>${c.goodsdetail[0].num}</td>
-					<td>${c.goodsdetail[0].getdate}</td>
+					<td><a href="javascript:void(0)" onclick="detail(${c.id})">详细</a></td>
+					
 					</tr>
+						  <tr  style="display: none;" id="${c.id}" name="trs" >  
+				<c:forEach items="${c.goodsdetail}" var="g">
+   	                   				<td colspan="2">物资:${g.goods.goodsname}</td>
+   	                   				<td>数量:${g.num}</td>
+   	                   				<td>采购时间:${g.getdate}</td>   	                   				
+   	                </c:forEach>
+				</tr>
 			</c:forEach>			
 		</table>
         </fieldset>   

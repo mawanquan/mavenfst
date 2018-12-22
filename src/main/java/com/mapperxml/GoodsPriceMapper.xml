@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.dao.GoodsPriceMapper">
+
+<insert id="insertgp"  parameterType="com.bean.GoodsPrice" useGeneratedKeys="true" keyColumn="id">
+insert into goodsprice (goodstitle,userid,lastdate,form)values(#{goodstitle},#{userid},#{lastdate},0)
+</insert>
 	<select id="selectgp" resultMap="mapp">
 		select g.id
 		gid,goodstitle,lastdate,a.id aid,adminname from goodsprice g
 		inner join
 		admin a on g.userid=a.id
 	</select>
+	
 	
 	<select id="selectbytitle" resultType="com.bean.GoodsPrice">
 	select * from goodsprice where goodstitle=#{goodstitle}
@@ -31,8 +36,15 @@
 	
 	<!-- 改变状态 -->
 	<update id="updateform" parameterType="String">
-	update goodsprice set form=#{form} where id=#{id}
+	update goodsprice set form=1 where id=#{id}
 	</update>
+	<update id="updatemany" parameterType="java.util.List">
+	update goodsprice set form=1 where id in
+	<foreach collection="list" item="item" index="index" open="(" close=")" separator=",">
+	#{item}
+	</foreach>
+	</update>
+	
 	<select id="selecta" resultMap="ma">
 		select p.id
 		pid,goodstitle,lastdate,form,d.id did,num,getdate, g.id gid,goodsname,a.id
@@ -41,6 +53,10 @@
 		d.goodspriceid=p.id left join
 		goods g on d.goodsid=g.id left join admin
 		a on p.userid=a.id where form=0
+	</select>
+	
+	<select id="selecttw" resultType="com.bean.GoodsPriceTwo">
+	select * from goodspricetwo where goodspriceid=#{goodspriceid}
 	</select>
 
 	<resultMap type="com.bean.GoodsPrice" id="ma">

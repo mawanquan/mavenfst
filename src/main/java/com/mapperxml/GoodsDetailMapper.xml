@@ -4,12 +4,21 @@
 	<select id="selectdetailbyid" resultType="com.bean.GoodsDetail">
 		select * from goodsdetail where goodsid=#{goodsid}
 	</select>
-	<select id="selectdetailbyspriceid" resultType="com.bean.GoodsDetail">
-		select * from goodsdetail where goodspriceid=#{goodspriceid}
+	<select id="selectdetailbyspriceid" resultMap="map">
+		select d.id did,goodspriceid,num,getdate,g.id gid,goodsname from goodsdetail d left join goods g on d.goodsid=g.id where goodspriceid=#{goodspriceid}
 	</select>
 	
 	<insert id="insertgoodsdetail" parameterType="com.bean.GoodsDetail">
 	insert into goodsdetail (goodspriceid,goodsid,num,getdate)value(goodspriceid=#{goodspriceid},goodsid=#{goodsid},num=#{num},getdate=#{getdate}) 
 	</insert>
-	
+	<resultMap type="com.bean.GoodsDetail" id="map">
+			<id column="did" property="id" />
+			<result column="num" property="num" />
+			<result column="goodspriceid" property="goodspriceid" />
+			<result column="getdate" property="getdate" />
+			<association property="goods" javaType="com.bean.Goods">
+				<id column="gid" property="id" />
+				<result column="goodsname" property="goodsname" />
+			</association>
+	</resultMap>
 </mapper>
