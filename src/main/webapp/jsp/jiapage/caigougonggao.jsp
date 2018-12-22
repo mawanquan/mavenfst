@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -23,21 +24,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</head>
 
 	<body>
-		<!--***********************头部************************-->
 		<div class="header">
-<div class="container-fluid">
-			<!---------------------------头上------------------------------>
-			<div class="top-bar">
-				<div class="row">
-					<div class="col-xs-4">
-						<div class="top-bar-1 ">
-							<img src="images/img/mobile.png" />						</div>
-					</div>
-					<div class="col-xs-5 top-bar-2 " id="time"></div>
-					<div class="col-xs-3">
-						<div class="top-bar-3 ">
+			<div class="container-fluid">
+				<!---------------------------头上------------------------------>
+				<div class="top-bar">
+					<div class="row">
+						<div class="col-xs-4">
+							<div class="top-bar-1 ">
+								<img src="images/img/mobile.png" />
+							</div>
+						</div>
 
-                          <div class="col-md-8">
+						<div class="col-xs-8">
 							<div class="top-bar-3 ">
 								<form class="navbar-form navbar-right ">
 									<div class="form-group">
@@ -46,16 +44,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									<button type="submit" class="btn btn-default ">
 										<span class="glyphicon glyphicon-search"></span>	
 									</button>
-								<div class="form-group"
-									style="width: 20px; position: relative;left:-20px">
-									<input type="text" class="form-control" placeholder="关键字搜索">
-								</div>
-								<button type="submit" class="btn btn-default  "
-									style="position: relative;left: 160px">
-									<span class="glyphicon glyphicon-search"></span>
-								</button>
-							</form>
+								</form>
 
+							</div>
 						</div>
 					</div>
 				</div>
@@ -73,31 +64,32 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 								<ul class="nav navbar-nav top-bot-1 ">
+									<li >
+										<a href="${cxt}/jsp/home.jsp"><span class="glyphicon glyphicon-home"></span>&nbsp;首页</a>
+									</li>
 									<li>
-										<a href="index.html"><span class="glyphicon glyphicon-home"></span>&nbsp;首页</a>
+										<a href="${cxt}/jsp/jiapage/caigougonggao.jsp">招标采购公告</a>
 									</li>
 									<li class="active">
-										<a href="caigougonggao.html">招标采购公告</a>
+										<a href="${cxt}/select1">供应商公告</a>
 									</li>
 									<li>
-										<a href="gongyingshanggonggao.html">供应商公告</a>
+										<a href="/mavenfst/selectcomplain?page=1">投诉中心</a>
 									</li>
 									<li>
-										<a href="tousuzhongxin.html">投诉中心</a>
+										<a href="${cxt}/jsp/jiapage/fuwuzhongxin.jsp">服务中心</a>
 									</li>
 									<li>
-										<a href="fuwuzhongxin.html">服务中心</a>
-									</li>
-									<li>
-										<a href="falvshengming.html">法律声明</a>
+										<a href="${cxt}/jsp/jiapage/falvshengming.jsp">法律声明</a>
 									</li>
 								</ul>
+
+							</div>
 						</div>
-					</div>
-				</nav>
+					</nav>
+				</div>
 			</div>
 		</div>
-	</div>
 		<!--***********************主体************************-->
 		<div class="container-fluid" >
 			<div class="main1" style="background: ;">
@@ -129,76 +121,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<div class="tab-content">
 							<div role="tabpanel" class="tab-pane active" id="home">
 								<div id="txt"></div>
-								<div style="padding-left: 30px; margin-top: 0px;">
-									<img src="img/suosuo.png" />
-								</div>
-								<div>
-									标题&nbsp;&nbsp;<input type="text" placeholder="请输入检索的内容" />&nbsp;&nbsp;时间&nbsp;&nbsp;
-									<!--日历1-->
-									<input type="text" class="demo-input" placeholder="请选择日期" id="test1">
-									<script>
-										lay('#version').html('-v' + laydate.v);
-
-										//执行一个laydate实例
-										laydate.render({
-											elem: '#test1' //指定元素
-										});
-									</script>&nbsp;&nbsp;
-									<!--日历2-->
-
-									到&nbsp;&nbsp;&nbsp;&nbsp;
-
-									<input type="text" class="demo-input" placeholder="请选择日期" id="test2">
-									<script>
-										lay('#version').html('-v' + laydate.v);
-
-										//执行一个laydate实例
-										laydate.render({
-											elem: '#test2' //指定元素
-										});
-									</script>
-									<!--
-			<input type="text" placeholder="请输入检索的内容" />&nbsp;&nbsp;-->
-									<button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off" style="background-color: transparent; border: none; color: black;line-height: 18px; padding-bottom:8px;">
-									  搜索
-</button>
-								</div>
+								
+								
 
 								<div class="m2-1-1 ">
 									<legend>&nbsp;&nbsp;&nbsp;查询结果</legend>
 								</div>
 								<div>
 									<table class="table table-striped">
-										<thead>
-											<tr>
-												<th>Student-ID</th>
-												<th>First Name</th>
-												<th>Last Name</th>
-												<th>Grade</th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td>001</td>
-												<td>Rammohan </td>
-												<td>Reddy</td>
-												<td>A+</td>
-											</tr>
-											<tr>
-												<td>002</td>
-												<td>Smita</td>
-												<td>Pallod</td>
-												<td>A</td>
-											</tr>
-											<tr>
-												<td>003</td>
-												<td>Rabindranath</td>
-												<td>Sen</td>
-												<td>A+</td>
-											</tr>
-										</tbody>
+										
+										
+									   <tr>
+									       <td>id</td>
+									       <td>goodsname</td>
+									   </tr>
+									   <c:forEach items="${list}" var="v">
+									   <tr >
+			                            	<td>${v.id}</td>
+				                            <td>${v.goodsname}</td>
+			                              	
+									</tr>
+										</c:forEach>
 									</table>
+									
 									<!--分页-->
+									
 									<nav aria-label="Page navigation" style="margin: 0 auto; text-align: center;">
 										<ul class="pagination">
 											<li>
@@ -231,20 +178,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 							</div>
 
-							<div role="tabpanel" class="tab-pane" id="profile">
-								2
-							</div>
-							<div role="tabpanel" class="tab-pane" id="messages">
-								3
-							</div>
-							<div role="tabpanel" class="tab-pane" id="settings1">. 4
-							</div>
-							<div role="tabpanel" class="tab-pane" id="settings2">
-								5
-							</div>
-							<div role="tabpanel" class="tab-pane" id="settings3">
-								6
-							</div>
+						
 						</div>
 
 					</div>

@@ -105,7 +105,7 @@ var d = new Date($(this).text());
 										<a href="${cxt}/jsp/jiapage/gongyingshanggonggao.jsp">供应商公告</a>
 									</li>
 									<li>
-										<a href="tousuzhongxin.html">投诉中心</a>
+										<a href="${cxt}/selectcomplain?page=1">投诉中心</a>
 									</li>
 									<li>
 										<a href="${cxt}/jsp/jiapage/fuwuzhongxin.jsp">服务中心</a>
