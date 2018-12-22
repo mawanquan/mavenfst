@@ -35,7 +35,7 @@ public class ComplainController {
 
 		req.setAttribute("list", list);
 		req.setAttribute("pageInfo", pageInfo);
-		return "showallcomplain";
+		return "/tousu/showallcomplain";
 	}
 
 	/**
@@ -45,7 +45,7 @@ public class ComplainController {
 	public String selectcomplainById(HttpServletRequest req, Integer id) {
 		Complain complain = (Complain) complainService.selectcomplainById(id);
 		req.setAttribute("complain", complain);
-		return "selectbyprimarykeycomplain";
+		return "/tousu/selectbyprimarykeycomplain";
 	}
 
 	/**
@@ -90,7 +90,7 @@ public class ComplainController {
 		List<Complain> list3 = complainService.selectcomplainBysupplierid(sl
 				.getSupplierid());
 		req.setAttribute("list3", list3);
-		req.setAttribute("data", "/jsp/selectcomplainBysupplierid.jsp");
+		req.setAttribute("data", "/jsp/tousu/selectcomplainBysupplierid.jsp");
 		return "/toubiaofront/toubiaomain";
 	}
 
@@ -101,7 +101,7 @@ public class ComplainController {
 	public String selectcomplainById2(HttpServletRequest req, Integer id) {
 		Complain complain = (Complain) complainService.selectcomplainById2(id);
 		req.setAttribute("complain", complain);
-		return "selectcomplainById2";
+		return "/tousu/selectcomplainById2";
 	}
 
 	/**
@@ -122,7 +122,7 @@ public class ComplainController {
 		}
 		req.setAttribute("list", list);
 		System.out.println(list);
-		return "tongji";
+		return "/tousu/tongji";
 	}
 
 	/**
@@ -144,7 +144,7 @@ public class ComplainController {
 		req.setAttribute("list5", listaaa);
 
 		System.out.println(listaaa);
-		return "selectgoodsprice";
+		return "/tousu/selectgoodsprice";
 	}
 
 	/**
@@ -166,7 +166,7 @@ public class ComplainController {
 		req.setAttribute("list5", listaaa);
 
 		System.out.println(listaaa);
-		return "selectdeclaress";
+		return "/tousu/selectdeclaress";
 	}
 
 	/**
@@ -187,6 +187,6 @@ public class ComplainController {
 		}
 		req.setAttribute("list", list);
 		System.out.println(list);
-		return "selectdeclareyear";
+		return "/tousu/selectdeclareyear";
 	}
 }
