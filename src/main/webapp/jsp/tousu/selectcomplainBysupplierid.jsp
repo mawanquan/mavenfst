@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</td>
 					<td>${v.answer.answercontent }</td>
 					<td>
-						<button onclick="window.location.href='/mavenfst/selectcomplainById?id=${v.id}'" type="button" class="btn btn-info">查看</button>
+						<button onclick="window.location.href='/mavenfst/selectcomplainById2?id=${v.id}'" type="button" class="btn btn-info">查看</button>
 					</td>
 				</tr>
 				

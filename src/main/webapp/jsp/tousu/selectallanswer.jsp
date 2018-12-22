@@ -68,7 +68,7 @@
 					<td>${v.admin.adminname }</td>
 					
 					<td>
-						<button onclick="window.location.href='/mavenfst/selectcomplainById?id=${v.id}'" type="button" class="btn btn-info">查看</button>
+						<button onclick="window.location.href='/mavenfst/selectbyprimarykeyanswer?id=${v.complain.id}'" type="button" class="btn btn-info">查看</button>
 						<button onclick="window.location.href='/mavenfst/jsp/tousu/answer.jsp?id=${v.complain.id }'" type="button" class="btn btn-success">回复</button>
 					</td>
 
