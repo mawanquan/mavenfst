@@ -105,27 +105,27 @@
 		<table class="table table-hover table-bordered  table-condensed">
 			<tr>
 				<td>id</td>
-				<td>${complain.id }</td>
+				<td>${answer.complain.id1}</td>
 			</tr>
 			<tr>
 				<td>投诉人</td>
-				<td>${complain.name }</td>
+				<td>${answer.complain.name }</td>
 			</tr>
 			<tr>
 				<td>标题</td>
-				<td>${complain.caption }</td>
+				<td>${answer.complain.caption }</td>
 			</tr>
 			<tr>
 				<td>内容</td>
-				<td>${complain.content}</td>
+				<td>${answer.complain.content}</td>
 			</tr>
 			<tr>
 				<td>回复人</td>
-				<td>${complain.admin.adminname }</td>
+				<td>${answer.admin.adminname }</td>
 			</tr>
 			<tr>
 				<td>回复内容</td>
-				<td>${complain.answer.answercontent }</td>
+				<td>${answer.answercontent }</td>
 			</tr>
 			
 			
