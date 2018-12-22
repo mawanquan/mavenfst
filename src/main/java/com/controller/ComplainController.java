@@ -121,7 +121,7 @@ public class ComplainController {
 			list.add(lis2);
 		}
 		req.setAttribute("list", list);
-		System.out.println(list);
+
 		return "/tousu/tongji";
 	}
 
@@ -143,7 +143,6 @@ public class ComplainController {
 
 		req.setAttribute("list5", listaaa);
 
-		System.out.println(listaaa);
 		return "/tousu/selectgoodsprice";
 	}
 
@@ -165,7 +164,6 @@ public class ComplainController {
 
 		req.setAttribute("list5", listaaa);
 
-		System.out.println(listaaa);
 		return "/tousu/selectdeclaress";
 	}
 
@@ -186,7 +184,7 @@ public class ComplainController {
 			list.add(lis2);
 		}
 		req.setAttribute("list", list);
-		System.out.println(list);
+
 		return "/tousu/selectdeclareyear";
 	}
 }
