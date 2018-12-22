@@ -21,7 +21,7 @@ public class Declareform implements Serializable {
 
     private Date finishdate;
 
-    private Date opentime;
+	private Date opentime;
 
     private Double zbmoney;
 
@@ -36,6 +36,9 @@ public class Declareform implements Serializable {
 
 	@Transient
     List<Declarefile> listfile;
+	
+	@Transient
+    private Admin admin;
 
     public List<Declarefile> getListfile() {
 		return listfile;
@@ -134,6 +137,14 @@ public class Declareform implements Serializable {
     public void setHit(String hit) {
         this.hit = hit == null ? null : hit.trim();
     }
+    
+    public Admin getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
 
     public Integer getStatus() {
         return status;

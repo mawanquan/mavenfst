@@ -2,6 +2,8 @@ package com.service;
 
 import java.util.List;
 
+import javax.jms.JMSException;
+
 import com.bean.Declareform;
 import com.bean.Joinzbfile;
 import com.bean.Joinzbxx;
@@ -34,6 +36,6 @@ public interface ToubiaoFrontService {
 	// 联表查询招标商信息
 	List<Joinzbxx> selBidsxxAllByDecidandStart(Integer decid, Integer start);
 
-	Integer upToubiao2(Integer id, String str);
+	Integer upToubiao2(Integer id, String str, String string) throws JMSException;
 
 }

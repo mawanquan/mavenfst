@@ -47,7 +47,7 @@ html, html body, td {
 				<td>招标金额</td><td></td> </tr>
 				<c:forEach items="${list}" var="v">
 				<tr>
-					<td>${v.publisher}</td>
+					<td>${v.admin.adminname}</td>
 					<td>${v.title}</td>
 					<td>${v.content}</td>
 					<td>${v.zbmoney}</td>

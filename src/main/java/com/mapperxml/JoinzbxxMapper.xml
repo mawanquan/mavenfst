@@ -100,8 +100,8 @@
 	<select id="selBidsxxAllByDecidandStart" resultMap="selBidsxxAllByDecidandStartmap">
 		select a.id id1,declareid,a.supplierid supplierid1,zbbj,start,b.supplierid
 		supplierid2,suppliername,supplierstel,address,suppliersemail,lianxirenname,lianxinrenemail,farename,c.id
-		id2,zbxxid,filepath,filename from joinzbxx a INNER JOIN suppliers b on
-		a.supplierid=b.supplierid INNER JOIN joinzbfile c on a.id=zbxxid where
+		id2,zbxxid,filepath,filename from joinzbxx a left JOIN suppliers b on
+		a.supplierid=b.supplierid left JOIN joinzbfile c on a.id=zbxxid where
 		a.declareid=#{0} and start=#{1};
 
 	</select>

@@ -37,7 +37,8 @@ html, html body, td {
 	font: 12px/1.5 'Microsoft YaHei ', ' 宋体', STHeiti, Verdana, Arial,
 		Helvetica, sans-serif;
 }
-
+a:link{color: black;}
+a:hover{color: #337AB7;}
 .page {
 	text-align: right;
 }
@@ -58,9 +59,9 @@ html, html body, td {
 				<td>招标金额</td> </tr>
 				<c:forEach items="${list}" var="v">
 				<tr>
-					<td>${v.publisher}</td>
-					<td>${v.title}</td>
-					<td>${v.content}</td>
+					<td>${v.admin.adminname}</td>
+					<td style="width: 200px;"><a href="/mavenfst/show?id=${v.id}">${v.title}</a></td>
+					<td style="width: 450px;">${v.content}</td>
 					<td><span class="date">${v.applydate}</span></td>
 					<td><span class="date">${v.finishdate}</span></td>
 					<td><span class="date">${v.opentime}</span></td>

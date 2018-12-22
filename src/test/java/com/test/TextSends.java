@@ -28,7 +28,7 @@ public class TextSends {
 
 	public static void sendTo(EmailMessage emailmessage) throws JMSException {
 		ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(
-				"tcp://127.0.0.1:61616");
+				"tcp://192.168.43.155:61616");
 		// 2.获取连接
 		Connection connection = connectionFactory.createConnection();
 		// 3.启动连接
