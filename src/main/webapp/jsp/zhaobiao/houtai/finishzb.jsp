@@ -26,9 +26,12 @@ html, html body, td {
 	font: 12px/1.5 'Microsoft YaHei', '宋体', STHeiti, Verdana, Arial,
 		Helvetica, sans-serif;
 }
+
 .page {
 	text-align: right;
 }
+a:link{color: black;}
+a:hover{color: #337AB7;}
 </style>
 </head>
 
@@ -45,8 +48,8 @@ html, html body, td {
 		</tr>
 		<c:forEach items="${list}" var="v">
 			<tr>
-				<td>${v.publisher}</td>
-				<td><a href="/mavenfst/show?id=${v.id}">${v.title}</a></td>
+				<td>${v.admin.adminname}</td>
+				<td style="width: 300px;"><a href="/mavenfst/show?id=${v.id}">${v.title}</a></td>
 				<td style="width: 500px;">${v.content}</td>
 				<td>${v.zbmoney}</td>
 				<td>${v.hit}</td>

@@ -5,8 +5,10 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 //采购询价
+@Table(name="goodsprice")
 public class GoodsPrice implements Serializable {
 	@Id
     private Integer id;
@@ -16,6 +18,8 @@ public class GoodsPrice implements Serializable {
     private Integer userid;
 
     private Date lastdate;
+    
+    private Integer form;
     @Transient
     private Admin admin;
 
@@ -25,6 +29,13 @@ public class GoodsPrice implements Serializable {
     @Transient
     List<GoodsDetail> goodsdetail;
     
+	public Integer getForm() {
+		return form;
+	}
+
+	public void setForm(Integer form) {
+		this.form = form;
+	}
 
 	public List<GoodsDetail> getGoodsdetail() {
 		return goodsdetail;

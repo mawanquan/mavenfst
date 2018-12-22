@@ -1,53 +1,65 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.dao.GoodsMapper" >
- <select id="selectbyothers" resultType="com.bean.Goods">
- select * from goods where goodsname=#{goodsname} or goodscode=#{goodscode} or type=#{type}
- </select>
- <select id="selectbygoodsname">
- select * from goods where goodsname=#{goodsname}
- </select>
- <insert id="insertgoods" parameterType="com.bean.Goods">
-   <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
-   SELECT LAST_INSERT_ID()
-   </selectKey>
-    insert into goods
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="goodsname != null" >
-        goodsname,
-      </if>
-      <if test="goodscode != null" >
-        goodscode,
-      </if>
-      <if test="type != null" >
-        type,
-      </if>
-      <if test="unit != null" >
-        unit,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="goodsname != null" >
-        #{goodsname,jdbcType=VARCHAR},
-      </if>
-      <if test="goodscode != null" >
-        #{goodscode,jdbcType=INTEGER},
-      </if>
-      <if test="type != null" >
-        #{type,jdbcType=TIMESTAMP},
-      </if>
-      <if test="unit != null" >
-        #{unit,jdbcType=TIMESTAMP},
-      </if>
-    </trim>
-  </insert>
-  <update id="updategoods" parameterType="com.bean.Goods">
-  update goods set goodsname=#{goodsname},goodscode=#{goodscode},type=#{type},unit=#{unit} where id=#{id}
-  </update>
+<mapper namespace="com.dao.GoodsMapper">
+	<select id="selectbyothers" resultType="com.bean.Goods" >
+		select * from goods where goodsname=#{goodsname} or goodscode=#{goodscode}
+		or type=#{type}
+	</select>
+	<select id="selectbygoodsname" resultType="com.bean.Goods"
+		parameterType="String">
+		select * from goods where goodsname=#{goodsname}
+	</select>
+	<insert id="insertgoods" parameterType="com.bean.Goods">
+		<selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		insert into goods
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="goodsname != null">
+				goodsname,
+			</if>
+			<if test="goodscode != null">
+				goodscode,
+			</if>
+			<if test="type != null">
+				type,
+			</if>
+			<if test="unit != null">
+				unit,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="goodsname != null">
+				#{goodsname,jdbcType=VARCHAR},
+			</if>
+			<if test="goodscode != null">
+				#{goodscode,jdbcType=INTEGER},
+			</if>
+			<if test="type != null">
+				#{type,jdbcType=TIMESTAMP},
+			</if>
+			<if test="unit != null">
+				#{unit,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updategoods" parameterType="com.bean.Goods">
+		update goods set
+		goodsname=#{goodsname},goodscode=#{goodscode},type=#{type},unit=#{unit}
+		where id=#{id}
+	</update>
+
+	<resultMap id="map" type="com.bean.Goods">
+		<id column="id" property="id" />
+		<result column="goodsname" property="goodsname" />
+		<result column="goodscode" property="goodscode" />
+		<result column="type" property="type" />
+		<result column="unit" property="unit" />
+	</resultMap>
 </mapper>
