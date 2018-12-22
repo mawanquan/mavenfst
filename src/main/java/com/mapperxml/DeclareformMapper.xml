@@ -25,6 +25,14 @@
 		declareform where
 		sign=#{0} and status=#{1}
 	</select>
+	<select id="selectmyAllBysign" resultMap="selectAllBysignmap"
+		parameterType="Integer">
+		select id,publisher
+		,title,content,applydate,finishdate,opentime,zbmoney,hit
+		from
+		declareform where
+		publisher=#{0} and sign=#{1} and status=#{2}
+	</select>
 	<!--================================================== -->
 
 	<resultMap type="com.bean.Declareform" id="selectAllByTitlemap">
@@ -45,7 +53,8 @@
 		,title,content,applydate,finishdate,opentime,zbmoney,sign,hit from
 		declareform where
 		sign=#{1} and title like
-		concat(concat('%',#{0}),'%') and status=#{2}
+		concat(concat('%',#{0}),'%')
+		and status=#{2}
 	</select>
 	<select id="selectoneBytitle" resultType="com.bean.Declareform">
 		select id,publisher

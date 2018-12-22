@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.AnswerMapper">
+	<resultMap type="com.bean.Answer" id="selectanswermap">
+	<id column="id" property="id" />
+			<result column="answertime" property="answertime" />
+			<result column="answercontent" property="answercontent" />
+	
+		<association property="complain" javaType="com.bean.Complain">
+			<id column="id1" property="id" />
+		<result column="name" property="name" />
+		<result column="caption" property="caption" />
+		<result column="content" property="content" />
+
+		</association>
+
+		<association property="admin" javaType="com.bean.Admin">
+			<id column="id2" property="id" />
+			<result column="adminname" property="adminname" />
+		</association>
+
+	</resultMap>
+	
+<resultMap type="com.bean.Answer" id="selectanswerbyidmap">
+<id column="id" property="id" />
+			<result column="answertime" property="answertime" />
+			<result column="answercontent" property="answercontent" />
+		
+		<association property="complain" javaType="com.bean.Complain">
+			<id column="id1" property="id" />
+		<result column="name" property="name" />
+		<result column="caption" property="caption" />
+		<result column="content" property="content" />
+
+		</association>
+
+		<association property="admin" javaType="com.bean.Admin">
+			<id column="id2" property="id" />
+			<result column="adminname" property="adminname" />
+		</association>
+
+	</resultMap>
+
+
+	<select id="selectanswer" resultMap="selectanswermap">
+		select  a.id id,a.answertime,b.id id1,b.name,b.caption,b.content, c.id id2,c.adminname  from answer a
+		right join complain b on a.complainid=b.id
+		left join admin c on a.adminid
+		= c.id group by b.id desc
+	</select>
+	<select id="selectanswerbyid" resultMap="selectanswerbyidmap">
+	select a.id id,answertime,answercontent,b.id id1,name,caption,content,c.id id2,adminname from answer a right join complain b on a.complainid=b.id
+left join admin c on a.adminid = c.id where b.id=#{id}
+	</select>
+	
+
+</mapper>

@@ -53,6 +53,7 @@ public class DeclareformServiceImp implements DeclareformService {
 	@Override
 	public int updateById(Declareform declareform) {
 		return declareformMapper.updateByPrimaryKey(declareform);
+		
 	}
 
 	@Override
@@ -93,6 +94,12 @@ public class DeclareformServiceImp implements DeclareformService {
 	@Override
 	public int deletefileByid(Declarefile d) {
 		return declarefileMapper.delete(d);
+	}
+
+	@Override
+	public List<Declareform> selectmyAllBysign(Integer publisher, Integer sign,
+			Integer status) {
+		return declareformMapper.selectmyAllBysign(publisher, sign, status);
 	}
 
 }

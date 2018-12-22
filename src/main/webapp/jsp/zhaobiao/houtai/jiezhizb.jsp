@@ -67,7 +67,7 @@ html, html body, td {
 <body>
 	
 	<!--搜索结果-->
-	<h1>即将开标查询</h1>
+	<h1>待开标查询</h1>
 	<div id="searchResult" class="searchResult">
 		<div class="container_div2_div_ul2 clearL " id="list">
 			<table class="table table-striped table-hover" width="100%"
@@ -91,15 +91,15 @@ html, html body, td {
 		</div>
 		<div class="page">
 			<ul class="pagination">
-				<li><a href="/mavenfst/jiezhizb/1">首页</a></li>
-				<li><a href="/mavenfst/jiezhizb/${pg.pageNum-1}"
+				<li><a href="/mavenfst/${path}/1">首页</a></li>
+				<li><a href="/mavenfst/${path}/${pg.pageNum-1}"
 					aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 				</a></li>
-				<li><a href="/mavenfst/jiezhizb/${pg.pageNum}">${pg.pageNum}</a></li>
-				<li><a href="/mavenfst/jiezhizb/${pg.pageNum+1}"
+				<li><a href="/mavenfst/${path}/${pg.pageNum}">${pg.pageNum}</a></li>
+				<li><a href="/mavenfst/${path}/${pg.pageNum+1}"
 					aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 				</a></li>
-				<li><a href="/mavenfst/jiezhizb/${pg.pages}">末页</a></li>
+				<li><a href="/mavenfst/${path}/${pg.pages}">末页</a></li>
 			</ul>
 		</div>
 	</div>

@@ -1,4 +1,4 @@
-package com.service;
+﻿package com.service;
 
 import java.util.List;
 
@@ -52,14 +52,25 @@ public class ProclamationServiceImp implements ProclamationService {
 		return proclamationMapper.updateByPrimaryKey(proclamation);
 	}
 
-	
+	@Override
+	public Proclamation updateProclamationByTitle(String title) {
+		// TODO Auto-generated method stub
+		return proclamationMapper.updateByTitle(title);
 
 	
 
+	}
+	public Proclamation updateProclamationByComment(String comment) {
+		// TODO Auto-generated method stub
+		return proclamationMapper.updateByComment(comment);
 
 	
-
 
 	}
 
-
+	@Override
+	public List<Proclamation> selectAllProclamationJionSuppliers() {
+		// TODO Auto-generated method stub
+		return proclamationMapper.selectAllProclamationJionSuppliers();
+	}
+}

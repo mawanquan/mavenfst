@@ -23,10 +23,13 @@
 <!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<link href="${css}my1.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="css/zbstyle.css" />
+<script src="${js}bootstrap.min.js"></script>
 <script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
 <script type="text/javascript">
+	
 	$(function() {
 
 		$(".date").each(
@@ -38,11 +41,10 @@
 									+ d.getDate() + "日");
 
 				});
-		$(".path").each(
-				function() {
-					var d = $(this).text();
-					$(this).text(d.substr(d.lastIndexOf('/')+1));
-				});
+		$(".path").each(function() {
+			var d = $(this).text();
+			$(this).text(d.substr(d.lastIndexOf('/') + 1));
+		});
 	});
 	/* $(function(){
 		$(".path").each(
@@ -65,10 +67,6 @@ h1 {
 	margin: 50px;
 }
 
-h1 {
-	
-}
-
 p {
 	text-indent: 2em;
 }
@@ -80,13 +78,10 @@ p {
 </head>
 
 <body>
-	<div id="total" class="container"
-		style="width: 70%; align-content: center;">
-
-		<div id="header" class="nav">
-			<!--头部内嵌首页-->
-
-		</div>
+	<div id="total" class="container">
+	<!--***********************头部************************-->
+	<jsp:include page="/jsp/jiapage/denglu.jsp"></jsp:include>
+		<!-- ======================================== -->
 		<div id="mid" style="height:auto;">
 			<table class="zb_table" width="100%" border="0" cellspacing="0"
 				cellpadding="0">
@@ -128,9 +123,10 @@ p {
 						</td>
 					</tr>
 					<tr>
-						<td style="padding: 0px 40px;font-size: 12px;"><c:forEach items="${listfile}"
-								var="v" varStatus="n">
-								附件${n.count}:<a target="_blank" class="path" href="/mavenfst/preview?id=${v.id}">${v.filepath}</a>
+						<td style="padding: 0px 40px;font-size: 12px;"><c:forEach
+								items="${listfile}" var="v" varStatus="n">
+								附件${n.count}:<a target="_blank" class="path"
+									href="/mavenfst/preview?id=${v.id}">${v.filepath}</a>
 								<br>
 							</c:forEach></td>
 					</tr>

@@ -11,11 +11,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.bean.Suppliers;
 import com.dao.SuppliersMapper;
+import com.redisdao.RedisDao;
 
 @Service
 public class SuppliersServiceImp implements SuppliersService {
 	@Resource(name = "suppliersMapper")
 	SuppliersMapper suppliersMapper;
+	
+	@Resource(name = "redisDaoImp")
+	RedisDao redisDao;
 
 	// **********注册*********
 	@Override
@@ -23,7 +27,8 @@ public class SuppliersServiceImp implements SuppliersService {
 
 		return suppliersMapper.insert(record);
 	}
-//删除
+
+	// 删除
 	@Override
 	public int deleteByPrimaryKey(int id) {
 
@@ -49,33 +54,47 @@ public class SuppliersServiceImp implements SuppliersService {
 		return suppliersMapper.selectByPrimaryKey(id);
 	}
 
-	// 根据id修改状态(后台)
+	// 根据id修改状态
 
 	@Override
 	public int updateSign(Suppliers suppliers) {
 		return suppliersMapper.updateByPrimaryKeySelective(suppliers);
 	}
+
 	
-	//修改(先查询)供货商信息(前台)
 	@Override
 	public Suppliers selectsuppliers(Integer id) {
 		return this.suppliersMapper.selectByPrimaryKey(id);
 	}
-	//修改(后修改)供货商信息(前台)
+
 	
+
 	@Override
 	public int upsuppliers(Suppliers suppliers) {
-		
+
 		return suppliersMapper.updateByPrimaryKeySelective(suppliers);
 	}
-	
-	//删除照片
-		@Override
-		public int deleteByPrimaryKey1(int id) {
 
-			return suppliersMapper.deleteByPrimaryKey(id);
+
+	@Override
+	public int deleteByPrimaryKey1(int id) {
+
+		return suppliersMapper.deleteByPrimaryKey(id);
+	}
+	
+	
+	// 增加redis手机对应的短信
+	public boolean setRedisData(String key, String value) {
+		return redisDao.setData(key, value);
+	}
+	// 查询redis手机对应的短信
+	@Override
+	public boolean getRedisData(String key,String val) {
+		String valpo=redisDao.getData(key);
+		if(val!=null&&valpo!=null&&val.equals(valpo)){
+			return true;
+		}else{
+			return false;
 		}
-
-
-	
+	}
 }
