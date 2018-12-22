@@ -34,6 +34,15 @@ public interface ComplainMapper extends Mapper<Complain> {
 	List<Complain> selectcomplainBysupplierid(Integer suppliersid);
 
 	/**
+	 * 登录用户查询自己的投诉详细
+	 * 
+	 * @return
+	 */
+	Complain selectcomplainById2(Integer id);
+
+	List<Complain> selectcomplainById2();
+
+	/**
 	 * 统计供货商地址信息
 	 */
 	List<Map<String, Object>> selectAddress();

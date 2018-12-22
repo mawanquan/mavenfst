@@ -47,7 +47,7 @@
 							<li class="li1"><a href="<%=path%>/bids/zhaobiaoall?page=1" id="zzai">正在招标</a></li>
 							<li class="li1"><a href="<%=path%>/bids/toubiaoall">我的投标</a></li>
 							<li class="li1"><a href="<%=path%>/selectsuppliers">我的信息</a></li>
-							<li class="li1"><a href="<%=path%>/selectcomplainById">我的投诉</a></li>
+							<li class="li1"><a href="<%=path%>/selectcomplainBysupplierid">我的投诉</a></li>
 						</ul>
 					</td>
 					<td class="include">

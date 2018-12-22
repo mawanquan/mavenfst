@@ -42,6 +42,13 @@ public interface ComplainService {
 	List<Complain> selectcomplainBysupplierid(Integer suppliersid);
 
 	/**
+	 * 登录用户查询自己的投诉详细
+	 * 
+	 * @return
+	 */
+	Complain selectcomplainById2(Integer id);
+
+	/**
 	 * 统计供货商地址信息
 	 */
 	List<Map<String, Object>> selectAddress();

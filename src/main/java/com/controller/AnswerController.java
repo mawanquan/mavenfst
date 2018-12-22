@@ -32,7 +32,7 @@ public class AnswerController {
 
 		req.setAttribute("list2", list2);
 		req.setAttribute("pageInfo", pageInfo2);
-		return "selectallanswer";
+		return "/tousu/selectallanswer";
 	}
 
 	/**
@@ -43,7 +43,7 @@ public class AnswerController {
 		Answer answer = answerService.selectanswerbyid(id);
 		req.setAttribute("answer", answer);
 
-		return "selectbyprimarykeyanswer";
+		return "/tousu/selectbyprimarykeyanswer";
 	}
 
 	/**
