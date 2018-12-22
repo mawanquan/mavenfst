@@ -392,7 +392,7 @@ public class Declareform2Controller {
 
 	// 中标项目
 	@RequestMapping(value = "/zhongbiao")
-	public String zhongbiao(Integer id, Integer hit) throws JMSException {
+	public String zhongbiao(Integer id, Integer hit,HttpServletRequest request) throws JMSException {
 		// ////////////////////////////
 		String str = hit.toString();
 		Declareform declareform = declareformService.selectDeclareformById(id);
@@ -401,7 +401,7 @@ public class Declareform2Controller {
 		// 发邮件
 		toubiaoFrontService.upToubiao2(id, str, declareform.getTitle());
 		declareformService.updateById(declareform);
-
+		request.setAttribute("ok", "ok");
 		return "forward:/kekaibiao/1";
 	}
 
