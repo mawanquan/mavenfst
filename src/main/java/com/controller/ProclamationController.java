@@ -65,7 +65,7 @@ public class ProclamationController {
 	@RequestMapping(value = "/selecta1")
 	public String selectaproclamationa(HttpServletRequest req, Integer page) {
 		// PageHelper.startPage(page, 2);// 第几页，每页条数
-
+		System.out.println("jsjjsjsjsjjsjs");
 		List<Proclamation> list = proclamationService.SelectAll();
 		// PageInfo pageInfo = new PageInfo(list);// 就是一个包含了分页数据的对象
 		req.setAttribute("list", list);
