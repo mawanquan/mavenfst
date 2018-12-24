@@ -39,11 +39,11 @@ $(function(){
     </div>
     <div class="topright">    
     <ul>
-    <li><a href="login.html" target="_parent">退出</a></li>
+    <li><a href="${cxt}/admin/tuichu" target="_parent">退出</a></li>
     </ul>
     
     <div class="user">
-    <span>admin</span>
+    <span>${user.adminname}</span>
     </div>    
     </div>
 </body>

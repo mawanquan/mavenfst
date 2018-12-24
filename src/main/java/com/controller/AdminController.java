@@ -1,5 +1,6 @@
 package com.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -21,6 +22,10 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.service.AdminService;
 
+/**
+ * @author 马万全
+ *
+ */
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
@@ -35,11 +40,39 @@ public class AdminController {
 		this.adminService = adminService;
 	}
 
-// 查询所有用户数据
+	
+	
+	@RequestMapping("/tuichu")
+	public String goTuichu(HttpServletRequest req) {
+		Admin suo = (Admin) req.getSession().getAttribute("user");
+		if (suo != null) {
+			req.getSession().removeAttribute("user");
+			return "redirect:/admin/gologinview";
+		}
+		return "redirect:/admin/gologinview";
+	}
+	/**
+	 * 查询所有用户数据
+	 * 
+	 * @param page
+	 * @param name
+	 * @param brid
+	 * @param model
+	 * @param request
+	 * @return
+	 * @throws UnsupportedEncodingException
+	 */
 	@RequestMapping("/selalluser")
-	public String selAllUser(Integer page, String name, String brid, Model model) {
+	public String selAllUser(Integer page, String name, String brid,
+			Model model, HttpServletRequest request)
+			throws UnsupportedEncodingException {
 		Admin admin = new Admin();
 		Integer id = null;
+		if (request.getMethod().equals("GET")) {
+			if (name != null && !"".equals(name)) {
+				name = new String(name.getBytes("iso-8859-1"), "utf-8");
+			}
+		}
 		if ("0".equals(brid) || null == brid || "".equals(brid)) {
 			admin.setBranchid(null);
 		} else {
@@ -48,16 +81,23 @@ public class AdminController {
 		}
 		admin.setAdminname(name);
 		admin.setAdminstart(0);
-		PageHelper.startPage(page, 1);
+		PageHelper.startPage(page, 5);
 		List<Admin> lisadmin = this.adminService.selAllAdmin(admin);
 		PageInfo pageinfo = new PageInfo(lisadmin);
 		List<Branch> lisbranch = this.adminService.selBranchNot();
 		model.addAttribute("lisbranch", lisbranch);
 		model.addAttribute("pageinfo", pageinfo);
 		model.addAttribute("lisuser", lisadmin);
+		model.addAttribute("name", name);
+		model.addAttribute("brid", brid);
 		return "manage/manageadmin";
 	}
 
+	/**
+	 * 
+	 * @param branchnameid
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping("/ajaxbranch")
 	public List<Branch> ajaxBranch(Integer branchnameid) {
@@ -66,6 +106,11 @@ public class AdminController {
 
 	}
 
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping("/ajaxbyid")
 	public List<Branch> ajaxById(Integer id) {
@@ -73,12 +118,20 @@ public class AdminController {
 		return lisbranchs;
 
 	}
-//添加与修改用户
-@RequestMapping("/addinsertadmin")
+
+	/**
+	 * 添加与修改用户
+	 * 
+	 * @param admin
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/addinsertadmin")
 	public String addInsAdmin(Admin admin, Model model) {
 		System.out.println(admin.getId());
 		//
-		if (0 == admin.getBranchid() || null == admin.getBranchid()) {
+		System.out.println(admin.getBranchid()==null);
+		if (null==admin.getBranchid()||0== admin.getBranchid()) {
 			model.addAttribute("admin", admin);
 			model.addAttribute("message", "请分配部门");
 			return "manage/manageadd";
@@ -93,7 +146,7 @@ public class AdminController {
 			int num = this.adminService.updateAdmin(admin);
 			if (num > 0) {
 				model.addAttribute("message", "修改成功");
-				return "manage/manageadmin";
+				return "manage/manageadd";
 			}
 			model.addAttribute("message", "更新错误");
 			return "manage/manageadd";
@@ -107,21 +160,35 @@ public class AdminController {
 			}
 			int num = this.adminService.addInsAdmin(admin);
 			if (num > 0) {
-				model.addAttribute("message", "seccuss");
-				return "manage/manage";
-			} 
+				model.addAttribute("message", "添加成功");
+				return "manage/manageadd";
+			}
 		}
 		return null;
 	}
 
-// 修改用户从后台获取信息给前台页面
+	/**
+	 * 修改用户从后台获取信息给前台页面
+	 * 
+	 * @param id
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/tomanageadd")
 	public String toManageadd(Integer id, Model model) {
 		Admin admin = this.adminService.selById(id);
 		model.addAttribute("admin", admin);
 		return "manage/manageadd";
 	}
-//登录
+
+	/**
+	 * 登录
+	 * 
+	 * @param adminVo
+	 * @param model
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/gologin")
 	public String goLogain(Admin adminVo, Model model,
 			HttpServletRequest request) {
@@ -130,9 +197,11 @@ public class AdminController {
 			if (adminVo.getAdminpwd().equals(adminPo.getAdminpwd())) {
 				HttpSession session = request.getSession();
 				session.setAttribute("user", adminPo);
-				List<Premeau> lispremeau=this.adminService.selPremenuByAdminid(adminPo.getId());
+				List<Premeau> lispremeau = this.adminService
+						.selPremenuByAdminid(adminPo.getId());
 				session.setAttribute("lispremeau", lispremeau);
-				HashMap<String, Object> map = (HashMap<String, Object>) session.getAttribute("map");
+				HashMap<String, Object> map = (HashMap<String, Object>) session
+						.getAttribute("map");
 				session.removeAttribute("map");
 				if (map != null) {
 					return (String) map.get("path");
@@ -159,16 +228,24 @@ public class AdminController {
 
 	}
 
+	/**
+	 * 前往登录页
+	 * 
+	 * @return
+	 */
 	@RequestMapping("/gologinview")
 	public String goLoginView() {
 		return "manage/managelogin";
 	}
 
+	/**
+	 * 前往添加用户页
+	 * 
+	 * @return
+	 */
 	@RequestMapping("/goaddadminview")
 	public String goAddAdminView() {
 		return "manage/manageadd";
 	}
 
-	
-	
 }

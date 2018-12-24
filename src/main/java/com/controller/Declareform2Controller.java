@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+import javax.jms.JMSException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -29,13 +30,12 @@ import com.bean.Admin;
 import com.bean.Declarefile;
 import com.bean.Declareform;
 import com.bean.Joinzbxx;
-import com.bean.Suppliers;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.service.DeclareformService;
 import com.service.SuppliersService;
 import com.service.ToubiaoFrontService;
-import com.test.WordToHtml;
+import com.untils.WordToHtml;
 
 @Controller("declareform2Controller")
 public class Declareform2Controller {
@@ -367,11 +367,11 @@ public class Declareform2Controller {
 	public ModelAndView kaibiao(HttpSession session, int id) {
 		Declareform d = declareformService.selectDeclareformById(id);
 		ModelAndView mv = new ModelAndView();
-		Suppliers listsuppliers = null;
-		Joinzbxx jzbxxandfile = null;
+		// Joinzbxx jzbxxandfile = null;
 		// 查询应标的供应商
 		List<Joinzbxx> list = toubiaoFrontService.selBidsxxAllByDecidandStart(
 				id, 1);
+		System.out.println(list.size() + id);
 		mv.addObject("d", d);
 		mv.addObject("list", list);
 		mv.setViewName("zhaobiao/houtai/kaibiao");
@@ -392,18 +392,16 @@ public class Declareform2Controller {
 
 	// 中标项目
 	@RequestMapping(value = "/zhongbiao")
-	public String zhongbiao(Integer id, Integer hit) {
+	public String zhongbiao(Integer id, Integer hit) throws JMSException {
 		// ////////////////////////////
-	    String str=	hit.toString();
+		String str = hit.toString();
 		Declareform declareform = declareformService.selectDeclareformById(id);
 		declareform.setHit(str);
+		declareform.setSign(2);
+		// 发邮件
+		toubiaoFrontService.upToubiao2(id, str, declareform.getTitle());
 		declareformService.updateById(declareform);
-		//发邮件
-		toubiaoFrontService.upToubiao2(id,str);
-		
-		
-		
-		
+
 		return "forward:/kekaibiao/1";
 	}
 
@@ -442,7 +440,8 @@ public class Declareform2Controller {
 		// SimpleDateFormat("yyyy-MM-dd HH:mm");
 		// ////////////////////////////
 		Admin admin = (Admin) session.getAttribute("user");
-		List<Declareform> list = declareformService.selectmyAllBysign(admin.getId(), 2, 1);
+		List<Declareform> list = declareformService.selectmyAllBysign(
+				admin.getId(), 2, 1);
 		List<Declareform> list2 = new ArrayList<Declareform>();
 		for (Declareform declareform : list) {
 			if (declareform.getHit() != null) {
@@ -472,25 +471,31 @@ public class Declareform2Controller {
 		mv.addObject("pg", pg);
 		return mv;
 	}
+
 	// 我的废标项目
-		@RequestMapping(value = "/myfeibiao/{page}")
-		public ModelAndView myfeibiao(@PathVariable("page") int page,HttpSession session) {
-			PageHelper.startPage(page, 5);
-			Admin admin = (Admin) session.getAttribute("user");
-			List<Declareform> list = declareformService.selectmyAllBysign(admin.getId(), 2, 2);
-			PageInfo pg = new PageInfo(list);
-			ModelAndView mv = new ModelAndView();
-			mv.setViewName("zhaobiao/houtai/feibiao");
-			mv.addObject("list", list);
-			mv.addObject("path", "myfeibiao");
-			mv.addObject("pg", pg);
-			return mv;
-		}
+	@RequestMapping(value = "/myfeibiao/{page}")
+	public ModelAndView myfeibiao(@PathVariable("page") int page,
+			HttpSession session) {
+		PageHelper.startPage(page, 5);
+		Admin admin = (Admin) session.getAttribute("user");
+		List<Declareform> list = declareformService.selectmyAllBysign(
+				admin.getId(), 2, 2);
+		PageInfo pg = new PageInfo(list);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("zhaobiao/houtai/feibiao");
+		mv.addObject("list", list);
+		mv.addObject("path", "myfeibiao");
+		mv.addObject("pg", pg);
+		return mv;
+	}
+
 	// 废标项目
 	@RequestMapping(value = "/feibiaoset")
 	public String feibiaoset(int id) {
 		Declareform declareform = declareformService.selectDeclareformById(id);
 		declareform.setStatus(2);
+		declareform.setSign(2);
+		declareform.setHit("落标");
 		declareformService.updateById(declareform);
 		return "forward:/kekaibiao/1";
 	}

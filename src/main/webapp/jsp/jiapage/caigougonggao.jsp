@@ -19,7 +19,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<script type="text/javascript">
 			$('#datetimepicker').datetimepicker('show');
 		</script>
-
+<base href="<%=basePath%>">
 	</head>
 
 	<body>
@@ -60,7 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 				</div>
 <!---------------------------头下------------------------------>
-				<div class="top-bot">
+			<div class="top-bot">
 					<nav class="navbar navbar-default top-bot-col">
 						<div class="container-fluid ">
 							<div class="navbar-header">
