@@ -18,9 +18,9 @@ public class TextSends {
 	public static void main(String[] args) throws JMSException {
 
 		EmailMessage em = new EmailMessage();
-		em.setSubject("hello");
-		em.setText("第3个邮件");
-		em.setTouser("1543182674@qq.com");
+		em.setSubject("hello11");
+		em.setText("第456个邮件");
+		em.setTouser("3216563375@qq.com");
 		//Email email=new Email();
 		//email.myEmail(em);
 		sendTo(em);
@@ -28,7 +28,7 @@ public class TextSends {
 
 	public static void sendTo(EmailMessage emailmessage) throws JMSException {
 		ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(
-				"tcp://127.0.0.1:61616");
+				"tcp://192.168.43.155:61616");
 		// 2.获取连接
 		Connection connection = connectionFactory.createConnection();
 		// 3.启动连接

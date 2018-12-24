@@ -27,7 +27,7 @@ public class Read {
 		System.out.println(123);
 		// 1.创建连接工厂
 		ConnectionFactory connectionFactory = new ActiveMQConnectionFactory(
-				"tcp://127.0.0.1:61616");
+				"tcp://192.168.43.155:61616");
 		// 2.获取连接
 		Connection connection = null;
 		Queue queue = null;

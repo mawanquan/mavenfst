@@ -30,7 +30,7 @@ public class InitListener implements ServletContextListener {
 		context.setAttribute("css", context.getContextPath()+"/css/");
 		context.setAttribute("js", context.getContextPath()+"/js/");
 		context.setAttribute("img", context.getContextPath()+"/images/");
-		new Thread(){
+		/*new Thread(){
 			public void run() {
 				 ApplicationContext app=new ClassPathXmlApplicationContext("applicationContext.xml");
 				Read read=  (Read) app.getBean("read");
@@ -39,6 +39,6 @@ public class InitListener implements ServletContextListener {
 			
 		}.start();
 
-	}
+	*/}
 
 }
