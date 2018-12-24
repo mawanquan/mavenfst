@@ -5,7 +5,6 @@
 		var date1 = new Date();
 		$(".timer").each(
 				function() {
-
 					var d = new Date($(this).text());
 					var times = (d.getTime() - date1.getTime()) / 1000;
 					var day = 0, hour = 0, minute = 0, second = 0;//时间默认值
@@ -24,6 +23,7 @@
 					if (minute <= 9) {
 						minute = '0' + minute;
 					}
+					//alert(day + "天" + hour + "时" + minute + "分");
 					$(this).text(day + "天" + hour + "时" + minute + "分");
 
 				});
@@ -36,8 +36,8 @@
 			<tr style="width:100%;height: 35px;" class="_data_tr_flag active">
 				<td style="width:75%" align="left"><a target="_blank"
 					href="/mavenfst/show?id=${v.id}">${v.title}</a></td>
-					<td style="width:25%;padding-left:50px;">还有<span
-								class="timer">${v.finishdate}</span></td>
+					<td style="width:25%;padding-left:50px;">&nbsp;<span
+								class="timer0">${v.shengyuday}</span></td>
 			</tr>
 		</c:forEach>
 	</tbody>
