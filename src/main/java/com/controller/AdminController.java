@@ -39,7 +39,15 @@ public class AdminController {
 	public void setAdminService(AdminService adminService) {
 		this.adminService = adminService;
 	}
-
+	@RequestMapping("/tuichu")
+	public String goTuichu(HttpServletRequest req) {
+		Admin suo = (Admin) req.getSession().getAttribute("user");
+		if (suo != null) {
+			req.getSession().removeAttribute("user");
+			return "redirect:/admin/gologinview";
+		}
+		return "redirect:/admin/gologinview";
+	}
 	/**
 	 * 查询所有用户数据
 	 * 
