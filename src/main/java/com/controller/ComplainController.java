@@ -161,9 +161,7 @@ public class ComplainController {
 			int a = Integer.parseInt(map.get("mon").toString());// 月份
 			listaaa.set(a - 1, Integer.parseInt(map.get("num").toString()));
 		}
-
 		req.setAttribute("list5", listaaa);
-
 		return "/tousu/selectdeclaress";
 	}
 
