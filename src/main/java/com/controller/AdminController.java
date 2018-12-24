@@ -40,6 +40,17 @@ public class AdminController {
 		this.adminService = adminService;
 	}
 
+	
+	
+	@RequestMapping("/tuichu")
+	public String goTuichu(HttpServletRequest req) {
+		Admin suo = (Admin) req.getSession().getAttribute("user");
+		if (suo != null) {
+			req.getSession().removeAttribute("user");
+			return "redirect:/admin/gologinview";
+		}
+		return "redirect:/admin/gologinview";
+	}
 	/**
 	 * 查询所有用户数据
 	 * 
@@ -119,7 +130,8 @@ public class AdminController {
 	public String addInsAdmin(Admin admin, Model model) {
 		System.out.println(admin.getId());
 		//
-		if (0 == admin.getBranchid() || null == admin.getBranchid()) {
+		System.out.println(admin.getBranchid()==null);
+		if (null==admin.getBranchid()||0== admin.getBranchid()) {
 			model.addAttribute("admin", admin);
 			model.addAttribute("message", "请分配部门");
 			return "manage/manageadd";
@@ -134,7 +146,7 @@ public class AdminController {
 			int num = this.adminService.updateAdmin(admin);
 			if (num > 0) {
 				model.addAttribute("message", "修改成功");
-				return "manage/manageadmin";
+				return "manage/manageadd";
 			}
 			model.addAttribute("message", "更新错误");
 			return "manage/manageadd";
@@ -148,8 +160,8 @@ public class AdminController {
 			}
 			int num = this.adminService.addInsAdmin(admin);
 			if (num > 0) {
-				model.addAttribute("message", "seccuss");
-				return "manage/manage";
+				model.addAttribute("message", "添加成功");
+				return "manage/manageadd";
 			}
 		}
 		return null;

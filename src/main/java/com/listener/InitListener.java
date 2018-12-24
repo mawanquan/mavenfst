@@ -38,7 +38,7 @@ public class InitListener implements ServletContextListener {
 			};
 			
 		}.start();
-*/
-	}
+
+	*/}
 
 }

@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="place">
     <span>位置：</span>
     <ul class="placeul">
-    <li><a href="#">首页</a></li>
+    <li><a href="#" target="_blank">回到首页</a></li>
     </ul>
     </div>
     
@@ -35,8 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     
     <div class="welinfo">
     <span><img src="images/sun.png" alt="天气" /></span>
-    <b>Admin早上好，欢迎使用信息管理系统</b>(admin@uimaker.com)
-    <a href="#">帐号设置</a>
+    <b>${user.adminname}早上好，欢迎使用信息管理系统</b>(admin@uimaker.com)
     </div>
     
     <div class="welinfo">

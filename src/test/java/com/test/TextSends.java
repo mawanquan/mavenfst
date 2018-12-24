@@ -18,9 +18,9 @@ public class TextSends {
 	public static void main(String[] args) throws JMSException {
 
 		EmailMessage em = new EmailMessage();
-		em.setSubject("hello");
-		em.setText("第3个邮件");
-		em.setTouser("1543182674@qq.com");
+		em.setSubject("hello11");
+		em.setText("第456个邮件");
+		em.setTouser("3216563375@qq.com");
 		//Email email=new Email();
 		//email.myEmail(em);
 		sendTo(em);

@@ -23,7 +23,7 @@
 		id="internalResourceViewResolver">
 		<!-- 前缀 -->
 		<property name="prefix" value="/jsp/" />
-		<!-- 后缀 --> 
+		<!-- 后缀 -->
 		<property name="suffix" value=".jsp" />
 	</bean>
 	<!--用于文件上传的组件 -->

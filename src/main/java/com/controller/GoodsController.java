@@ -41,16 +41,7 @@ public class GoodsController {
 	    req.setAttribute("list1", list1);
 		req.setAttribute("page1", page1);
 		return "/goods/goods"; 
-	} 
-	@RequestMapping("/selecta0")
-	public String bs(HttpServletRequest req){
-		System.out.println("hhhhh");
-		List<Goods> list=gds.selectall();
-         
-	    req.setAttribute("list", list);
-		
-		return "/jiapage/caigougonggao"; 
-	} 
+	}  
 	//名称查 
 	@RequestMapping("/selectbyother")
 	public String c(HttpServletRequest req,String goodscode, String goodsname,String type){

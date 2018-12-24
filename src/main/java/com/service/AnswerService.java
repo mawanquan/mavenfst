@@ -15,11 +15,9 @@ public interface AnswerService {
 	List<Answer> selectanswer();
 
 	/**
-	 * 根据主键查询回复对象
-	 * 
-	 * @return
+	 * 根据主键查询一个对象
 	 */
-	Answer selectanswerbyid(Integer id);
+	Answer selectByPrimaryKey(Integer id);
 
 	/**
 	 * 根据主键删除一个对象

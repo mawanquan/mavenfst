@@ -22,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
   </head>
   
-  <body class="bg-warning">
+  <body class="bg-warning" style="background-color: #00FF66">
    
    <form action="<%=path%>/goods/insertgoods" method="post">
    <fieldset ><legend style="font-size: 30px;">增加物品</legend>

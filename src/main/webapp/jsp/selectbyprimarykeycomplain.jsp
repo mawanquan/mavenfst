@@ -105,7 +105,7 @@
 		<table class="table table-hover table-bordered  table-condensed">
 			<tr>
 				<td>id</td>
-				<td>${complain.id}</td>
+				<td>${complain.id }</td>
 			</tr>
 			<tr>
 				<td>投诉人</td>
@@ -134,7 +134,7 @@
 		
 	</div>
 	
-	<input onclick="window.location.href='/mavenfst/selectcomplainBysupplierid'"  class="btn btn-success" type="button" value="返回"  />
+	<input onclick="window.location.href='/mavenfst/selectcomplain?page=1'"  class="btn btn-success" type="button" value="返回"  />
 <!--************************尾****************************8-->
 		<div class="container-fluid ">
 			<div class="tail">

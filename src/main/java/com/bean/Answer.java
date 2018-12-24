@@ -7,17 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.Transient;
 
 public class Answer implements Serializable {
-
-	@Id
-	private Integer id;
-
-	private Date answertime;
-
-	private String answercontent;
-
-	private Integer adminid;
-
-	private Integer complainid;
 	@Transient
 	Admin admin;
 
@@ -39,6 +28,17 @@ public class Answer implements Serializable {
 	public void setComplain(Complain complain) {
 		this.complain = complain;
 	}
+
+	@Id
+	private Integer id;
+
+	private Date answertime;
+
+	private String answercontent;
+
+	private Integer adminid;
+
+	private Integer complainid;
 
 	public Integer getComplainid() {
 		return complainid;
