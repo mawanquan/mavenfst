@@ -56,20 +56,19 @@ public class SuppliersController {
 	// *************************** ** 登录(HttpServletRequest
 	// req)*****************************************/
 
-	////////////////////////////ajax异步验证码
-	
-	  
+	// //////////////////////////ajax异步验证码
+
 	@RequestMapping("/a/selectsupplierqqqq")
 	public ModelAndView selectSupplier(Suppliers suppliers,
-			HttpServletRequest req,String val,String verifyCode) {// ModelAndView是springMvc视频第6课
-		//redis验证码
-		System.err.println(val+"===="+verifyCode);
+			HttpServletRequest req, String val, String verifyCode) {// ModelAndView是springMvc视频第6课
+		// redis验证码
+		System.err.println(val + "====" + verifyCode);
 		boolean sta = suppliersService.getRedisData(val, verifyCode);
-		if(sta){
+		if (sta) {
 			Suppliers s = suppliersService.selectBylogin(suppliers);
 			ModelAndView mv = new ModelAndView();
 			// sign(状态)必须是供货商才能输入用户名和密码登录进入后台首页
-			if (s!= null && "已经是供货商".equals(s.getSign())) {// 判断状态是否为已经是供应商
+			if (s != null && "已经是供货商".equals(s.getSign())) {// 判断状态是否为已经是供应商
 				req.getSession().setAttribute("supplier", s);
 				mv.setViewName("home");
 			} else {
@@ -77,16 +76,16 @@ public class SuppliersController {
 			}
 			mv.addObject("s", s);
 			return mv;
-		}else{
-			
+		} else {
+
 			ModelAndView mv = new ModelAndView();
 			mv.setViewName("suppliers/denglu");
 			mv.addObject("message", "验证码不对");
-		mv.addObject("suppliername", suppliers.getSuppliername());
+			mv.addObject("suppliername", suppliers.getSuppliername());
 			mv.addObject("supplierspwd", suppliers.getSupplierspwd());
 			return mv;
 		}
-		
+
 	}
 
 	// **修改供货商信息*****************************************/
@@ -189,6 +188,7 @@ public class SuppliersController {
 
 		return mv;
 	}
+
 	@RequestMapping("/suppliersshenhe4")
 	// 对应suppliersxinxi4.jsp
 	public ModelAndView suppliersShenhe4() {
@@ -202,6 +202,7 @@ public class SuppliersController {
 
 		return mv;
 	}
+
 	/*******
 	 ** 财务审核通过,待交保证金**
 	 * *******/
@@ -411,15 +412,15 @@ public class SuppliersController {
 	}
 
 	// 增加redis手机对应的短信
-	// 异步  //  key对应的是手机号码
+	// 异步 // key对应的是手机号码
 	@ResponseBody
 	@RequestMapping("/setredisdata")
 	public String setRedisData(String key) {
 		System.out.println(key);
-		String value =new Random().nextInt(9000)+1000+"";//随机生成
+		String value = new Random().nextInt(9000) + 1000 + "";// 随机生成
 		suppliersService.setRedisData(key, value);
 		return "aaa";
 	}
 	// 查询redis手机对应的短信
-		
+
 }
