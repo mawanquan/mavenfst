@@ -397,6 +397,7 @@ public class PremeauController {
 	 * @param id
 	 * @return
 	 */
+	@ResponseBody
 	@RequestMapping("/selbranchbyid")
 	public Branch selBranchbyid(Integer id) {
 		Branch a = this.adminService.selBtanchByid(id);
