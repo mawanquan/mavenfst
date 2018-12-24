@@ -16,7 +16,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-	<!-- 配置整合mybatis过程 -->
+	<!-- 配置整合mybatis过程 -->  
 	<!-- 自动扫描service层 -->
 	<context:component-scan base-package="com.service,com.redisdao,com.untils" />
 	<!--========配置基于Mybatis的事务切面类================ -->
@@ -26,7 +26,7 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean> 
 	
-	
+	 
 	<!--手动配置事务的建议 -->
 	 <tx:advice id="tx_advice" transaction-manager="transactionManager">
 		<tx:attributes>

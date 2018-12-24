@@ -1,10 +1,12 @@
 package com.controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,6 +47,14 @@ public class PremeauController {
 		this.premeauService = premeauService;
 	}
 
+	/**
+	 * 
+	 * @param pre2
+	 * @param pre
+	 * @param url
+	 * @param prestart
+	 * @return
+	 */
 	@RequestMapping("/upinspremeau")
 	public String upInsPremeau(String[] pre2, String[] pre, String[] url,
 			Integer[] prestart) {
@@ -77,6 +87,13 @@ public class PremeauController {
 
 	}
 
+	/**
+	 * 
+	 * @param ids
+	 * @param pre
+	 * @param url
+	 * @return
+	 */
 	@RequestMapping("/upinspremeau2")
 	public String upInsPremeau2(Integer ids, String pre, String url) {
 
@@ -91,6 +108,12 @@ public class PremeauController {
 		return "redirect:/premeau/selallrole?page=1";
 	}
 
+	/**
+	 * 
+	 * @param ids
+	 * @param rolename
+	 * @return
+	 */
 	@RequestMapping("/upinsrole")
 	public String upInsRole(Integer[] ids, String[] rolename) {
 		List<Role> allrole = new ArrayList<Role>();
@@ -123,7 +146,11 @@ public class PremeauController {
 
 	}
 
-	// 异步根据查询premenu父类
+	/**
+	 * 异步根据查询premenu父类
+	 * 
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping("/selpremeaubyprestartid")
 	public List<Premeau> selPremeaubyprestartid() {
@@ -133,7 +160,13 @@ public class PremeauController {
 
 	}
 
-	// 异步删除权限根据主键改变状态
+	/**
+	 * 异步删除权限根据主键改变状态
+	 * 
+	 * @param id
+	 * @param sta
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping("/delpremeaubyid")
 	public Integer delPremeauById(Integer id, Integer sta) {
@@ -142,7 +175,12 @@ public class PremeauController {
 
 	}
 
-	// 异步删除根据主键改变状态
+	/**
+	 * 异步删除根据主键改变状态
+	 * 
+	 * @param id
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping("/delrolebyid")
 	public Integer delRoleById(Integer id) {
@@ -151,7 +189,12 @@ public class PremeauController {
 
 	}
 
-	// 异步获取当前用户下的role根据主键
+	/**
+	 * 异步获取当前用户下的role根据主键
+	 * 
+	 * @param id
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping("/selrolebyid")
 	public Role upRoles(Integer id) {
@@ -160,7 +203,12 @@ public class PremeauController {
 
 	}
 
-	// 异步获取premeau通过id
+	/**
+	 * 异步获取premeau通过id
+	 * 
+	 * @param id
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping("/selpremeaubyid")
 	public Premeau upPremeau(Integer id) {
@@ -169,7 +217,12 @@ public class PremeauController {
 
 	}
 
-	// 异步获取当前用户下的role
+	/**
+	 * 异步获取当前用户下的role
+	 * 
+	 * @param id
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping("/myrole")
 	public HashMap<String, List<Role>> selMyRole(Integer id) {
@@ -183,7 +236,12 @@ public class PremeauController {
 
 	}
 
-	// 异步获取当前Branch下的role
+	/**
+	 * 异步获取当前Branch下的role
+	 * 
+	 * @param id
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping("/myrolebranch")
 	public HashMap<String, List<Role>> selMyRoleBranch(Integer id) {
@@ -196,7 +254,12 @@ public class PremeauController {
 		return map;
 	}
 
-	// 异步获取当前role下的premeau
+	/**
+	 * 异步获取当前role下的premeau
+	 * 
+	 * @param id
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping("/myrolepremeau")
 	public HashMap<String, List<Premeau>> selMyPremeauRole(Integer id) {
@@ -209,7 +272,13 @@ public class PremeauController {
 		return map;
 	}
 
-	// 修改当前admin 的 role
+	/**
+	 * 修改当前admin 的 role
+	 * 
+	 * @param mybox
+	 * @param ids
+	 * @return
+	 */
 	@RequestMapping("/upPremeauByAdmin")
 	public String upPremeauByAdmin(int[] mybox, Integer ids) {
 		Integer num = this.premeauService.upPremeauByAdmin(mybox, ids);
@@ -217,26 +286,54 @@ public class PremeauController {
 
 	}
 
-	// 修改当前branch 的 role
+	/**
+	 * 修改当前branch 的 role
+	 * 
+	 * @param mybox
+	 * @param ids
+	 * @return
+	 */
 	@RequestMapping("/uppremeaubybranch")
 	public String upPremeauByBranch(int[] mybox, Integer ids) {
 		Integer num = this.premeauService.upPremeauByBranch(mybox, ids);
 		return "redirect:/premeau/selallbranch?page=1";
 	}
 
-	// 修改当前branch 的 role
+	/**
+	 * 修改当前branch 的 role
+	 * 
+	 * @param mybox
+	 * @param ids
+	 * @return
+	 */
 	@RequestMapping("/uppremeaubyrole")
 	public String upPremeauByRole(int[] mybox, Integer ids) {
 		Integer num = this.premeauService.upPremeauByRole(mybox, ids);
 		return "redirect:/premeau/selallrole?page=1";
 	}
 
-	// 获取所有的role和用户 以及部门
+	/**
+	 * 获取所有的role和用户 以及部门
+	 * 
+	 * @param page
+	 * @param name
+	 * @param brid
+	 * @param model
+	 * @param request
+	 * @return
+	 * @throws UnsupportedEncodingException
+	 */
 	@RequestMapping("/selalladminpre")
 	public String selAllAdminPre(Integer page, String name, String brid,
-			Model model) {
+			Model model, HttpServletRequest request)
+			throws UnsupportedEncodingException {
 		Admin admin = new Admin();
 		Integer id = null;
+		if (request.getMethod().equals("GET")) {
+			if (name != null && !"".equals(name)) {
+				name = new String(name.getBytes("iso-8859-1"), "utf-8");
+			}
+		}
 		if ("0".equals(brid) || null == brid || "".equals(brid)) {
 			admin.setBranchid(null);
 		} else {
@@ -254,10 +351,18 @@ public class PremeauController {
 		model.addAttribute("lisbranchs", lisbranch);
 		model.addAttribute("pageinfo", pageinfo);
 		model.addAttribute("lisadmin", lisadmin);
+		model.addAttribute("name", name);
+		model.addAttribute("brid", brid);
 		return "premeauset/adminrole";
 	}
 
-	// 部门增删》改获取所有
+	/**
+	 * 获取所有的role和用户 以及部门
+	 * 
+	 * @param page
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/selBranchAll2")
 	public String selBranchAll2(Integer page, Model model) {
 		PageHelper.startPage(page, 2);
@@ -269,19 +374,29 @@ public class PremeauController {
 
 	}
 
-	// 部门增删》
-	@ResponseBody
+	/**
+	 * 部门增删》
+	 * 
+	 * @ResponseBody
+	 * @return
+	 */
 	@RequestMapping("/selbranchbybranchnameid")
 	public List<Branch> selBranchbybranchnameid() {
 		List<Branch> a = this.adminService.selByBranchidDetail(0);
-	for (Branch branch : a) {
-		System.out.println(branch);
-	}
+		for (Branch branch : a) {
+			System.out.println(branch);
+		}
 		return a;
 
 	}
 
-	// 部门增删》根据id查询部门要修改
+	/**
+	 * 部门增删》根据id查询部门要修改
+	 * 
+	 * @ResponseBody
+	 * @param id
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping("/selbranchbyid")
 	public Branch selBranchbyid(Integer id) {
@@ -290,7 +405,13 @@ public class PremeauController {
 
 	}
 
-	// 部门增删》根据id查询部门要修改
+	/**
+	 * 部门增删》根据id查询部门要修改
+	 * 
+	 * @param id
+	 * @param sta
+	 * @return
+	 */
 	@ResponseBody
 	@RequestMapping("/delbranchbyid")
 	public Integer delBranchByid(Integer id, Integer sta) {
@@ -299,19 +420,32 @@ public class PremeauController {
 
 	}
 
-	// 部门增删》改获取所有
+	/**
+	 * 部门增删》改获取所有
+	 * 
+	 *
+	 * @param ids
+	 * @param branchname
+	 * @return
+	 */
 	@RequestMapping("/upbranch")
 	public String upBranch(Integer ids, String branchname) {
 		Branch branch = new Branch();
 		branch.setId(ids);
 		branch.setBranchname(branchname);
 		int num = this.adminService.updateBranch(branch);
-			return "redirect:/premeau/selBranchAll2/?page=1";
-
-		
+		return "redirect:/premeau/selBranchAll2/?page=1";
 
 	}
 
+	/**
+	 * 增加部门
+	 * 
+	 * @param branchnameid
+	 * @param branchname
+	 * @param branchname2
+	 * @return
+	 */
 	@RequestMapping("/insbranch")
 	public String insBranch(Integer[] branchnameid, String branchname[],
 			String[] branchname2) {
@@ -335,13 +469,19 @@ public class PremeauController {
 			}
 		}
 		int num = this.adminService.insBranch(allbranch);
-		
-			return "redirect:/premeau/selBranchAll2/?page=1";
-		
-		
+
+		return "redirect:/premeau/selBranchAll2/?page=1";
+
 	}
 
-	// 部门与角色中间表权限设置 角色表修改
+	/**
+	 * 部门与角色中间表权限设置 角色表修改
+	 * 
+	 * @param page
+	 * @param page2
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/selallbranch")
 	public String selAllBranch(Integer page, Integer page2, Model model) {
 
@@ -367,7 +507,14 @@ public class PremeauController {
 		return "premeauset/branchrole";
 	}
 
-	// 角色与权限 获取所有的角色 权限表修改
+	/**
+	 * 角色与权限 获取所有的角色 权限表修改
+	 * 
+	 * @param page
+	 * @param page2
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/selallrole")
 	public String selAllRole(Integer page, Integer page2, Model model) {
 		if (page == null) {

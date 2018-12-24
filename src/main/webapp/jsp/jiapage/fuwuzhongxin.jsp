@@ -64,10 +64,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										<a href="${cxt}/jsp/home.jsp"><span class="glyphicon glyphicon-home"></span>&nbsp;首页</a>
 									</li >
 									<li >
-										<a href="${cxt}/goods/selecta0">招标采购公告</a>
+										<a href="${cxt}/jsp/jiapage/caigougonggao.jsp">招标采购公告</a>
 									</li>
 									<li>
-										<a href="${cxt}/select1">供应商公告</a>
+										<a href="${cxt}/jsp/jiapage/gongyingshanggonggao.jsp">供应商公告</a>
 									</li>
 									<li  class="active">
 										<a  href="/mavenfst/selectcomplain?page=1">投诉中心</a>

@@ -113,23 +113,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</div>
 							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 								<ul class="nav navbar-nav top-bot-1 ">
-									<li>
-										<a href="index.html"><span class="glyphicon glyphicon-home"></span>&nbsp;首页</a>
+										<li  >
+										<a href="${cxt}/jsp/home.jsp"><span class="glyphicon glyphicon-home"></span>&nbsp;首页</a>
+									</li >
+									<li >
+										<a href="${cxt}/goods/selecta0">招标采购公告</a>
 									</li>
 									<li>
-										<a href="caigougonggao.html">招标采购公告</a>
+										<a href="${cxt}/select1">供应商公告</a>
+									</li>
+									<li  class="active">
+										<a  href="/mavenfst/selectcomplain?page=1">投诉中心</a>
 									</li>
 									<li>
-										<a href="gongyingshanggonggao.html">供应商公告</a>
-									</li>
-									<li class="active">
-										<a href="tousuzhongxin.html">投诉中心</a>
+										<a href="${cxt}/jsp/jiapage/fuwuzhongxin.jsp">服务中心</a>
 									</li>
 									<li>
-										<a href="fuwuzhongxin.html">服务中心</a>
-									</li>
-									<li>
-										<a href="falvshengming.html">法律声明</a>
+										<a href="${cxt}/jsp/jiapage/falvshengming.jsp">法律声明</a>
 									</li>
 								</ul>
 

@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <style type="text/css">
 		
 		.container{
-		height: 300px;
+		height: 150px;
 		}
 		</style>
 
@@ -34,23 +34,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   
 	<body>
-	<script src="${cxt }/code/highcharts.js"></script>
-<script src="${cxt }/code/highcharts-3d.js"></script>
-<script src="${cxt }/code/modules/exporting.js"></script>
-
-<div class="container">
+	<div class="container">
 		<table class="table table-hover table-bordered  table-condensed">
 		
 			<c:forEach items="${list4}" var="v">
 			<tr>
-			<td>${v.address}</td>
-			<td>${v.num}</td>
+			<td>${v.applydate}</td>
+			<td>${v.countNum}</td>
 			</tr>
 				
 			</c:forEach>
 			
 		</table>
 	</div>
+	<script src="${js }/code/highcharts.js"></script>
+<script src="${js }/code/highcharts-3d.js"></script>
+<script src="${js }/code/modules/exporting.js"></script>
 
 <div id="container"   style="height: 400px"></div>
  
@@ -66,7 +65,7 @@ Highcharts.chart('container', {
         }
     },
     title: {
-        text: '供货商地址统计'
+        text: '各年招标汇总'
     },
     subtitle: {
         text: ''
