@@ -95,14 +95,14 @@ div {
 			<div class="">
 				<label class="col-sm-2 control-label">截止时间:</label>
 				<div class="col-sm-10">
-					<input id="date2" type="datetime-local" name="finishdate0"
+					<input id="date2" type="datetime" name="finishdate0"
 						class="form-control" value="${d.finishdate}" />
 				</div>
 			</div>
 			<div class="">
 				<label class="col-sm-2 control-label">开标时间:</label>
 				<div class="col-sm-10">
-					<input id="date3" type="datetime-local" name="opentime0"
+					<input id="date3" type="datetime" name="opentime0"
 						class="form-control" value="${d.opentime}" />
 				</div>
 			</div>

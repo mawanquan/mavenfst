@@ -76,6 +76,7 @@ html, html body, td {
 				<td>开标时间</td>
 				<td>招标金额</td>
 				<td class="edit">编辑</td>
+				<td></td>
 			</tr>
 			<c:forEach items="${list}" var="v">
 
@@ -87,11 +88,11 @@ html, html body, td {
 					<td><span class="date">${v.opentime}</span></td>
 					<td>${v.zbmoney}</td>
 					<td><a href="<%=path%>/update?id=${v.id}"><button
-								type="button" class="btn btn-primary btn-xs">修改</button></a>
-
+								type="button" class="btn btn-primary btn-xs">修改</button></a><br>
+<br>
 						<button type="button" class="btn btn-primary btn-xs"
 							onclick="delrow(this,${v.id})">删除</button></td>
-					<td><a href="<%=path%>/fabuzb?id=${v.id}"><button
+					<td><a href="<%=path%>/fabuzb?id=${v.id}"><button style="margin-top: 15px;"
 								type="button" class="btn btn-primary btn-xs">发布项目</button></a></td>
 				</tr>
 			</c:forEach>

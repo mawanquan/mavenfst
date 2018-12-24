@@ -36,8 +36,7 @@
 					if (times > 0) {
 						day = Math.floor(times / (60 * 60 * 24));
 						hour = Math.floor(times / (60 * 60)) - (day * 24);
-						minute = Math.floor(times / 60) - (day * 24 * 60)
-								- (hour * 60);
+						minute = Math.floor(times / 60) - (day * 24 * 60)- (hour * 60);
 					}
 					if (day <= 9) {
 						day = '0' + day;
@@ -80,6 +79,9 @@
 				<td class="right_2"><span class="ts_div_tr1"><a
 						href="javascript:goToPage2(1)"><input type="button"
 							value="搜索" id="search" /></a> </span></td>
+							<td><c:if test="${empty list}">
+					<span>查询结果为空</span>
+					</c:if></td>
 			</tr>
 		</table>
 	</form>
@@ -102,6 +104,7 @@
 								class="timer">${v.finishdate}</span></td>
 						</tr>
 					</c:forEach>
+					
 				</tbody>
 			</table>
 		</div>

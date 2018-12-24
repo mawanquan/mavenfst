@@ -2,8 +2,8 @@
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
-	+ request.getServerName() + ":" + request.getServerPort()
-	+ path + "/";
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
 %>
 
 <!DOCTYPE html>
@@ -23,7 +23,6 @@
 <%-- <script src="${js}bootstrap.min.js"></script> --%>
 <script type="text/javascript" src="js/jquery-2.0.0.min.js"></script>
 <script type="text/javascript">
-	
 	/* function clickKaibiao(obj) {
 		$(obj).parent().addClass("table_tit");
 		$(obj).parent().siblings().removeClass("table_tit");
@@ -32,6 +31,7 @@
 	 */
 	$(function() {
 		$(".li" + ${active}).addClass("table_tit");
+		//$(".li" + ${active}).siblings().removeClass("table_tit");
 	})
 </script>
 </head>
@@ -41,7 +41,7 @@
 
 	<%-- <jsp:include page="/jsp/jiapage/denglu.jsp"></jsp:include> --%>
 	<div id="total" class="container">
-<jsp:include page="/jsp/jiapage/denglu.jsp"></jsp:include><!--引入首页头部  -->
+		<jsp:include page="/jsp/jiapage/denglu.jsp"></jsp:include><!--引入首页头部  -->
 		<!-- ============================= -->
 
 		<div id="content">
@@ -50,12 +50,13 @@
 				<tr>
 
 					<td class="table_td1">
-						<ul>
-							<li class="li1"><a href="<%=path%>/data?page=1" id="zzai">正在招标</a></li>
-							<li class="li2"><a href="<%=path%>/data2/1" id="jijiang">即将开标</a></li>
-							<li class="li3"><a href="<%=path%>/data3/1" id="gongshi">正在候选人公示</a></li>
+						<ul style="padding-left: 20px;">
+							<li class="li1"><a href="/mavenfst/data?page=1"
+								id="zzai">正在招标</a></li>
+							<li class="li2"><a href="/mavenfst/data2/1" id="jijiang">即将开标</a></li>
+							<li class="li3"><a href="/mavenfst/data3/1" id="gongshi">正在候选人公示</a></li>
 						</ul>
-		</td>
+					</td>
 					<td class="include">
 						<div class="right">
 							<jsp:include page="${data}"></jsp:include></div>

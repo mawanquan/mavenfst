@@ -18,6 +18,8 @@ public interface DeclareformService {
 	List<Declareform> selectAllByTitle(String title, int sign,int status);
 
 	Declareform selectDeclareformById(int id);
+	
+	Declareform selectDeclareformOne(Declareform declareform);
 
 	List<Declarefile> selectAllByDeclareid(int declareid);
 

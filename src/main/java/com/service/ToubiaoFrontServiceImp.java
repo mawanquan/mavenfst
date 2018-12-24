@@ -140,11 +140,11 @@ public class ToubiaoFrontServiceImp implements ToubiaoFrontService {
 	}
 
 	@Override
-	public Integer upToubiao2(Integer id,String str,String title) throws JMSException {
+	public Integer upToubiao2(Integer id,Integer sid,String title) throws JMSException {
 		int num=0;
 		List<Joinzbxx> list = joinzbxxMapper.selBidsxxAllByDecidandStart(id, 1);
 		for (Joinzbxx joinzbxx : list) {
-			if(joinzbxx.getSupplierid().toString().equals(str)){
+			if(joinzbxx.getSupplierid()==sid){
 				//中标
 				Suppliers supp=this.suppliersMapper.selectByPrimaryKey(joinzbxx.getSupplierid());
 				EmailMessage emailMessage=new EmailMessage();

@@ -36,6 +36,6 @@ public interface ToubiaoFrontService {
 	// 联表查询招标商信息
 	List<Joinzbxx> selBidsxxAllByDecidandStart(Integer decid, Integer start);
 
-	Integer upToubiao2(Integer id, String str, String string) throws JMSException;
+	Integer upToubiao2(Integer id, Integer sid, String string) throws JMSException;
 
 }

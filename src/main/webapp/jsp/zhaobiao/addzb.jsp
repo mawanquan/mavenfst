@@ -66,9 +66,9 @@ div {
 				//提交成功后的回调函数
 				success : function(data,
 						status, xhr, $form) {
-					var simg = "<a href='${cxt}"+data.fileurl+"'><img class='dd' src='${cxt}"+data.imgurl+"'>"+data.fileName+"</a>";
+					var simg = "<a href='${cxt}"+data.fileurl+"'><img class='dd' src='${cxt}"+data.imgurl+"'>"+data.fileName+"</a>&nbsp;<button  type='button' >删除</button>&nbsp;&nbsp;";
 					var suffix  = (data.fileName).substring((data.fileName).lastIndexOf(".")+1);
-					var simg2 = "<a href='${cxt}"+data.fileurl+"'><img class='dd' src='${cxt}/images/timg.jpg'>"+data.fileName+"</a>";
+					var simg2 = "<a href='${cxt}"+data.fileurl+"'><img class='dd' src='${cxt}/images/timg.jpg'>"+data.fileName+"</a>&nbsp;<button  type='button' >删除</button>&nbsp;&nbsp;";
 					 if(suffix=="doc"){
 					$("#appendfile").append(simg);
 					}else{

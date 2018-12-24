@@ -86,7 +86,7 @@ html, html body, td {
 						</c:forEach>
 					</table></td>
 				<td><a
-					href="/mavenfst/zhongbiao?id=${d.id}&hit=${v.suppliers.supplierid}"><button
+					href="/mavenfst/zhongbiao?id=${d.id}&hit=${v.suppliers.suppliername}&sid=${v.suppliers.supplierid}"><button
 							type="button" class="btn btn-primary btn-xs">中标</button></a></td>
 			</tr>
 		</c:forEach>

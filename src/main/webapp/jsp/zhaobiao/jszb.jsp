@@ -73,6 +73,9 @@
 				<td class="right_2"><span class="ts_div_tr1"> <a href=""><input
 							type="submit" value="搜索" id="search" /></a>
 				</span></td>
+				<td><c:if test="${empty list}">
+					<span>查询结果为空</span>
+					</c:if></td>
 			</tr>
 		</table>
 	</form>
@@ -87,6 +90,7 @@
 						<td style="padding-left:120px">标题</td>
 						<td style="padding-left:85px">距离公示截止时间</td>
 					</tr>
+					
 					<c:forEach items="${list}" var="v">
 						<tr style="width:100%;" class="_data_tr_flag active"
 							onclick="selectResult('510685')">

@@ -102,4 +102,10 @@ public class DeclareformServiceImp implements DeclareformService {
 		return declareformMapper.selectmyAllBysign(publisher, sign, status);
 	}
 
+	@Override
+	public Declareform selectDeclareformOne(Declareform declareform) {
+		
+		return declareformMapper.selectOne(declareform);
+	}
+
 }

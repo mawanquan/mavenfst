@@ -74,7 +74,7 @@ public class Declareform2Controller {
 	// 增加招标文件到数据库
 	@RequestMapping(value = "/insertfabu")
 	public String insertzb(Declareform declareform, String[] filess,
-			String finishdate0, String opentime0, HttpSession session)
+			String finishdate0, String opentime0,HttpSession session)
 			throws ParseException {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		Date date1 = (Date) formatter.parse(formatter.format(new Date()));
@@ -88,8 +88,8 @@ public class Declareform2Controller {
 		Admin admin = (Admin) session.getAttribute("user");
 		declareform.setPublisher(admin.getId());
 		declareformService.insertDeclareform(declareform);
-		Declareform d2 = declareformService
-				.selectDeclareformBytitle(declareform.getTitle());
+		Declareform d2 = declareformService.selectDeclareformOne(declareform);
+//				.selectDeclareformBytitle(declareform.getTitle());
 		List<Declarefile> list = new ArrayList<Declarefile>();
 		if (filess != null || (filess == null && filess.length != 0)) {
 			for (int i = 0; i < filess.length; i++) {
@@ -109,7 +109,6 @@ public class Declareform2Controller {
 			HttpSession session) {
 		PageHelper.startPage(page, 10);
 		// ////////////////////////////
-		Admin admin = (Admin) session.getAttribute("user");
 		List<Declareform> list = declareformService.selectAllBystatusall(0);
 		// ////////////////////////
 		PageInfo pg = new PageInfo(list);
@@ -179,7 +178,7 @@ public class Declareform2Controller {
 		declareform.setStatus(1);
 		declareformService.updateById(declareform);
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("zhaobiao/zbset");
+		mv.setViewName("forward:/fabuzbset/1");
 		mv.addObject("d", declareform);
 		return mv;
 	}
@@ -199,7 +198,6 @@ public class Declareform2Controller {
 			HttpSession session) throws ParseException {
 		PageHelper.startPage(page, 10);
 		// ////////////////////////////
-		Admin admin = (Admin) session.getAttribute("user");
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		Date date1 = (Date) formatter.parse(formatter.format(new Date()));
 		List<Declareform> list = declareformService.selectAllBysign(0, 1);
@@ -222,7 +220,7 @@ public class Declareform2Controller {
 		return mv;
 	}
 
-	// 正在招标项目
+	// 我的正在招标项目
 	@RequestMapping(value = "/myzhengzaizb/{page}")
 	public ModelAndView myzhengzaizb(@PathVariable("page") int page,
 			HttpSession session) throws ParseException {
@@ -260,7 +258,6 @@ public class Declareform2Controller {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		Date date1 = (Date) formatter.parse(formatter.format(new Date()));
 		// ////////////////////////////
-		Admin admin = (Admin) session.getAttribute("user");
 		List<Declareform> list = declareformService.selectAllBysign(1, 1);
 		if (list.size() != 0) {
 			for (Declareform declareform : list) {
@@ -314,9 +311,6 @@ public class Declareform2Controller {
 	public ModelAndView kekaibiao(@PathVariable("page") int page,
 			HttpSession session) {
 		PageHelper.startPage(page, 10);
-		// SimpleDateFormat formatter = new
-		// SimpleDateFormat("yyyy-MM-dd HH:mm");
-		// Admin admin = (Admin) session.getAttribute("user");
 		List<Declareform> list = declareformService.selectAllBysign(2, 1);
 		List<Declareform> list2 = new ArrayList<Declareform>();
 		for (Declareform declareform : list) {
@@ -340,9 +334,6 @@ public class Declareform2Controller {
 	public ModelAndView mykekaibiao(@PathVariable("page") int page,
 			HttpSession session) {
 		PageHelper.startPage(page, 10);
-		// SimpleDateFormat formatter = new
-		// SimpleDateFormat("yyyy-MM-dd HH:mm");
-		// ////////////////////////////
 		Admin admin = (Admin) session.getAttribute("user");
 		List<Declareform> list = declareformService.selectmyAllBysign(
 				admin.getId(), 2, 1);
@@ -392,14 +383,13 @@ public class Declareform2Controller {
 
 	// 中标项目
 	@RequestMapping(value = "/zhongbiao")
-	public String zhongbiao(Integer id, Integer hit) throws JMSException {
+	public String zhongbiao(Integer id,String hit,Integer sid) throws JMSException {
 		// ////////////////////////////
-		String str = hit.toString();
 		Declareform declareform = declareformService.selectDeclareformById(id);
-		declareform.setHit(str);
+		declareform.setHit(hit);
 		declareform.setSign(2);
 		// 发邮件
-		toubiaoFrontService.upToubiao2(id, str, declareform.getTitle());
+		toubiaoFrontService.upToubiao2(id, sid, declareform.getTitle());
 		declareformService.updateById(declareform);
 
 		return "forward:/kekaibiao/1";
@@ -410,10 +400,6 @@ public class Declareform2Controller {
 	public ModelAndView finishzb(@PathVariable("page") int page,
 			HttpSession session) {
 		PageHelper.startPage(page, 10);
-		// SimpleDateFormat formatter = new
-		// SimpleDateFormat("yyyy-MM-dd HH:mm");
-		// ////////////////////////////
-		// Admin admin = (Admin) session.getAttribute("user");
 		List<Declareform> list = declareformService.selectAllBysign(2, 1);
 		List<Declareform> list2 = new ArrayList<Declareform>();
 		for (Declareform declareform : list) {
@@ -431,14 +417,11 @@ public class Declareform2Controller {
 		return mv;
 	}
 
-	// 已完成招标项目
+	// 我的已完成招标项目
 	@RequestMapping(value = "/myfinishzb/{page}")
 	public ModelAndView myfinishzb(@PathVariable("page") int page,
 			HttpSession session) {
 		PageHelper.startPage(page, 10);
-		// SimpleDateFormat formatter = new
-		// SimpleDateFormat("yyyy-MM-dd HH:mm");
-		// ////////////////////////////
 		Admin admin = (Admin) session.getAttribute("user");
 		List<Declareform> list = declareformService.selectmyAllBysign(
 				admin.getId(), 2, 1);
@@ -495,7 +478,7 @@ public class Declareform2Controller {
 		Declareform declareform = declareformService.selectDeclareformById(id);
 		declareform.setStatus(2);
 		declareform.setSign(2);
-		declareform.setHit("落标");
+		declareform.setHit("废标");
 		declareformService.updateById(declareform);
 		return "forward:/kekaibiao/1";
 	}
