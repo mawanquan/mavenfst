@@ -90,16 +90,18 @@ public class Declareform2Controller {
 		declareformService.insertDeclareform(declareform);
 		Declareform d2 = declareformService.selectDeclareformOne(declareform);
 //				.selectDeclareformBytitle(declareform.getTitle());
-		List<Declarefile> list = new ArrayList<Declarefile>();
+		
 		if (filess != null || (filess == null && filess.length != 0)) {
+			List<Declarefile> list = new ArrayList<Declarefile>();
 			for (int i = 0; i < filess.length; i++) {
 				Declarefile declarefile = new Declarefile();
 				declarefile.setDeclareid(d2.getId());
 				declarefile.setFilepath(filess[i]);
 				list.add(declarefile);
 			}
+			declareformService.insertDeclarefile(list);
 		}
-		declareformService.insertDeclarefile(list);
+		
 		return "forward:/addzb";
 	}
 

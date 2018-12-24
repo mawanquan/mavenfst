@@ -28,14 +28,14 @@
 		select a.id id1,publisher
 		,title,content,applydate,finishdate,opentime,zbmoney,sign,hit,status,b.id id2,adminname from
 		declareform a LEFT JOIN admin b on publisher=b.id where
-		sign=#{0} and status=#{1}
+		sign=#{0} and status=#{1} order by a.id desc
 	</select>
 	<select id="selectmyAllBysign" resultMap="selectAllBysignmap"
 		parameterType="Integer">
 		select a.id id1,publisher
 		,title,content,applydate,finishdate,opentime,zbmoney,sign,hit,status,b.id id2,adminname from
 		declareform a LEFT JOIN admin b on publisher=b.id where
-		publisher=#{0} and sign=#{1} and status=#{2}
+		publisher=#{0} and sign=#{1} and status=#{2} order by a.id desc
 	</select>
 	<!--================================================== -->
 
@@ -58,12 +58,12 @@
 		declareform where
 		sign=#{1} and title like
 		concat(concat('%',#{0}),'%')
-		and status=#{2}
+		and status=#{2} order by id desc
 	</select>
 	<select id="selectoneBytitle" resultType="com.bean.Declareform">
 		select id,publisher
 		,title,content,applydate,finishdate,opentime,zbmoney,sign,hit,status from
-		declareform where title=#{title}
+		declareform where title=#{title} order by id desc
 	</select>
 	<!-- ========================================== -->
 	<resultMap type="com.bean.Declareform" id="selectAllBystatusmap">
@@ -82,7 +82,7 @@
 	<select id="selectAllBystatus" resultMap="selectAllBystatusmap">
 		select id,publisher
 		,title,content,applydate,finishdate,opentime,zbmoney,sign,hit,status from
-		declareform where status=#{0} and publisher=#{1}
+		declareform where status=#{0} and publisher=#{1} order by id desc
 	</select>
 	<!-- ========================================== -->
 	<resultMap type="com.bean.Declareform" id="selectAllBystatus2map">
@@ -108,12 +108,12 @@
 		declareform where status=#{status} -->
 		select a.id id1,publisher
 		,title,content,applydate,finishdate,opentime,zbmoney,sign,hit,status,b.id id2,adminname from
-		declareform a LEFT JOIN admin b on publisher=b.id where status=#{status}
+		declareform a LEFT JOIN admin b on publisher=b.id where status=#{status} order by a.id desc
 	</select>
 	<!-- =================== -->
 	<select id="selectByid" resultMap="selectAllBystatus2map">
 		select a.id id1,publisher
 		,title,content,applydate,finishdate,opentime,zbmoney,sign,hit,status,b.id id2,adminname from
-		declareform a left JOIN admin b on publisher=b.id where a.id=#{id}
+		declareform a left JOIN admin b on publisher=b.id where a.id=#{id} order by a.id desc
 	</select>
 </mapper>
