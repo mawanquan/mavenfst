@@ -71,7 +71,7 @@ $(function(){
              if($(this).is("#mypwd2")){
                 var nameVal = $.trim(this.value); 
                 var mypwd=$("#mypwd").val();
-             
+                alert(mypwd)
                 if(nameVal==mypwd){
                 var okMsg=" 输入正确";
                     $parent.find(".high").remove();

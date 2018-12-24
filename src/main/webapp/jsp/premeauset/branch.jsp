@@ -61,17 +61,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	{"id":id},
 	function(reg){
 	if(reg.prestart==0){
-	htm="<tr><td>部门名称：<input class='form-control' type='text' value='"+reg.branchname+"' name='branchname' id='uppremeaus"+reg.id+"'><input type='hidden' value='"+reg.id+"' name='ids'></td></tr>";
+	htm="<tr><td>权限名称：<input class='form-control' type='text' value='"+reg.branchname+"' name='branchname' id='uppremeaus"+reg.id+"'><input type='hidden' value='"+reg.id+"' name='ids'></td></tr>";
 	$tab.append(htm);
 	}else{
-	htm="<tr><td>部门名称：<input class='form-control' type='text' value='"+reg.branchname+"' name='branchname' id='uppremeaus"+reg.id+"'></td><input type='hidden' value='"+reg.id+"' name='ids'></td></tr>";
+	htm="<tr><td>权限名称：<input class='form-control' type='text' value='"+reg.branchname+"' name='branchname' id='uppremeaus"+reg.id+"'></td><input type='hidden' value='"+reg.id+"' name='ids'></td></tr>";
 	$tab.append(htm);
 	}
 	},
 	'json'
 	)
 	}else{
-	alert("改角色已存在");
+	alert("改角色已存在")
 	return;
 	}
 	}
@@ -86,7 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            options+="<option value='"+reg[i].id+"'>"+reg[i].branchname+"</option>";
          } 
          
-         var htms="<tr><td><span>部门名称：</span><input class='form-control' type='text'  name='branchname' ></td><td><select class='form-control'  name='branchnameid'>"+options+"</select></td><td><button onclick='removethis(this)' class='btn btn-primary' >移除</button></td></tr>";
+         var htms="<tr><td><span>部门名称2222：</span><input class='form-control' type='text'  name='branchname' ></td><td><select class='form-control'  name='branchnameid'>"+options+"</select></td><td><button onclick='removethis(this)' class='btn btn-primary' >移除</button></td></tr>";
         $("#biaoge").append(htms);
         },
         'json')
@@ -112,7 +112,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          $("#"+id).remove();
         }else{
         
-         if(confirm("是否删除当前父部门以及当前父部门所有子部门")){
+         if(confirm("是否删除当前父权限以及当前父权限所有子权限")){
          sta=1;
          var url="${cxt}/premeau/delpremeaubyid";
         $.post(url,
@@ -140,9 +140,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div>
     <table class="table table-striped table-bordered ">
 				<tr>
-					<th style="font-size: 20px">部门信息</th>
+					<th style="font-size: 20px">资源信息</th>
 					 <th>
-		                <button  class='btn btn-primary' data-toggle="modal" data-target="#myModal3">添加部门</button>
+		                <button  class='btn btn-primary' data-toggle="modal" data-target="#myModal3">添加权限</button>
 		            </th>
 				</tr>
 				<c:forEach items="${lisallbranch}" var="v">
@@ -225,14 +225,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">添加部门信息</h4>
+        <h4 class="modal-title" id="myModalLabel">添加权限信息</h4>
       </div>
       <div class="modal-body">
       <div id="insrole">
       <table id="biaoge">
           <tr id="twotrs">
-              <th> <button type="button" onclick="insertrole(0)" class='btn btn-primary' >添加部门</button></th>
-               <th> <button type="button" onclick="insertrole(1)" class='btn btn-primary' >添加部门分类</button></th>
+              <th> <button type="button" onclick="insertrole(0)" class='btn btn-primary' >添加一行</button></th>
+               <th> <button type="button" onclick="insertrole(1)" class='btn btn-primary' >添加一行子类</button></th>
           </tr>
       </table>
       </div>

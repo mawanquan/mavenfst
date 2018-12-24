@@ -397,7 +397,6 @@ public class PremeauController {
 	 * @param id
 	 * @return
 	 */
-	@ResponseBody
 	@RequestMapping("/selbranchbyid")
 	public Branch selBranchbyid(Integer id) {
 		Branch a = this.adminService.selBtanchByid(id);
@@ -423,12 +422,11 @@ public class PremeauController {
 	/**
 	 * 部门增删》改获取所有
 	 * 
-	 *
+	 * @RequestMapping("/upbranch")
 	 * @param ids
 	 * @param branchname
 	 * @return
 	 */
-	 @RequestMapping("/upbranch")
 	public String upBranch(Integer ids, String branchname) {
 		Branch branch = new Branch();
 		branch.setId(ids);

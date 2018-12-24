@@ -1,6 +1,8 @@
 package com.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -27,13 +29,13 @@ public class ComplainController {
 	@RequestMapping("/selectcomplain")
 	public String selectcomplain(HttpServletRequest req, Integer page) {
 
-		PageHelper.startPage(page, 2);// 第几页，每页条数
+		PageHelper.startPage(page, 6);// 第几页，每页条数
 		List<Complain> list = complainService.selectcomplain();// 查询所有
 		PageInfo pageInfo = new PageInfo(list);// 就是一个包含了分页数据的对象
 
 		req.setAttribute("list", list);
 		req.setAttribute("pageInfo", pageInfo);
-		return "showallcomplain";
+		return "/tousu/showallcomplain";
 	}
 
 	/**
@@ -43,7 +45,7 @@ public class ComplainController {
 	public String selectcomplainById(HttpServletRequest req, Integer id) {
 		Complain complain = (Complain) complainService.selectcomplainById(id);
 		req.setAttribute("complain", complain);
-		return "selectbyprimarykeycomplain";
+		return "/tousu/selectbyprimarykeycomplain";
 	}
 
 	/**
@@ -71,15 +73,28 @@ public class ComplainController {
 	public String insertComplain(Complain complain, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		Suppliers sl = (Suppliers) session.getAttribute("supplier");
-
 		complain.setSuppliersid(sl.getSupplierid());
-
 		complain.setName(sl.getSuppliername());
 		int r = complainService.insert(complain);
 		return "redirect:/selectcomplain?page=1";
-
 	}
-/**
+
+	/*
+	 * 根据登录用户查询自己所有投诉内容
+	 */
+	@RequestMapping("/selectcomplainBysupplierid")
+	public String selectcomplainBysupplierid2(HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		Suppliers sl = (Suppliers) session.getAttribute("supplier");
+		System.out.println(sl.getSupplierid());
+		List<Complain> list3 = complainService.selectcomplainBysupplierid(sl
+				.getSupplierid());
+		req.setAttribute("list3", list3);
+		req.setAttribute("data", "/jsp/tousu/selectcomplainBysupplierid.jsp");
+		return "/toubiaofront/toubiaomain";
+	}
+
+	/**
 	 * 根据主键查询一个对象
 	 */
 	@RequestMapping("/selectcomplainById2")
@@ -146,7 +161,9 @@ public class ComplainController {
 			int a = Integer.parseInt(map.get("mon").toString());// 月份
 			listaaa.set(a - 1, Integer.parseInt(map.get("num").toString()));
 		}
+
 		req.setAttribute("list5", listaaa);
+
 		return "/tousu/selectdeclaress";
 	}
 

@@ -1,14 +1,14 @@
 package com.bean;
 
 import java.io.Serializable;
-
 import java.util.Date;
-
 import java.util.List;
 
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 //采购询价物资明细表
+@Table(name="goodsdetail")
 public class GoodsDetail implements Serializable {
 	@Id
     private Integer id;
