@@ -41,6 +41,9 @@
 			.container{
 			margin-left: 50px
 			}
+			.btn  btn-primary1{
+			color: #FFFFFF;	
+			border-color: #337AB7	}
 		</style>
 
 	</head>
@@ -125,9 +128,11 @@
 
 				<div class="sub-btn">
 					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" class="btn  btn-primary">登录</button>
+						<button type="submit" class="btn  btn-primary1"><a>登录</a></button>
+						<button type="submit" class="btn  btn-primary1"><a href="/mavenfst/jsp/home.jsp">退出</a></button>
 					</div>
 				</div>
+				
 			</form></div>
 	</div>
 </div>
